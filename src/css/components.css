@@ -1,0 +1,44 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--main-background);
+    color: var(--text);
+}
+
+.accent {
+    color: var(--accent);
+}
+
+.section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.container {
+    min-width: 320px;
+    max-width: 375px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .section {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .container {
+        max-width: 768px;
+        padding: 0 16px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .container {
+        max-width: 1270px;
+        padding: 0 16px;
+    }
+}
