@@ -1,0 +1,84 @@
+.header-logo {
+    font-weight: bold;
+    font-size: 16px;
+}
+.h-peages {
+    display: none;
+} 
+.icons-list {
+    display: none;
+}
+.header-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 40px;
+}
+.header {
+    background-color: #BFBABA;
+}
+/*@media only screen and (min-width: 319.98px) {
+    .h-peages {
+        display: none;
+    }
+    .icons-list {
+        display: none;
+    }
+}*/
+@media screen and (min-width: 768px) {
+    .header-logo {
+        font-size: 28px;
+    }
+    .burger-menu {
+        display: none;
+    }
+    .h-peages{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 211px;
+        height: 52px;
+        background-color: #7E847F;
+        padding: 8px 28px;
+        border-radius: 60px;
+        border-style: none;
+    }
+    .icons-list {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+    }
+    .header-icon {
+        border-color: rgba(49, 52, 50, 0.2);
+        border-radius: 10px;
+        width: 44px;
+        height: 44px;
+    }
+    .header-list {
+        margin: 60px 48px;
+    }
+    .home-button {
+        height: 36px;
+        color: #F6F6F6;
+       /* padding: 6px 26px;*/
+        font-size: 16px;
+        background-color: #7E847F;
+        border-radius: 30px;
+        border-style: none;
+    }
+    .favourites-button {
+        height: 36px;
+        color: #F6F6F6;
+        /*padding: 6px 14px;*/
+        font-size: 16px;
+        background-color: #7E847F;
+        border-radius: 30px;
+        border-style: none;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .header-list {
+        margin: 64px 54px;
+    }
+}
