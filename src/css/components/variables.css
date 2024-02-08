@@ -10,6 +10,7 @@
     --not-color-star: rgba(27, 27, 27, 0.2);
     --border-color: rgba(27, 27, 27, 0.4);
     --text-color-alfa: rgba(246, 246, 246, 0.6);
+    --text: rgba(27, 27, 27, 0.6);
     --white-color: #FFFFFF;
     --hover-button-icon: #5F6560;
 }
