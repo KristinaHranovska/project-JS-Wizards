@@ -1,0 +1,64 @@
+.container-card {
+width: 295px;
+height: 165px;
+background-color: var(--white-color);
+}
+
+.favorites-title {
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--black-background);
+}
+
+.container-worcaut {
+  display: flex;
+}
+
+.workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: var(--text-light);
+    background-color: var(--dark-grey-background);
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 5px 8px;
+    max-width: 100%;
+}
+
+.delete-favorites {
+    fill: var(--white-color);
+    stroke: var(--text-dark);
+}
+
+.button-strart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: none;
+    background-color: var(--white-color);
+    font-family: inherit;
+    width: 54px;
+    height: 18px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.icon-arrow-body {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: var(--text-dark);
+}
+
+.container-cards-favorites {}
+
+.icon-parts-fitness {}
