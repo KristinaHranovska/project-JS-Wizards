@@ -45,10 +45,6 @@
     color: var(--text-light);
 }
 
-.quote-img {
-    width: 100%;
-}
-
 @media screen and (min-width: 768px) {
     .quote {
         padding: 64px 80px;
@@ -77,4 +73,21 @@
         font-size: 16px;
         line-height: 1.5;
     }
+}
+
+@media screen and (min-width: 1440px) {
+    .quote-block {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .quote {
+        width: 704px;
+        padding: 64px;
+    }
+
+    .quote-paragraf {
+        line-height: 1.5;
+    }
+
 }

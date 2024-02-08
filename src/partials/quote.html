@@ -1,14 +1,14 @@
 <section class="section">
-  <div class="container">
+  <div class="container quote-block">
     <div class="quote">
       <div class="quote-main-title">
         <svg class="icon-quote-fitness" width="34" height="32">
           <use href="./img/icons/sprite.svg#icon-quote-fitness"></use>
         </svg>
         <h2 class="quote-title">Quote of the day</h2>
-        <svg class="icon-quote" width="28" height="28">
+        <!-- <svg class="icon-quote" width="28" height="28">
           <use href="./img/icons/sprite.svg#icon-quote"></use>
-        </svg>
+        </svg> -->
       </div>
 
       <div class="quote-thumb">
@@ -20,35 +20,30 @@
         <p class="quote-author">Tom Brady</p>
       </div>
     </div>
-    <div>
-      <picture>
-        <source
-          srcset="
-            ./img/quote/quote_1440.webp    1x,
-            ./img/quote/quote_1440@2x.webp 2x
-          "
-          media="(max-width: 1440px)"
-        />
-        <source
-          srcset="
-            ./img/quote/quote_tablet.webp    1x,
-            ./img/quote/quote_tablet@2x.webp 2x
-          "
-          media="(min-width: 768px)"
-        />
-        <source
-          srcset="
-            ./img/quote/quote_mobile.webp    1x,
-            ./img/quote/quote_mobile@2x.webp 2x
-          "
-          media="(min-width: 320px)"
-        />
-        <img
-          class="quote-img"
-          src="./img/quote/quote_1440.webp"
-          alt="body motivation"
-        />
-      </picture>
-    </div>
+
+    <picture>
+      <source
+        srcset="
+          ./img/quote/quote_1440.webp    1x,
+          ./img/quote/quote_1440@2x.webp 2x
+        "
+        media="(min-width: 1440px)"
+      />
+      <source
+        srcset="
+          ./img/quote/quote_tablet.webp    1x,
+          ./img/quote/quote_tablet@2x.webp 2x
+        "
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="
+          ./img/quote/quote_mobile.webp    1x,
+          ./img/quote/quote_mobile@2x.webp 2x
+        "
+        media="(min-width: 320px)"
+      />
+      <img src="./img/quote/quote_1440.webp" alt="body motivation" />
+    </picture>
   </div>
 </section>
