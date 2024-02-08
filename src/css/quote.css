@@ -45,6 +45,20 @@
     color: var(--text-light);
 }
 
+.quote-img {
+    height: 335px;
+    background-image: url('../img/quote/quote_mobile.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .quote-img {
+        background-image: url('../img/quote/quote_mobile@2x.webp');
+    }
+}
+
+
 @media screen and (min-width: 768px) {
     .quote {
         position: relative;
@@ -80,6 +94,17 @@
         font-size: 16px;
         line-height: 1.5;
     }
+
+    .quote-img {
+        height: 302px;
+        background-image: url('../img/quote/quote_tablet.webp');
+    }
+
+    @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+        .quote-img {
+            background-image: url('../img/quote/quote_tablet@2x.webp');
+        }
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -103,5 +128,16 @@
 
     .quote-author {
         bottom: 64px;
+    }
+
+    .quote-img {
+        width: 704px;
+        background-image: url('../img/quote/quote_1440.webp');
+    }
+
+    @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+        .quote-img {
+            background-image: url('../img/quote/quote_1440@2x.webp');
+        }
     }
 }
