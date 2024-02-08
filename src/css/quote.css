@@ -47,6 +47,7 @@
 
 @media screen and (min-width: 768px) {
     .quote {
+        position: relative;
         padding: 64px 80px;
     }
 
@@ -61,7 +62,14 @@
     }
 
     .quote-main-title {
+
         gap: 16px;
+    }
+
+    .icon-quote {
+        position: absolute;
+        top: 32px;
+        right: 80px;
     }
 
     .quote-paragraf {
@@ -84,6 +92,10 @@
     .quote {
         width: 704px;
         padding: 64px;
+    }
+
+    .icon-quote {
+        right: 64px;
     }
 
     .quote-paragraf {
