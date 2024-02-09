@@ -1,5 +1,5 @@
 // const favoritesContainer = document.getElementById('favorites-container');
-//const removeCards = document.querySelector(".container-remove-favorites");
+// const removeCards = document.querySelector(".container-remove-favorites");
 // const infoFavorite = document.querySelector(".list-info-favorites");
 // const deleteFavorite = document.querySelector(".delete-favorites");
 
@@ -16,12 +16,12 @@
 //     favoritesContainer.innerHTML = "";
 
 //     if (!savedCards || savedCards.length === 0) {
-        // removeCards.classList.remove("is-hidden");
+//         removeCards.classList.remove("is-hidden");
 //     } else {
 // removeCards.classList.add("is-hidden");
- //     createTaskMarkup(obj)
+//      createTaskMarkup(obj)
 //         const markup = renderExerciseCard(savedCards);
-//     
+    
 
 //          const deleteButtons = document.querySelectorAll('.delete-button');
 //          deleteButtons.forEach(button => {
@@ -49,7 +49,7 @@
 //     </div>
 //     <p class="subtext-favorites">${target}: Quads</p>
 //   </li >`;
-//}).join("");
+// }).join("");
 // }
 
 // function removeFavoriteCard(index) {
