@@ -1,0 +1,144 @@
+.quote {
+    background-color: var(--dark-grey-background);
+    border-radius: 30px;
+
+    padding: 40px 20px;
+}
+
+.quote-main-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+.quote-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--text-light);
+}
+
+.icon-quote {
+    fill: var(--white-color);
+
+    margin-left: auto;
+}
+
+.quote-thumb {
+    padding-left: 46px;
+}
+
+.quote-paragraf {
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--text-color-alfa);
+
+    margin-bottom: 14px;
+}
+
+.quote-author {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-light);
+}
+
+.quote-img {
+    height: 272px;
+    background-image: url('../img/quote/quote_mobile.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .quote-img {
+        background-image: url('../img/quote/quote_mobile@2x.webp');
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .quote {
+        position: relative;
+        border-radius: 50px;
+        padding: 64px 80px;
+    }
+
+    .quote-title {
+        font-size: 24px;
+        line-height: 1.33;
+    }
+
+    .icon-quote {
+        width: 38px;
+        height: 38px;
+    }
+
+    .quote-main-title {
+        gap: 16px;
+    }
+
+    .icon-quote {
+        position: absolute;
+        top: 32px;
+        right: 80px;
+    }
+
+    .quote-paragraf {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .quote-author {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .quote-img {
+        height: 302px;
+        background-image: url('../img/quote/quote_tablet.webp');
+    }
+
+    @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+        .quote-img {
+            background-image: url('../img/quote/quote_tablet@2x.webp');
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .quote-block {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .quote {
+        width: 704px;
+        padding: 64px;
+    }
+
+    .icon-quote {
+        right: 64px;
+    }
+
+    .quote-paragraf {
+        line-height: 1.5;
+    }
+
+    .quote-author {
+        bottom: 64px;
+    }
+
+    .quote-img {
+        width: 704px;
+        background-image: url('../img/quote/quote_1440.webp');
+    }
+
+    @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+        .quote-img {
+            background-image: url('../img/quote/quote_1440@2x.webp');
+        }
+    }
+}
