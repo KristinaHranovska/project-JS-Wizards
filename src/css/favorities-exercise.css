@@ -1,18 +1,43 @@
+.container-section-favorites {
+    border-radius: 30px;
+    padding: 40px 20px 92px;
+    max-width: 336px;
+    min-height: 450px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-gray-background);
+}
+
 .container-card {
-width: 295px;
-height: 165px;
-background-color: var(--white-color);
+    padding: 16px;
+    background-color: var(--white-color);
 }
 
 .favorites-title {
+    margin-bottom: 40px;
     font-size: 32px;
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--black-background);
 }
 
+.list-favorites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.list-favorites-item {
+transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+}
+
+.list-favorites-item:hover,
+.list-favorites-item:focus {
+    transform: scale(1.09);
+}
+
 .container-worcaut {
-  display: flex;
+    display: flex;
 }
 
 .workout {
@@ -24,6 +49,8 @@ background-color: var(--white-color);
     background-color: var(--dark-grey-background);
     text-transform: uppercase;
     font-family: inherit;
+    margin-right: 8px;
+    margin-bottom: 24px;
     font-weight: 500;
     font-size: 12px;
     border-radius: 15px;
@@ -42,6 +69,7 @@ background-color: var(--white-color);
     align-items: center;
     position: relative;
     border: none;
+    margin-left: auto;
     background-color: var(--white-color);
     font-family: inherit;
     width: 54px;
@@ -53,12 +81,97 @@ background-color: var(--white-color);
 .icon-arrow-body {
     position: absolute;
     top: 50%;
-    left: 100%;
+    right: -15%;
     transform: translateY(-50%);
     fill: none;
     stroke: var(--text-dark);
 }
 
-.container-cards-favorites {}
+.container-cards-favorites {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+} 
 
-.icon-parts-fitness {}
+.subtitle-favorites {
+    font-size: 20px;
+    line-height: 1; 
+}
+
+.subtext-container {
+    display: flex;
+    gap: 16px;
+}
+
+.subtext-favorites {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--border-color);
+}
+
+/* -------------- Remove container favorites -------------- */
+
+.is-hidden {
+    display: none;
+}
+
+.container-remove-favorites {
+   position: relative;
+   top: -50%;
+   transform: translateY(50%);
+   
+}
+
+.weight-img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    width: 85px;
+    height: auto;
+    margin-bottom: 28px;
+}
+
+.remove-favorites-text {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 248px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+/* ======== Tablet =============== */
+
+@media only screen and (min-width: 768px) {
+.container-section-favorites {
+    max-width: 736px;
+    min-height: 928px;
+    padding: 64px 48px;
+}
+.favorites-title {
+   font-size: 44px;
+}
+.list-favorites-item {
+    flex-basis: calc((100% - 20px) / 2);
+}
+.weight-img {
+    width: 115px;
+}
+.remove-favorites-text {
+    font-size: 18px;
+    line-height: 1.3;
+    max-width: 554px;
+}
+}
+ 
+/* ================  Desktop =================== */
+
+@media only screen and (min-width: 1440px) {
+    .container-section-favorites {
+        max-width: 1408px;
+        min-height: 687px;
+    }
+    .list-favorites-item {
+    flex-basis: calc((100% - 40px) / 3);
+    }
+  }   
