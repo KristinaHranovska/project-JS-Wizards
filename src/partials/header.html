@@ -1,27 +1,60 @@
 <header class="header">
 <div class="header-list">
-    <a href="#" class="header-logo">energy.flow</a>
-    <svg class="burger-menu"><use href="./img/icons.svg#icon-burger-menu"></use></svg>
+    <nav class="header-nav">
+    <a href="./src/index.html" class="header-logo">energy.flow</a>
+    <div class="burger-menu-open" data-mobile-open><svg class="burger-menu" width="32" height="16"><use href="./img/icons/sprite.svg#icon-burger-menu"></use></svg></div>
     <div class="h-peages">
-        <button class="home-button" id="header-button-fst" type="button">Home</button>
-        <button class="favourites-button" id="header-button-sec" type="button">Favorites</button>
+        <button class="home-button is-active" id="header-button1" type="button" href="./src/index.html">Home</button>
+        <button class="favourites-button" id="header-button2" type="button" href="./src/favorites.html">Favorites</button>
     </div>
+    </nav>
     <ul class="icons-list">
         <li class="header-icon">
-            <a href="https://www.facebook.com/goITclub/">
-            <svg class="header-svg" width="22" height="22"><use href="./img/icons.svg#icon-facebook"></use></svg>
+            <a href="https://www.facebook.com/goITclub/" target="_blank">
+            <svg class="header-svg" width="28" height="28"><use href="./img/icons/sprite.svg#icon-facebook"></use></svg>
             </a>
         </li>
         <li class="header-icon">
-            <a href="https://www.instagram.com/goitclub/">
-            <svg class="header-svg" width="22" height="22"><use href="./img/icons.svg#icon-instagram"></use></svg>
+            <a href="https://www.instagram.com/goitclub/" target="_blank">
+            <svg class="header-svg" width="28" height="28"><use href="./img/icons/sprite.svg#icon-instagram"></use></svg>
             </a>
         </li>
         <li class="header-icon">
-            <a href="https://www.youtube.com/c/GoIT">
-            <svg class="header-svg" width="22" height="22"><use href="./img/icons.svg#icon-youtube"></use></svg>
+            <a href="https://www.youtube.com/c/GoIT"  target="_blank">
+            <svg class="header-svg" width="28" height="28"><use href="./img/icons/sprite.svg#icon-youtube"></use></svg>
             </a>
         </li>
     </ul>
 </div>
 </header>
+
+<div class="backdrop">
+    <div class="burger">
+    <a href="./src/index.html" class="burger-logo">energy.flow</a>
+    <div class="burger-closed"><svg width="20" height="20"><use href="./img/icons/sprite.svg#icon-modal-close"></use></svg></div>
+    </div>
+    <div class="burger-peages">
+        <button class="backdrop-home-button is-active" id="header-button1" type="button" href="./src/index.html">Home</button>
+        <button class="backdrop-favourites-button" id="header-button2" type="button" href="./src/favorites.html">Favorites</button>
+    </div>
+    <ul class="burger-icons-list">
+        <li class="burger-icon">
+        <a href="https://www.facebook.com/goITclub/" target="_blank">
+        <svg class="burger-svg" width="28" height="28">
+        <use href="./img/icons/sprite.svg#icon-facebook"></use>
+        </svg></a>
+        </li>
+        <li class="burger-icon">
+        <a href="https://www.instagram.com/goitclub/" target="_blank">
+        <svg class="burger-svg" width="28" height="28">
+        <use href="./img/icons/sprite.svg#icon-instagram"></use>
+        </svg></a>
+        </li>
+        <li class="burger-icon">
+        <a href="https://www.youtube.com/c/GoIT" target="_blank">
+        <svg class="burger-svg" width="28" height="28">
+        <use href="./img/icons/sprite.svg#icon-youtube"></use>
+        </svg></a>
+        </li>
+    </ul>
+</div>

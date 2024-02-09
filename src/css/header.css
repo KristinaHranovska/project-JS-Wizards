@@ -10,22 +10,58 @@
 }
 .header-list {
     display: flex;
+    width: 375px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 40px 40px;
+    padding: 40px 40px 0px 40px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 295px;
 }
 .header {
-    background-color: #BFBABA;
+    background-color: var(--main-background);
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
-/*@media only screen and (min-width: 319.98px) {
-    .h-peages {
-        display: none;
-    }
-    .icons-list {
-        display: none;
-    }
-}*/
+.header-button1-act {
+    background-color: var(--white-color);
+    color: var(--text-dark);
+    padding: 6px 26px;
+}
+.header-button2-act {
+    background-color: var(--white-color);
+    color: var(--text-dark);
+    padding: 6px 26px;
+}
+.header-svg {
+    fill: var(--dark-grey-background);
+    padding: 0;
+    margin: 0;
+}
+.header-svg:hover,
+.header-svg:focus {
+    fill: var(--hover-button-icon);
+}
+.burger-menu{
+    stroke: var(--accent);
+    display: block;
+}
+.burger-menu:hover,
+.burger-menu:focus {
+    stroke: var(--hover-button-icon);
+}
+.backdrop.is-hidden {
+    display: none;
+}
 @media screen and (min-width: 768px) {
     .header-logo {
         font-size: 28px;
@@ -33,14 +69,18 @@
     .burger-menu {
         display: none;
     }
+    .header-nav {
+        width: 442px;
+    }
     .h-peages{
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: center;
         width: 211px;
         height: 52px;
-        background-color: #7E847F;
-        padding: 8px 28px;
+        background-color: var(--accent);
+        padding: 8px 0;
         border-radius: 60px;
         border-style: none;
     }
@@ -50,35 +90,154 @@
         gap: 12px;
     }
     .header-icon {
-        border-color: rgba(49, 52, 50, 0.2);
+        border: 2px rgba(200, 200, 200, 0.3) solid;
         border-radius: 10px;
+        padding: 8px 8px;
         width: 44px;
         height: 44px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
     }
     .header-list {
-        margin: 60px 48px;
+        padding: 48px 48px 0px 48px;
+        width: 768px;
     }
     .home-button {
         height: 36px;
-        color: #F6F6F6;
-       /* padding: 6px 26px;*/
+        color: var(--text-light);
         font-size: 16px;
-        background-color: #7E847F;
+        background-color: var(--dark-grey-background);
         border-radius: 30px;
         border-style: none;
+        display: block;
+        text-align: center;
     }
     .favourites-button {
         height: 36px;
-        color: #F6F6F6;
-        /*padding: 6px 14px;*/
+        color: var(--text-light);
         font-size: 16px;
-        background-color: #7E847F;
+        background-color: var(--dark-grey-background);
         border-radius: 30px;
         border-style: none;
+        display: block;
+        text-align: center;
+    }
+    .home-button.is-active,
+    .favourites-button.is-active {
+        background-color: var(--text-light);
+        color: var(--text-dark);
+        width: 96px;
     }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
     .header-list {
-        margin: 64px 54px;
+        padding: 40px 64px 0px 64px;
+        width: 1312px;
     }
+    .header-nav {
+        width: 708px;
+    }
+} 
+
+.backdrop {
+   width: 335px;
+    padding: 19px 20px 40px 20px;
+    background-color: var(--dark-grey-background);
+    visibility: visible;
+    pointer-events: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 20px 20px;
+    z-index: 9999;
 }
+.burger-closed {
+    stroke: var(--text-light);
+}
+.burger-closed:hover,
+.burger-closed:focus {
+    stroke: var(--hover-button-icon);
+}
+.burger-icons-list {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+.burger-logo {
+    color: var(--text-light);
+}
+.burger-icon {
+    border: 2px rgba(200, 200, 200, 0.3) solid;
+    border-radius: 10px;
+    padding: 8px 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.burger-svg {
+    fill: var(--text-light);
+    padding: 0;
+}
+.backdrop-home-button {
+    height: 36px;
+    color: var(--text-light);
+    font-size: 16px;
+    background-color: var(--dark-grey-background);
+    border-radius: 30px;
+    border-style: none;
+    display: block;
+    text-align: center;
+}
+.backdrop-favourites-button {
+    height: 36px;
+    color: var(--text-light);
+    font-size: 16px;
+    background-color: var(--dark-grey-background);
+    border-radius: 30px;
+    border-style: none;
+    display: block;
+    text-align: center;
+}
+.backdrop-home-button.is-active.is-active,
+.backdrop-favourites-button.is-active {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    width: 96px;
+}
+.burger-peages {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+}
+.burger {
+    display: flex;
+    flex-direction: row;
+    column-gap: 180px;
+    justify-content: space-between;
+    align-items: center;
+}
+/*для home.is-active {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    width: 96px;
+}
+для favorites.is-active {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    width: 95px;
+} там в кнопок різний розмір, я поставила один, але на всяк випадок код для двох варіантів*/
