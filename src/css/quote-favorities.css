@@ -1,0 +1,100 @@
+.quote-favorites-thumb {
+    min-height: 272px;
+    width: 100%;
+    background-image: url('../img/quotefavorites/quote_mobile.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+}
+
+@media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .quote-favorites-thumb {
+        background-image: url('../img/quotefavorites/quote_mobile@2x.webp');
+    }
+}
+
+.quote-motivation-block {
+    background-color: var(--white-color);
+    border-radius: 30px;
+
+    padding: 96px 101px;
+}
+
+.icon-static-dumbbell {
+    fill: var(--text-dark);
+
+    margin-bottom: 15px;
+}
+
+.quote-static-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--text-dark);
+
+    margin-bottom: 6px;
+}
+
+.quote-static-paragraf {
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--text);
+}
+
+@media screen and (min-width: 768px) {
+    .quote {
+        margin-bottom: 16px;
+    }
+
+    .quote-favorites-thumb {
+        height: 302px;
+        background-image: url('../img/quotefavorites/quote_tablet.webp');
+    }
+
+    @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+        .quote-favorites-thumb {
+            background-image: url('../img/quotefavorites/quote_tablet@2x.webp');
+        }
+    }
+
+    .favorities-thumb {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .quote-favorites-thumb {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .quote-motivation-block {
+        flex: 1;
+        max-width: 50%;
+        border-radius: 50px;
+
+        padding: 106px 118px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .quote {
+        margin-bottom: 0;
+    }
+
+    .quote-favorites-thumb {
+        width: 352px;
+        background-image: url('../img/quotefavorites/quote_1440.webp');
+    }
+
+    @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+        .quote-favorites-thumb {
+            background-image: url('../img/quotefavorites/quote_1440@2x.webp');
+        }
+    }
+
+    .quote-motivation-block {
+        width: 352px;
+        padding: 106px 109px;
+    }
+}
