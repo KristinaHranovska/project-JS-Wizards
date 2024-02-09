@@ -37,20 +37,12 @@
     border-radius: 30px;
     padding: 319px 184px 20px 10px;
 }
-.container-hero {
-    width: 375px;
-    padding: 0px 20px;
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     row-gap: 20px;
-}
-.hero-section {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin: 20px 20px;
 }
 .tag-paragraf {
     font-size: 12px;
@@ -99,7 +91,6 @@
 .background {
     background-image:
     url(../img/hero/hero_tablet.webp);
-    width: 248px;
     height: 884px;
     border-radius: 50px 0 50px 50px;
     padding: 748px 32px 64px 20px;
@@ -112,16 +103,9 @@
     padding: 215px 32px 192px 32px;
     border-radius: 0px 50px 50px 50px;
 }
-.container-hero {
-    width: 768px;
+.container{
     flex-direction: row;
     row-gap: 0;
-    padding: 0px 16px;
-}
-.hero-section{
-    flex-direction: row;
-    gap: 0;
-    margin: 32px 16px 16px 16px;
 }
 .hero-tag {
     row-gap: 8px;
@@ -155,16 +139,13 @@
     width: 528px;
     font-weight: 400;
 }
-.hero-section {
-    margin: 16px 16px;
-}
 .background {
     background-image:
     url(../img/hero/hero_1440.webp);
     width: 704px;
     height: 884px;
     border-radius: 50px 0 50px 50px;
-   padding: 780px 460px 32px 48px;
+    padding: 780px 460px 32px 48px;
 }
 .hero-div {
     flex-direction: column;
@@ -173,9 +154,6 @@
     height: 884px;
     padding: 225px 32px 241px 32px;
     border-radius: 0px 50px 50px 50px;
-}
-.container-hero {
-    width: 1440px;
 }
 }
 @media (min-width: 1440px) and (min-resolution: 192dpi) {

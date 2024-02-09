@@ -8,23 +8,16 @@
 .icons-list {
     display: none;
 }
-.header-list {
-    display: flex;
-    width: 375px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 40px 0px 40px;
-    position: fixed;
-    top: 0;
-    z-index: 999;
-}
 .header-nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 295px;
+    margin: 40px 40px 0px 40px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 .header {
     background-color: var(--main-background);
@@ -44,8 +37,6 @@
 }
 .header-svg {
     fill: var(--dark-grey-background);
-    padding: 0;
-    margin: 0;
 }
 .header-svg:hover,
 .header-svg:focus {
@@ -70,7 +61,8 @@
         display: none;
     }
     .header-nav {
-        width: 442px;
+        width: 672px;
+        margin: 48px 48px 0px 48px;
     }
     .h-peages{
         display: flex;
@@ -98,10 +90,6 @@
         display: flex;
         justify-content: center;
         align-self: center;
-    }
-    .header-list {
-        padding: 48px 48px 0px 48px;
-        width: 768px;
     }
     .home-button {
         height: 36px;
@@ -131,12 +119,9 @@
     }
 }
 @media screen and (min-width: 1440px) {
-    .header-list {
-        padding: 40px 64px 0px 64px;
-        width: 1312px;
-    }
     .header-nav {
-        width: 708px;
+        width: 1312px;
+        margin: 40px 64px 0px 64px;
     }
 } 
 
