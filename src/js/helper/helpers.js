@@ -38,7 +38,6 @@ function createMarkupFilterMuscles(muscles, galleryContainer) {
   galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-export { createMarkupFilterMuscles };
-
 export { iziToastFunctions };
+export { createMarkupFilterMuscles };
 
