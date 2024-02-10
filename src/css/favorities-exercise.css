@@ -8,8 +8,13 @@
     background-color: var(--light-gray-background);
 }
 
+/* Card */
 .container-card {
     padding: 16px;
+    max-width: 296px;
+
+    width: 100%;
+    height: auto;
     background-color: var(--white-color);
 }
 
@@ -24,16 +29,17 @@
 .list-favorites {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
 
 .list-favorites-item {
-transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s;
 }
 
 .list-favorites-item:hover,
 .list-favorites-item:focus {
-    transform: scale(1.09);
+    transform: scale(1.05);
 }
 
 .container-worcaut {
@@ -61,6 +67,7 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
 .delete-favorites {
     fill: var(--white-color);
     stroke: var(--text-dark);
+    cursor: pointer;
 }
 
 .button-strart {
@@ -68,6 +75,8 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
     justify-content: center;
     align-items: center;
     position: relative;
+    top: 0;
+    right: 5%;
     border: none;
     margin-left: auto;
     background-color: var(--white-color);
@@ -76,15 +85,16 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
     height: 18px;
     font-size: 14px;
     line-height: 1.2;
+    cursor: pointer;
 }
 
 .icon-arrow-body {
-    position: absolute;
-    top: 50%;
-    right: -15%;
-    transform: translateY(-50%);
     fill: none;
     stroke: var(--text-dark);
+    position: absolute; 
+    top: 50%;
+    left: 95%; 
+    transform: translateY(-50%);
 }
 
 .container-cards-favorites {
@@ -98,15 +108,20 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
     line-height: 1; 
 }
 
-.subtext-container {
+.container-subtext-info {
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 6px 16px;
 }
 
-.subtext-favorites {
+.subtext-info {
     font-size: 12px;
     line-height: 1.5;
     color: var(--border-color);
+}
+
+.mini-info {
+  color: var(--text-dark);
 }
 
 /* -------------- Remove container favorites -------------- */
@@ -118,7 +133,7 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
 .container-remove-favorites {
    position: relative;
    top: -50%;
-   transform: translateY(50%);
+   transform: translateY(40%);
    
 }
 
@@ -151,8 +166,19 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
 .favorites-title {
    font-size: 44px;
 }
+.list-favorites {
+  flex-direction: row;
+}
 .list-favorites-item {
     flex-basis: calc((100% - 20px) / 2);
+}
+
+.container-card {
+   max-width: 314px;
+}
+
+.container-remove-favorites {
+    transform: translateY(100%);
 }
 .weight-img {
     width: 115px;
@@ -162,6 +188,7 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
     line-height: 1.3;
     max-width: 554px;
 }
+
 }
  
 /* ================  Desktop =================== */
@@ -173,5 +200,17 @@ transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
     }
     .list-favorites-item {
     flex-basis: calc((100% - 40px) / 3);
+    }
+    .container-card {
+        max-width: 424px;
+     }
+     .container-subtext-info {
+        flex-wrap: nowrap;
+     }
+     .container-subtext-info {
+        gap: 0;
+     }
+     .subtext-info {
+        flex: 1 1 auto; 
     }
   }   
