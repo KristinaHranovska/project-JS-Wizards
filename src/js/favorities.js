@@ -11,44 +11,41 @@ function savedCardsStorage() {
     try {
        // const savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
 
-        const savedCards = [
-            {
-                id: '1',
-                name: 'Exercise 1',
-                burnedCalories: 300,
-                bodyPart: 'Body Part 1',
-                target: 'Target 1'
-            },
-            {
-                id: '2',
-                name: 'Exercise 2',
-                burnedCalories: 150,
-                bodyPart: 'Body Part 2',
-                target: 'Target 2'
-            },
-            {
-                id: '1',
-                name: 'Exercise 1',
-                burnedCalories: 300,
-                bodyPart: 'Body Part 1',
-                target: 'Target 1'
-            },
-            {
-                id: '2',
-                name: 'Exercise 2',
-                burnedCalories: 150,
-                bodyPart: 'Waist',
-                target: 'Quads'
-            },
-            
-            // Додайте більше тестових даних за потреби
-        ];
+        // const savedCards = [
+        //     {
+        //         id: '1',
+        //         name: 'Exercise 1',
+        //         burnedCalories: 300,
+        //         bodyPart: 'Body Part 1',
+        //         target: 'Target 1'
+        //     },
+        //     {
+        //         id: '2',
+        //         name: 'Exercise 2',
+        //         burnedCalories: 150,
+        //         bodyPart: 'Body Part 2',
+        //         target: 'Target 2'
+        //     },
+        //     {
+        //         id: '1',
+        //         name: 'Exercise 1',
+        //         burnedCalories: 300,
+        //         bodyPart: 'Body Part 1',
+        //         target: 'Target 1'
+        //     },
+        //     {
+        //         id: '2',
+        //         name: 'Exercise 2',
+        //         burnedCalories: 150,
+        //         bodyPart: 'Waist',
+        //         target: 'Quads'
+        //     },
+        // ];
+
         displayFavoriteCards(savedCards);
     } catch(error) {
         errorCardStorage(error);
-    } finally {
-        refs.removeCards.classList.add("is-hidden"); 
-    }
+    } 
 }
 
 function displayFavoriteCards(savedCards) {
@@ -73,7 +70,7 @@ function renderExerciseCard(savedCards) {
                         <svg class="delete-favorites" data-id="${id}" width="16" height="16">
                             <use href="./img/icons/sprite.svg#icon-favorites-delete"></use>
                         </svg>
-                        <button type="button" class="button-strart">
+                        <button type="button" class="button-start">
                             Start
                             <svg class="icon-arrow-body" width="14" height="14">
                                 <use href="./img/icons/sprite.svg#icon-arrow-body-parts"></use>
@@ -98,13 +95,7 @@ function renderExerciseCard(savedCards) {
 
     refs.favoritesContainer.innerHTML = markup;
 
-    // Додаю обробник подій до кожної кнопки видалення
-    refs.deleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const id = button.dataset.id;
-            removeFavoriteCard(id);
-        });
-    });
+    setupDeleteButtonListeners();
 
     return markup;
 }
@@ -116,8 +107,17 @@ function removeFavoriteCard(id) {
     savedCardsStorage();
 }
 
-savedCardsStorage();
-
 function errorCardStorage(error) {
     iziToastFunctions.getErrorInfo('Wrong operation!!!');
 }
+
+function setupDeleteButtonListeners() {
+    refs.deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            removeFavoriteCard(id);
+        });
+    });
+}
+
+savedCardsStorage();
