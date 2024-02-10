@@ -7,9 +7,12 @@
 
 .static-sport-thumb {
     height: 272px;
+    width: 100%;
     background-image: url('../img/static/static_mobile.webp') ;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
 }
 
 @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
@@ -21,6 +24,8 @@
     .static-sport-thumb {
         height: 302px;
         background-image: url('../img/static/static_tablet.webp');
+        border-radius: 50px;
+        padding: 64px 80px;
     }
 
     @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
@@ -33,6 +38,7 @@
     .static-sport-thumb  {
         width: 704px;
         background-image: url('../img/static/static_1440.webp');
+        padding: 64px;
     }
 
     @media screen and (min-width: 1440px) and (min-resolution: 192dpi){
@@ -61,6 +67,7 @@
 .static-main-title {
     display: flex;
     align-items: center;
+    gap: 16px;
 }
 
 .static-time {
@@ -68,7 +75,6 @@
     font-size: 20px;
     line-height: 1.4;
     color: var(--text-light);
-    padding-left: 16px;
     padding-bottom: 2px;
 
     @media screen and (min-width: 768px) {
@@ -82,10 +88,10 @@
     font-size: 14px;
     line-height: 1.29;
     color: var( --text-color-alfa);
-    padding-bottom: 14px;
+    margin-bottom: 14px;
 
     @media screen and (min-width: 768px) {
-        padding-bottom: 25px;
+        margin-bottom: 25px;
     }
 }
 
