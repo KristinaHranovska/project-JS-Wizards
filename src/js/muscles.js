@@ -7,6 +7,7 @@ const buttonMuscles = document.querySelector('.js-buttonMuscles');
 const buttonBodyparts = document.querySelector('.js-buttonBodyparts');
 const buttonEquipment = document.querySelector('.js-buttonEquipment');
 
+buttonMuscles.addEventListener('click', handlerMuscles);
 buttonBodyparts.addEventListener('click', handlerBodyparts);
 buttonEquipment.addEventListener('click', handlerEquipment);
 
@@ -26,7 +27,11 @@ async function reflectMarkupMuscles() {
 
   const objMuscles = datas.results;
 
-  createMarkupFilter(objMuscles, list);
+  list.innerHTML = createMarkupFilter(objMuscles, list);
+}
+
+function handlerMuscles() {
+  reflectMarkupMuscles();
 }
 
 async function handlerBodyparts() {
