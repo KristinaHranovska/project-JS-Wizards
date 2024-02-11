@@ -27,8 +27,8 @@
 
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
     text-align: center;
     color: var( --text-dark);
     border-style: none;

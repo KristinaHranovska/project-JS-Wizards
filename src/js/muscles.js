@@ -14,6 +14,8 @@ buttonEquipment.addEventListener('click', handlerEquipment);
 reflectMarkupMuscles();
 async function reflectMarkupMuscles() {
   buttonBodyparts.classList.remove('active');
+  buttonEquipment.classList.remove('active');
+  buttonMuscles.classList.add('active');
   const datas = await getAccess({
     filter: 'Muscles',
     typeFilter: 'filters',
