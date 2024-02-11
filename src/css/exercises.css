@@ -1,0 +1,135 @@
+.container-exercises {
+  padding: 40px 20px 92px;
+  border-radius: 30px;
+  background-color: var(--light-gray-background);
+}
+
+.text-thirdlevel {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.button-list {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.button-exercises {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--text-dark);
+  border-style: none;
+  border-radius: 30px;
+  padding: 7px 14px;
+}
+
+.active {
+  color: var(--text-light);
+  background-color: var(--accent);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lists {
+  position: relative;
+}
+
+.pic {
+  filter: brightness(0.4);
+  border-radius: 12px;
+  width: 295px;
+  height: 232px;
+}
+
+.position-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.muscles-title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--text-light);
+  text-transform: capitalize;
+}
+
+.filter-title {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-color-alfa);
+}
+
+@media screen and (min-width: 768px) {
+  .container-exercises {
+    padding: 64px 48px 128px;
+  }
+
+  .text-thirdlevel {
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .button-list {
+    margin-bottom: 32px;
+    gap: 8px;
+  }
+
+  .button-exercises {
+    padding: 10px 20px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .muscles-title {
+    font-size: 24px;
+  }
+
+  .gallery {
+    gap: 14px;
+  }
+
+  .list {
+    flex-basis: calc((100% - 14px) / 2);
+  }
+
+  .pic {
+    width: 313px;
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .gallery {
+    gap: 20px;
+  }
+
+  .text-thirdlevel {
+    margin-bottom: 32px;
+  }
+
+  .gallery {
+    gap: 40px 20px;
+  }
+
+  .list {
+    flex-basis: calc((100% - 60px) / 4);
+  }
+}
