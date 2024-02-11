@@ -1,15 +1,17 @@
 import { iziToastFunctions } from './helper/helpers.js';
 
 const refs = {
-favoritesContainer: document.getElementById('favorites-container'),
+favoritesCard: document.getElementById('favorites-container'),
 removeCards: document.querySelector(".container-remove-favorites"),
 deleteButtons: document.querySelectorAll('.delete-favorites'),
 }
 
+
 function savedCardsStorage() {
+    // const savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
   
     try {
-       // const savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
+       
 
         // const savedCards = [
         //     {
@@ -41,21 +43,20 @@ function savedCardsStorage() {
         //         target: 'Quads'
         //     },
         // ];
-
         displayFavoriteCards(savedCards);
     } catch(error) {
-        errorCardStorage(error);
+        iziToastFunctions.getErrorInfo('Wrong operation!!!');
     } 
 }
 
 function displayFavoriteCards(savedCards) {
-    refs.favoritesContainer.innerHTML = "";
+    refs.favoritesCard.innerHTML = "";
 
     if (!savedCards || savedCards.length === 0) {
         removeCards.classList.remove("is-hidden");
     } else {
         const markup = renderExerciseCard(savedCards);
-        refs.favoritesContainer.innerHTML = markup;
+        refs.favoritesCard.innerHTML = markup;
         refs.removeCards.classList.add("is-hidden");
     }
 }
@@ -66,7 +67,7 @@ function renderExerciseCard(savedCards) {
             <li class="list-favorites-item">
                 <div class="container-card">
                     <div class="container-worcaut">
-                        <button class="workout" data-id="${id}">Workout</button>
+                        <div class="workout">Workout</div>
                         <svg class="delete-favorites" data-id="${id}" width="16" height="16">
                             <use href="./img/icons/sprite.svg#icon-favorites-delete"></use>
                         </svg>
@@ -93,7 +94,7 @@ function renderExerciseCard(savedCards) {
         `;
     }).join("");
 
-    refs.favoritesContainer.innerHTML = markup;
+    // refs.favoritesCard.innerHTML = markup;
 
     setupDeleteButtonListeners();
 
@@ -104,20 +105,23 @@ function removeFavoriteCard(id) {
     let savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
     savedCards = savedCards.filter(card => card.id !== id);
     localStorage.setItem('savedCards', JSON.stringify(savedCards));
-    savedCardsStorage();
-}
-
-function errorCardStorage(error) {
-    iziToastFunctions.getErrorInfo('Wrong operation!!!');
+    // savedCardsStorage();
 }
 
 function setupDeleteButtonListeners() {
     refs.deleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const id = button.dataset.id;
+        button.addEventListener('click', (event) => {
+            if(event.target.tagName === "svg") {
+            const id = event.target.dataset.id;
             removeFavoriteCard(id);
+            savedCardsStorage();
+            }
         });
     });
 }
+
+// function errorHandler(error) {
+//     iziToastFunctions.getErrorInfo('Wrong operation!!!'); 
+// }
 
 savedCardsStorage();
