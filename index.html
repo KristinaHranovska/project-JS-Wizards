@@ -10,9 +10,10 @@
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
     />
     
-    <script type="module" crossorigin src="/project-JS-Wizards/assets/vendor-df6a0e35.js"></script>
-    <script type="module" crossorigin src="/project-JS-Wizards/assets/quote-4e1756bb.js"></script>
-    <link rel="stylesheet" href="/project-JS-Wizards/assets/quote-4c82817b.css">
+    <script type="module" crossorigin src="/project-JS-Wizards/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-JS-Wizards/assets/vendor-df6a0e35.js">
+    <link rel="modulepreload" crossorigin href="/project-JS-Wizards/assets/quote-3f782760.js">
+    <link rel="stylesheet" href="/project-JS-Wizards/assets/quote-ca6404d5.css">
   </head>
   <body>
     <a
@@ -54,7 +55,26 @@
   </div>
 </section>
 
-    
+    <section class="section section-exercises">
+  <div class="container">
+    <div class="container-exercises">
+      <h2 class="text-thirdlevel">Exercises</h2>
+      <ul class="button-list">
+        <li>
+          <button type="button" class="button-exercises active js-buttonMuscles">Muscles</button>
+        </li>
+        <li>
+          <button type="button" class="button-exercises js-buttonBodyparts">Body parts</button>
+        </li>
+        <li>
+          <button type="button" class="button-exercises js-buttonEquipment">Equipment</button>
+        </li>
+      </ul>
+      <ul class="gallery list js-gallery"></ul>
+    </div>
+  </div>
+</section>
+
     <section class="section">
     <div class="container static-container">
         <div class="static-sport-thumb"></div>

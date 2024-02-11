@@ -1,0 +1,9 @@
+import{g as n}from"./assets/quote-3f782760.js";import"./assets/vendor-df6a0e35.js";const f={getInfo(t){iziToast.info({title:"Hello",message:t})},getErrorInfo(t){iziToast.error({title:"Error",message:t})},getSuccessInfo(t){iziToast.success({title:"OK",message:t})}};function r(t,s){const i=t.map(({filter:d,imgUrl:p,name:l})=>`
+      <li class="lists js-list">
+      <img src="${p}" alt="${l}"class="pic">
+      <div class="position-text">
+      <h2 class="muscles-title">${l}</h2>
+      <p class="filter-title">${d}</p>
+      </div>
+      </li>`).join("");return s.insertAdjacentHTML("beforeend",i),i}const e=document.querySelector(".js-gallery"),a=document.querySelector(".js-buttonMuscles"),o=document.querySelector(".js-buttonBodyparts"),c=document.querySelector(".js-buttonEquipment");a.addEventListener("click",m);o.addEventListener("click",v);c.addEventListener("click",y);u();async function u(){o.classList.remove("active"),c.classList.remove("active"),a.classList.add("active");const s=(await n({filter:"Muscles",typeFilter:"filters"}).then(({data:i})=>i).catch(i=>f.getErrorInfo("Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs."))).results;e.innerHTML=r(s,e)}function m(){u()}async function v(){o.classList.add("active"),a.classList.remove("active"),c.classList.remove("active");const s=(await n({filter:"Body parts",typeFilter:"filters"})).data.results;e.innerHTML=r(s,e)}async function y(){c.classList.add("active"),(a.classList.contains("active")||o.classList.contains("active"))&&(a.classList.remove("active"),o.classList.remove("active"));const s=(await n({filter:"Equipment",typeFilter:"filters"})).data.results;e.innerHTML=r(s,e)}
+//# sourceMappingURL=commonHelpers2.js.map
