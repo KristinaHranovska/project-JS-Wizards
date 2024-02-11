@@ -1,68 +1,128 @@
-import { getAccess } from './helper/get-access.js';
-import { createMarkupFilter } from './helper/helpers.js';
-import { iziToastFunctions } from './helper/helpers.js';
+import axios from 'axios';
+import iziToast from 'izitoast';
 
-const list = document.querySelector('.js-gallery');
-const buttonMuscles = document.querySelector('.js-buttonMuscles');
-const buttonBodyparts = document.querySelector('.js-buttonBodyparts');
-const buttonEquipment = document.querySelector('.js-buttonEquipment');
+const refs = {
+  gallery: document.querySelector('.gallery'),
+  buttons: document.querySelector('.exercises-btns-div'),
+  musclesBtn: document.querySelector('[data-filter="muscles"]'),
+  bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
+  equipBtn: document.querySelector('[data-filter="equipment"]'),
+};
 
-buttonMuscles.addEventListener('click', handlerMuscles);
-buttonBodyparts.addEventListener('click', handlerBodyparts);
-buttonEquipment.addEventListener('click', handlerEquipment);
-
-reflectMarkupMuscles();
-async function reflectMarkupMuscles() {
-  buttonBodyparts.classList.remove('active');
-  buttonEquipment.classList.remove('active');
-  buttonMuscles.classList.add('active');
-  const datas = await getAccess({
-    filter: 'Muscles',
-    typeFilter: 'filters',
-  })
-    .then(({ data }) => data)
-    .catch(err =>
-      iziToastFunctions.getErrorInfo(
-        'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.'
-      )
-    );
-
-  const objMuscles = datas.results;
-
-  list.innerHTML = createMarkupFilter(objMuscles, list);
-}
-
-function handlerMuscles() {
-  reflectMarkupMuscles();
-}
-
-async function handlerBodyparts() {
-  buttonBodyparts.classList.add('active');
-  buttonMuscles.classList.remove('active');
-  buttonEquipment.classList.remove('active');
-  const datas = await getAccess({
-    filter: 'Body parts',
-    typeFilter: 'filters',
-  });
-
-  const objBodyparts = datas.data.results;
-  list.innerHTML = createMarkupFilter(objBodyparts, list);
-}
-
-async function handlerEquipment() {
-  buttonEquipment.classList.add('active');
-  if (
-    buttonMuscles.classList.contains('active') ||
-    buttonBodyparts.classList.contains('active')
-  ) {
-    buttonMuscles.classList.remove('active');
-    buttonBodyparts.classList.remove('active');
+axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
+function getLoader(act = 'show') {
+  const loader = document.querySelector('.loader');
+  if (act === 'show') {
+    loader.style.display = 'inline-block';
+  } else {
+    loader.style.display = 'none';
   }
-  const datas = await getAccess({
-    filter: 'Equipment',
-    typeFilter: 'filters',
-  });
+}
 
-  const objEquipment = datas.data.results;
-  list.innerHTML = createMarkupFilter(objEquipment, list);
+const params = {
+  perPage: 12,
+  page: 1,
+  filter: 'Muscles',
+  totalPages: 1,
+  totalItems: 0,
+};
+
+async function getData() {
+  getLoader();
+  const data = await axios.get('/filters', {
+    params: {
+      filter: params.filter,
+      page: params.page,
+      limit: params.perPage,
+    },
+  });
+  return data.data;
+}
+
+function handleError(message) {
+  iziToast.error({
+    position: 'topRight',
+    message: message,
+  });
+}
+
+function createMarkup(results) {
+  refs.gallery.innerHTML = '';
+  const markup = results
+    .map(
+      ({ name, filter, imgUrl }) => `<li class="gallery-item">
+        <a href="">
+        <img class="gallery-image" src="${imgUrl}" alt="Galllery Image">
+            <ul class="gallery-item-description" data-exercises="${name}">
+                <li class="name">${name}</li>
+                <li class="filter">${filter}</li>
+            </ul>
+        </a>
+    </li>`
+    )
+    .join('');
+
+  refs.gallery.innerHTML = markup;
+}
+
+function handleSearch() {
+  params.page = 1;
+  getData()
+    .then(data => {
+      const { results } = data;
+      createMarkup(results);
+    })
+    .catch(error => {
+      handleError(error.message);
+    });
+}
+handleSearch();
+refs.musclesBtn.classList.add('active');
+refs.musclesBtn.disabled = true;
+
+refs.buttons.addEventListener('click', event => {
+  selected(event);
+  const targetMenu = event.target;
+
+  if (targetMenu === event.currentTarget) {
+    return;
+  } else if (targetMenu === refs.musclesBtn) {
+    refs.musclesBtn.disabled = true;
+    refs.bodypartsBtn.disabled = false;
+    refs.equipBtn.disabled = false;
+    params.filter = 'Muscles';
+  } else if (targetMenu === refs.bodypartsBtn) {
+    refs.musclesBtn.disabled = false;
+    refs.bodypartsBtn.disabled = true;
+    refs.equipBtn.disabled = false;
+    params.filter = 'Body parts';
+  } else if (targetMenu === refs.equipBtn) {
+    refs.musclesBtn.disabled = false;
+    refs.bodypartsBtn.disabled = false;
+    refs.equipBtn.disabled = true;
+    params.filter = 'Equipment';
+  }
+  handleSearch();
+});
+
+let prevButton = null;
+
+function selected(e) {
+  const isButton = e.target.nodeName === 'BUTTON';
+  refs.musclesBtn.classList.remove('active');
+
+  if (!isButton) {
+    return;
+  }
+
+  e.target.classList.add('active');
+
+  if (prevButton !== null) {
+    prevButton.classList.remove('active');
+  }
+  prevButton = e.target;
+
+  if (prevButton === prevButton) {
+    prevButton.classList.add('active');
+  }
 }

@@ -1,8 +1,11 @@
-// відображення вправ після натискання на картку
+// відображення вправ після натискання на картку, перенести потім у файл боді-партс
+
 import axios from 'axios';
 import icons from '../img/icons/sprite.svg';
 import { galleryElement, searchInputField, exerciseParams } from './search.js';
 export { updateExercisesList, loadExercises, renderExercises, getLoader };
+
+// Ця функція оновлює список вправ на основі наданого фільтра.Він очищає вміст galleryElement.
 
 function updateExercisesList(filter) {
   galleryElement.innerHTML = '';
@@ -22,6 +25,8 @@ function updateExercisesList(filter) {
     });
 }
 
+// Ця функція завантажує дані вправ із сервера на основі наданого фільтра.
+
 async function loadExercises(filter) {
   getLoader();
   if (searchInputField.value.length > 0) {
@@ -39,6 +44,7 @@ async function loadExercises(filter) {
   });
   return data.data;
 }
+// Ця функція відтворює дані вправ у DOM. Він приймає отримані дані як вхідні дані. Він генерує HTML-розмітку для кожного елемента вправи за допомогою шаблонних літералів і наданих піктограм.
 
 function renderExercises(data) {
   let markup = data

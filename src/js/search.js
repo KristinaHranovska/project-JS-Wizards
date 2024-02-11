@@ -32,6 +32,8 @@ const filterButtonsContainer = document.querySelector('.exercises-btns-div');
 const searchFormContainer = document.querySelector('.ex-search');
 const sectionHeaderElement = document.querySelector('.exercises-header');
 
+//  * обробляємо клік по карточці для групи вправ
+
 function handleClickOnCard(event) {
   event.preventDefault();
   if (event.target.closest('ul').dataset.exercises) {
@@ -53,6 +55,7 @@ function handleClickOnCard(event) {
   }
   return;
 }
+//  * обробляємо клік по кнопці пошуку
 
 function handleSearchButtonClick(event) {
   event.preventDefault();
@@ -64,6 +67,10 @@ function handleSearchButtonClick(event) {
   return;
 }
 
+/**
+ * Обробка пошукового тексту в полі пошуку
+ */
+
 function handleSearchInput() {
   if (searchInputField.value.length > 0) {
     clearSearchButton.style.visibility = 'visible';
@@ -72,12 +79,16 @@ function handleSearchInput() {
   }
 }
 
+//  * Очищаємо поле пошуку при натисканні на кнопку
+
 function handleClearSearchInput() {
   searchInputField.value = '';
   clearSearchButton.style.visibility = 'hidden';
   exerciseParams.page = 1;
   updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
 }
+
+//  * Обробляємо клік по одній з трьох кнопок. Видаляємо слухачі подій. Очищаємо поле пошуку.
 
 function handleClickOnFilterButton(event) {
   if (event.target.tagName === 'BUTTON') {
