@@ -41,12 +41,12 @@
 .header-svg:focus {
     fill: var(--hover-button-icon);
 }
-.burger-menu{
+.burger-menu-open{
     stroke: var(--accent);
     display: block;
 }
-.burger-menu:hover,
-.burger-menu:focus {
+.burger-menu-open:hover,
+.burger-menu-open:focus {
     stroke: var(--hover-button-icon);
 }
 .backdrop.is-hidden {
@@ -56,12 +56,11 @@
     .header-logo {
         font-size: 28px;
     }
-    .burger-menu {
+    .burger-menu-open {
         display: none;
     }
     .header-nav {
         width: 672px;
-        margin: 48px 48px 0px 48px;
     }
     .h-peages{
         display: flex;
@@ -120,7 +119,8 @@
 @media screen and (min-width: 1440px) {
     .header-nav {
         width: 1312px;
-        margin: 40px 64px 0px 64px;
+        top: 60px;
+        left: 48px;
     }
 } 
 
@@ -134,7 +134,7 @@
     background-color: var(--dark-grey-background);
     visibility: visible;
     pointer-events: auto;
-    position: absolute;
+    position: fixed;
     width: 335px;
     height: 100%;
     border-radius: 30px;
