@@ -5,11 +5,14 @@ import { iziToastFunctions } from './helper/helpers.js';
 const list = document.querySelector('.js-gallery');
 const buttonMuscles = document.querySelector('.js-buttonMuscles');
 const buttonBodyparts = document.querySelector('.js-buttonBodyparts');
+const buttonEquipment = document.querySelector('.js-buttonEquipment');
 
 buttonBodyparts.addEventListener('click', handlerBodyparts);
+buttonEquipment.addEventListener('click', handlerEquipment);
 
 reflectMarkupMuscles();
 async function reflectMarkupMuscles() {
+  buttonBodyparts.classList.remove('active');
   const datas = await getAccess({
     filter: 'Muscles',
     typeFilter: 'filters',
@@ -29,7 +32,7 @@ async function reflectMarkupMuscles() {
 async function handlerBodyparts() {
   buttonBodyparts.classList.add('active');
   buttonMuscles.classList.remove('active');
-  
+  buttonEquipment.classList.remove('active');
   const datas = await getAccess({
     filter: 'Body parts',
     typeFilter: 'filters',
@@ -37,4 +40,22 @@ async function handlerBodyparts() {
 
   const objBodyparts = datas.data.results;
   list.innerHTML = createMarkupFilter(objBodyparts, list);
+}
+
+async function handlerEquipment() {
+  buttonEquipment.classList.add('active');
+  if (
+    buttonMuscles.classList.contains('active') ||
+    buttonBodyparts.classList.contains('active')
+  ) {
+    buttonMuscles.classList.remove('active');
+    buttonBodyparts.classList.remove('active');
+  }
+  const datas = await getAccess({
+    filter: 'Equipment',
+    typeFilter: 'filters',
+  });
+
+  const objEquipment = datas.data.results;
+  list.innerHTML = createMarkupFilter(objEquipment, list);
 }
