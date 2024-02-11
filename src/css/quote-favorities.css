@@ -43,7 +43,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .quote {
+    .quote-favorites {
         margin-bottom: 16px;
     }
 
@@ -78,7 +78,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .quote {
+    .quote-favorites {
         margin-bottom: 0;
     }
 
