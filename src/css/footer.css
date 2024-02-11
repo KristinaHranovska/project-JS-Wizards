@@ -1,13 +1,11 @@
 /* Футер */
 .footer {
     width: 335px;
-    height: 471px;
     background-image: url('../img/footer/footer_mobile.webp');
     background-size: cover;
     border-radius: 30px;
     padding-top: 40px;
     padding-bottom: 20px;
-    margin: 10px auto 0;
     
     @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
         background-image: url('../img/footer/footer_mobile@2x.webp');
@@ -19,9 +17,8 @@
         border-radius: 50px;
         background-image: url('../img/footer/footer_tablet.webp');
         position: relative;
-        /* padding-top: 64px;
-        padding-bottom: 32px; */
-        padding: 64px 0;
+        padding-top: 64px;
+        padding-bottom: 32px;
     }
 
     @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
@@ -42,10 +39,13 @@
     @media screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
-        padding: 0 16px;
+        gap: 32px 139px; 
+        padding-right: 41px;
+        padding-left: 48px;
     }
     @media screen and (min-width: 1440px) {
         flex-wrap: nowrap;
+        gap: 160px;
     }
 }
 
@@ -54,29 +54,30 @@
     margin-bottom: 40px;
 
     @media screen and (min-width: 768px) {
-        margin-right: 145px;
-        margin-left: 48px;
+        margin-bottom: 0;
     }
 }
 
 .footer-company-logo {
     font-weight: 700;
     font-size: 16px;
-    line-height: 18px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
     color: var(--text-light);
+    display: block;
+    margin-bottom: 9px;
 
     @media screen and (min-width: 768px) {
         font-size: 28px;
-        line-height: 28px;
+        line-height: 1;
+        margin-bottom: 30px;
     }
 }
 
 .footer-social-list {
     display: flex;
-    margin-top: 9px;
     gap: 12px;
     @media screen and (min-width: 768px) {
-        margin-top: 30px;
     }
 }
 
@@ -104,20 +105,24 @@
 
 /* Заголовок */
 .footer-title {
+    font-weight: 400;
     color: var(--text-light);
-    font-size: 28px; /* питання тут */
-    line-height: 32px;
+    font-size: 32px; 
+    line-height: 1;
+    letter-spacing: -0.02em;
     margin-bottom: 20px;
     
     @media screen and (min-width: 768px) {
         width: 345px;
         font-size: 54px;
         line-height: .93;
-        margin-bottom: 32px;
+        margin-bottom: 0;
     }
     @media screen and (min-width: 1440px) {
         width: 488px;
-        margin-right: 160px;
+        line-height: 0.97;
+        width: 430px;
+        /* margin-left: 55px; */
     }
 }
 
@@ -129,14 +134,17 @@
 
 /* Підписка */
 .footer-subscription {
+    /* margin-bottom: 60px; */
+    margin-bottom: 120px;
+
 
     @media screen and (min-width: 768px) {
-        margin-left: 343px;
+        margin-left: auto; 
+        width: 352px;
     }
 
     @media screen and (min-width: 1440px) {
-        margin-left: 0;
-        margin-right: 48px;
+        margin-bottom: 0;
     }
 }
 
@@ -157,15 +165,14 @@
     
 } */
 
-.footer-subscription-label {
-    display: flex;
-}
+/* .footer-subscription-label {
+} */
 
 .footer-subscription-input {
-    width: 290px;
+    width: 100%;
     font-weight: 400;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.29;
     padding: 12px 14px;
     color: var(--text-color-alfa);
     border: 1px solid var(--text-light);
@@ -191,7 +198,6 @@
     justify-content: center;
     align-items: center;
     gap: 10px; */
-    margin-bottom: 60px;
     padding: 12px 130px;
     @media screen and (min-width: 768px) {
         width: 100%;
@@ -207,26 +213,25 @@
     flex-direction: column;
     gap: 10px;
     @media screen and (min-width: 768px) {
-        display: inline-flex;
         position: absolute;
         align-items: center;
         flex-direction: row;
         bottom: 32px;
-        margin-left: 133px;
         gap: 32px;
-        width: 437px;
+        left: 148px;
     }
 
     @media screen and (min-width: 1440px) {
-        margin-left: 469px;
+        left: 485px;
+        bottom: 26px;
     }
 }
 
 .footer-security-title {
     font-weight: 400;
     font-size: 12px;
-    line-height: .9;
-    letter-spacing: -.02em;
+    line-height: 0.83;
+    letter-spacing: -0.02em;
     color: var(--text-light);
     opacity: .9;
 
@@ -258,5 +263,5 @@
     margin: 0 8px;
     color: var(--text-light);
     font-size: 12px;
-    line-height: 10px;
+    line-height: 0.83;
 }
