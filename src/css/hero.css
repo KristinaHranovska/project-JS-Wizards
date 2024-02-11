@@ -1,59 +1,46 @@
 .hero-div {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
-    width: 335px;
-    height: 365px;
+    gap: 20px;
     background-color: var(--white-color);
     padding: 60px 20px 81px 20px;
     border-radius: 30px;
 }
 .hero-title {
     font-size: 56px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 0.9em;
+    line-height: 0.89em;
 }
 .title-span {
-    font-size: 56px;
-    font-weight: 300;
     color: var(--accent);
     font-style: italic;
-    letter-spacing: -0.02em;
-    line-height: 1;
 }
 .hero-paragraf {
     font-size: 14px;
     letter-spacing: -0.01em;
-    line-height: 1;
+    line-height: 1.29;
 }
 .background {
     background-size: cover;
     background-position: center;
     background-image: 
     url(../img/hero/hero_mobile.webp);
-    width: 335px;
-    height: 387px;
     border-radius: 30px;
     padding: 319px 184px 20px 10px;
 }
-.container {
+.container-hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 20px;
+    gap: 20px;
 }
 .tag-paragraf {
     font-size: 12px;
-    line-height: 1.12;
-    letter-spacing: 0;
+    line-height: 1.17;
     color: var(--text-light);
     text-align: center;
 }
 .hero-list {
-    display: inline-block;
-    height: 22px;
     padding: 4px 10px;
     border-radius: 30px;
     border: 1px rgba(96, 96, 96, 0.3) solid;
@@ -61,10 +48,7 @@
 .hero-tag {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 4px;
-    column-gap: 4px;
-    list-style: none;
-    padding: 0;
+    gap: 4px;
 }
 @media (min-width: 320px) and (min-resolution: 192dpi) {
     .background {
@@ -74,43 +58,39 @@
 }
 
 @media screen and (min-width: 768px) {
-.title-span {
-    font-size: 98px;
-    font-weight: 400;
-}
 .hero-title {
     font-size: 98px;
-    font-weight: 400;
-    line-height: 1;
+    line-height: 0.97;
+    letter-spacing: -0.04em;
 }
 .hero-paragraf {
     font-size: 18px;
-    line-height: 1.28;
+    line-height: 1.33;
+    letter-spacing: -0.01em;
     width: 396px;
 }
 .background {
     background-image:
     url(../img/hero/hero_tablet.webp);
-    height: 884px;
     border-radius: 50px 0 50px 50px;
-    padding: 748px 32px 64px 20px;
+    padding: 764px 32px 64px 20px;
+    /*background-position: bottom;*/
 }
 .hero-div {
     flex-direction: column;
-    row-gap: 25px;
+    gap: 25px;
     width: 488px;
-    height: 884px;
-    padding: 215px 32px 192px 32px;
+    padding: 231px 32px 192px 32px;
     border-radius: 0px 50px 50px 50px;
 }
-.container{
+.container-hero {
     flex-direction: row;
-    row-gap: 0;
+    gap: 0;
 }
 .hero-tag {
-    row-gap: 8px;
-    column-gap: 8px;
+    gap: 8px;
     margin: 0;
+    width: 196px;
 }
 .tag-paragraf {
     font-size: 16px;
@@ -118,8 +98,7 @@
 }
 .hero-list {
     border: 2px rgba(96, 96, 96, 0.3) solid;
-    padding: 4px 14px;
-    height: 32px;
+    padding: 4px 16px;
 }
 }
 @media (min-width: 768px) and (min-resolution: 192dpi) {
@@ -128,16 +107,12 @@
     url(../img/hero/hero_tablet@2x.webp);
     }
 }
-@media screen and (min-width: 1440px) {
-.title-span {
-    font-size: 120px;
-}  
+@media screen and (min-width: 1440px) { 
 .hero-title {
     font-size: 120px;
 }
 .hero-paragraf {
     width: 528px;
-    font-weight: 400;
 }
 .background {
     background-image:
@@ -145,10 +120,9 @@
     width: 704px;
     height: 884px;
     border-radius: 50px 0 50px 50px;
-    padding: 780px 460px 32px 48px;
+    padding: 780px 440px 32px 48px;
 }
 .hero-div {
-    flex-direction: column;
     row-gap: 25px;
     width: 704px;
     height: 884px;
