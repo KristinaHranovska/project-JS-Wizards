@@ -11,8 +11,6 @@ const datas = await getAccess({
   .catch(err => console.log(err));
 
 const objMuscles = datas.results;
-console.log(datas)
+console.log(datas);
 
 createMarkupFilterMuscles(objMuscles, list);
-
-
