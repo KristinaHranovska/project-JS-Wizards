@@ -1,4 +1,9 @@
-import { updateExercisesList, renderExercises } from './body-parts.js';
+import {
+  updateExercisesList,
+  loadExercises,
+  renderExercises,
+  getLoader,
+} from './body-parts.js';
 export { galleryElement, searchInputField, exerciseParams };
 // import axios from 'axios';
 // import icons from '../img/icons/sprite.svg';
@@ -13,7 +18,7 @@ const exerciseParams = {
   limit: 12,
 };
 
-const galleryElement = document.querySelector('.js-gallery');
+const galleryElement = document.querySelector('.gallery');
 
 if (galleryElement) {
   galleryElement.addEventListener('click', handleClickOnCard);
@@ -23,13 +28,12 @@ if (galleryElement) {
 const searchButton = document.querySelector('.search-btn');
 const clearSearchButton = document.querySelector('.search-clear-btn');
 const searchInputField = document.querySelector('.search-input');
-const filterButtonsContainer = document.querySelector('.button-list');
+const filterButtonsContainer = document.querySelector('.exercises-btns-div');
 const searchFormContainer = document.querySelector('.ex-search');
-const sectionHeaderElement = document.querySelector('.text-thirdlevel');
+const sectionHeaderElement = document.querySelector('.exercises-header');
 
 function handleClickOnCard(event) {
   event.preventDefault();
-
   if (event.target.closest('ul').dataset.exercises) {
     searchButton.addEventListener('click', handleSearchButtonClick);
     clearSearchButton.addEventListener('click', handleClearSearchInput);
@@ -37,10 +41,13 @@ function handleClickOnCard(event) {
     filterButtonsContainer.addEventListener('click', handleClickOnFilterButton);
     searchFormContainer.style.display = 'block';
 
-    const filterButton = document.querySelector('.button-exercises.active');
-    exerciseParams.filter = filterButton.textContent.trim();
-    exerciseParams.filterGroup = 'Exercises';
-    const headerContent = `Exercises / <span class="head-small">${exerciseParams.filter}</span>`;
+    const filterButton = document.querySelector('.exercises-button.active');
+    exerciseParams.filter = filterButton.dataset.filter;
+    exerciseParams.filterGroup = event.target.closest('ul').dataset.exercises;
+    const headerContent = `Exercises / <span class="head-small">${
+      exerciseParams.filterGroup.charAt(0).toUpperCase() +
+      exerciseParams.filterGroup.slice(1)
+    }</span>`;
     sectionHeaderElement.innerHTML = headerContent;
     updateExercisesList(exerciseParams.filter);
   }
@@ -52,7 +59,7 @@ function handleSearchButtonClick(event) {
   if (searchInputField.value.length > 0) {
     exerciseParams.page = 1;
     exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
-    updateExercisesList(exerciseParams.filter);
+    updateExercisesList(exerciseParams.filter, true);
   }
   return;
 }
@@ -69,7 +76,7 @@ function handleClearSearchInput() {
   searchInputField.value = '';
   clearSearchButton.style.visibility = 'hidden';
   exerciseParams.page = 1;
-  updateExercisesList(exerciseParams.filter);
+  updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
 }
 
 function handleClickOnFilterButton(event) {
