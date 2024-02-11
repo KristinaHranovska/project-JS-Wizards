@@ -1,8 +1,11 @@
 import { getAccess } from './helper/get-access.js';
-import { createMarkupFilterMuscles } from './helper/helpers.js';
+import { createMarkupFilter } from './helper/helpers.js';
 import { iziToastFunctions } from './helper/helpers.js';
 
 const list = document.querySelector('.js-gallery');
+const buttonBodyparts = document.querySelector('.js-buttonBodyparts');
+
+buttonBodyparts.addEventListener('click', handlerBodyparts);
 
 const datas = await getAccess({
   filter: 'Muscles',
@@ -17,4 +20,16 @@ const datas = await getAccess({
 
 const objMuscles = datas.results;
 
-createMarkupFilterMuscles(objMuscles, list);
+createMarkupFilter(objMuscles, list);
+
+async function handlerBodyparts() {
+ 
+  const datas = await getAccess({
+    filter: 'Body parts',
+    typeFilter: 'filters',
+  })
+
+  const objBodyparts =  datas.data.results;
+  list.innerHTML = createMarkupFilter(objBodyparts, list)
+
+}

@@ -21,8 +21,8 @@ const iziToastFunctions = {
   },
 };
 
-function createMarkupFilterMuscles(muscles, galleryContainer) {
-  const markup = muscles
+function createMarkupFilter(filter, galleryContainer) {
+  const markup = filter
     .map(
       ({ filter, imgUrl, name }) => `
       <li class="lists js-list">
@@ -36,8 +36,8 @@ function createMarkupFilterMuscles(muscles, galleryContainer) {
     .join('');
 
   galleryContainer.insertAdjacentHTML('beforeend', markup);
+  return markup;
 }
 
 export { iziToastFunctions };
-export { createMarkupFilterMuscles };
-
+export { createMarkupFilter };
