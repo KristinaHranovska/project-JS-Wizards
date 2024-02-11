@@ -3,33 +3,38 @@ import { createMarkupFilter } from './helper/helpers.js';
 import { iziToastFunctions } from './helper/helpers.js';
 
 const list = document.querySelector('.js-gallery');
+const buttonMuscles = document.querySelector('.js-buttonMuscles');
 const buttonBodyparts = document.querySelector('.js-buttonBodyparts');
 
 buttonBodyparts.addEventListener('click', handlerBodyparts);
 
-const datas = await getAccess({
-  filter: 'Muscles',
-  typeFilter: 'filters',
-})
-  .then(({ data }) => data)
-  .catch(err =>
-    iziToastFunctions.getErrorInfo(
-      'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.'
-    )
-  );
+reflectMarkupMuscles();
+async function reflectMarkupMuscles() {
+  const datas = await getAccess({
+    filter: 'Muscles',
+    typeFilter: 'filters',
+  })
+    .then(({ data }) => data)
+    .catch(err =>
+      iziToastFunctions.getErrorInfo(
+        'Unfortunately, no results were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.'
+      )
+    );
 
-const objMuscles = datas.results;
+  const objMuscles = datas.results;
 
-createMarkupFilter(objMuscles, list);
+  createMarkupFilter(objMuscles, list);
+}
 
 async function handlerBodyparts() {
- 
+  buttonBodyparts.classList.add('active');
+  buttonMuscles.classList.remove('active');
+  
   const datas = await getAccess({
     filter: 'Body parts',
     typeFilter: 'filters',
-  })
+  });
 
-  const objBodyparts =  datas.data.results;
-  list.innerHTML = createMarkupFilter(objBodyparts, list)
-
+  const objBodyparts = datas.data.results;
+  list.innerHTML = createMarkupFilter(objBodyparts, list);
 }
