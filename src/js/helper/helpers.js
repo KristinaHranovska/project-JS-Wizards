@@ -1,3 +1,5 @@
+import iziToast from "izitoast";
+
 const iziToastFunctions = {
   getInfo(messageInfo) {
     iziToast.info({
