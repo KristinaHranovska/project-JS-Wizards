@@ -23,23 +23,23 @@
 
 }
 
-.button-exercises.active {
+.button-exercises {
 
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
     letter-spacing: 0.02em;
     text-align: center;
-    color: var(--text-light);
+    color: var( --text-dark);
     border-style: none;
     border-radius: 30px;
     padding: 7px 14px;
 
-
 }
 
-.active {
 
+.active {
+    color: var(--text-light);
     background-color: var( --accent);
 
 }
@@ -116,6 +116,14 @@
     .button-list {
 
         margin-bottom: 32px;
+        gap: 8px;
+    }
+
+    .button-exercises {
+
+        padding: 10px 20px;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
     .gallery {
