@@ -50,18 +50,18 @@ function renderExercises(data) {
   let markup = data
     .map(
       i =>
-        `<li class="exercise-item" data-id="${i._id}">
+        `<li class="exercise-item js-id" data-id="${i._id}">
       <div class="ex-item-head">
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
           <span class="ex-rating-group">
-            <span class="ex-item-rating">${Number(i.rating).toFixed(1)}</span>
+            <span class="ex-item-rating">${Math.round(i.rating).toFixed(1)}</span>
             <svg class="ex-star-icon" width="18" height="18"><use href="${icons}#icon-rating-star"></use></svg>
           </span>
         </span>
         <a class="ex-item-start" href="#" data-id="${i._id}">
-          <span>Start</span>
-          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#arrow"></use></svg>
+          <span class="js-start">Start</span>
+          <svg class="ex-arrow-icon js-start" width="14" height="14"><use href="${icons}#arrow"></use></svg>
         </a>
       </div>
       <span class="ex-title">
