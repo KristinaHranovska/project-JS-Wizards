@@ -67,8 +67,9 @@ function createMarkup(results) {
   refs.gallery.innerHTML = markup;
 }
 
-function handleSearch() {
+async function handleSearch() {
   params.page = 1;
+  // Отримати дані з оновленим фільтром
   getData()
     .then(data => {
       const { results } = data;
@@ -84,7 +85,6 @@ function handleSearch() {
 }
 handleSearch();
 refs.musclesBtn.classList.add('active');
-refs.musclesBtn.disabled = true;
 
 refs.buttons.addEventListener('click', event => {
   selected(event);
@@ -93,19 +93,13 @@ refs.buttons.addEventListener('click', event => {
   if (targetMenu === event.currentTarget) {
     return;
   } else if (targetMenu === refs.musclesBtn) {
-    refs.musclesBtn.disabled = true;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = false;
+    // Оновити фільтр на 'Muscles'
     params.filter = 'Muscles';
   } else if (targetMenu === refs.bodypartsBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = true;
-    refs.equipBtn.disabled = false;
+    // Оновити фільтр на 'Body parts'
     params.filter = 'Body parts';
   } else if (targetMenu === refs.equipBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = true;
+    // Оновити фільтр на 'Equipment'
     params.filter = 'Equipment';
   }
   handleSearch();

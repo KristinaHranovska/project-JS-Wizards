@@ -9,16 +9,18 @@ function getQuote() {
     const formattedDate = format(date, 'dd.MM.yyyy');
     const getDate = localStorage.getItem('dateNow');
 
-    if (getDate === formattedDate) {
-        const localInfo = JSON.parse(localStorage.getItem('quoteDay'))
-        const { author, quote } = localInfo;
-        quotePage.textContent = quote;
-        authorPage.textContent = author;
+    setTimeout(() => {
+        if (getDate === formattedDate) {
+            const localInfo = JSON.parse(localStorage.getItem('quoteDay'))
+            const { author, quote } = localInfo;
+            quotePage.textContent = quote;
+            authorPage.textContent = author;
 
-        return;
-    }
+            return;
+        }
+    }, 500)
 
-    if (!getDate || getDate !== formattedDate) {
+    if (!getDate || getDate !== formattedDate || !(localStorage.getItem('quoteDay'))) {
         localStorage.setItem('dateNow', formattedDate);
 
         getAccess({

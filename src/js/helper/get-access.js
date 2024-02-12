@@ -11,9 +11,11 @@ export { getAccess, postAccess }
  * @param {string} options.typeFilter - Тип фільтра, який використовується у URL.
  * @returns {Promise} Об'єкт Promise, який розрішується у відповідь від сервера.
  */
-async function getAccess({ filter, page = 1, limit = 12, typeFilter, id }) {
+async function getAccess({ filter, page = 1, limit = 12, typeFilter, id = null }) {
     try {
-        const response = await axios.get(`https://energyflow.b.goit.study/api/${typeFilter}/${id}`, {
+        const url = id ? `https://energyflow.b.goit.study/api/${typeFilter}/${id}` : `https://energyflow.b.goit.study/api/${typeFilter}`;
+
+        const response = await axios.get(url, {
             params: {
                 filter,
                 page,
