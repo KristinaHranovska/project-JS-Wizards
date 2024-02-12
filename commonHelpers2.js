@@ -1,4 +1,4 @@
-import{g as l,p as L}from"./assets/quote-523f941d.js";import{i as n}from"./assets/vendor-a0f761d2.js";const a={getInfo(t){n.info({title:"Hello",message:t})},getErrorInfo(t){n.error({title:"Error",message:t})},getSuccessInfo(t){n.success({title:"OK",message:t})}};function u(t,e){const s=t.map(({filter:y,imgUrl:b,name:m})=>`
+import{g as l,p as L}from"./assets/quote-ce423603.js";import{i as n}from"./assets/vendor-a0f761d2.js";const a={getInfo(t){n.info({title:"Hello",message:t})},getErrorInfo(t){n.error({title:"Error",message:t})},getSuccessInfo(t){n.success({title:"OK",message:t})}};function u(t,e){const s=t.map(({filter:y,imgUrl:b,name:m})=>`
       <li class="lists js-list">
       <img src="${b}" alt="${m}"class="pic">
       <div class="position-text">
