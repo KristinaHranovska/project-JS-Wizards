@@ -2,17 +2,17 @@ import { getAccess } from "./helper/get-access";
 
 const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
-const galleryWindow = document.querySelector('.exercises-card');
+const galleryWindow = document.querySelector('.js-gallery');
 
 galleryWindow.addEventListener('click', openModal);
 
 // Відкриття модалки
 function openModal(e) {
-    if (e.target.classList.contains('ex-arrow-icon') || e.target.classList.contains('js-start')) {
+    if (e.target.classList.contains('js-start')) {
         backdrop.classList.remove('is-open');
         document.body.style.overflow = 'hidden';
 
-        const liElement = e.target.closest('.exercise-item');
+        const liElement = e.target.closest('.js-id');
 
         if (liElement) {
             const id = liElement.dataset.id;
@@ -47,7 +47,7 @@ function getExercisesObject(id) {
                 descriptionValue: document.querySelector('.js-description'),
             }
 
-            let fixedRating = Math.round(rating).toFixed(1)
+            const fixedRating = Math.round(rating).toFixed(1)
 
             const stars = document.querySelectorAll('.raiting-item .icon-star');
 
@@ -61,8 +61,6 @@ function getExercisesObject(id) {
                 }
             });
 
-
-
             refs.img.setAttribute('src', gifUrl);
             refs.title.textContent = name;
             refs.raiting.textContent = fixedRating;
@@ -73,10 +71,6 @@ function getExercisesObject(id) {
             refs.caloriesValue.textContent = burnedCalories;
             refs.descriptionValue.textContent = description;
 
-
-
         })
         .catch((err) => console.error(err));
 }
-
-// Рейтенг

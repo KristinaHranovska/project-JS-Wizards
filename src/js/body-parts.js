@@ -50,7 +50,7 @@ function renderExercises(data) {
   let markup = data
     .map(
       i =>
-        `<li class="exercise-item" data-id="${i._id}">
+        `<li class="exercise-item js-id" data-id="${i._id}">
       <div class="ex-item-head">
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
@@ -61,7 +61,7 @@ function renderExercises(data) {
         </span>
         <a class="ex-item-start" href="#" data-id="${i._id}">
           <span class="js-start">Start</span>
-          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#arrow"></use></svg>
+          <svg class="ex-arrow-icon js-start" width="14" height="14"><use href="${icons}#arrow"></use></svg>
         </a>
       </div>
       <span class="ex-title">
