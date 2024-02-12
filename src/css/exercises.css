@@ -344,7 +344,7 @@
 /* Media queries  for search and excercises after the click*/
 @media screen and (min-width: 768px) {
   .head-small {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.33;
     letter-spacing: -0.02em;
     color: rgba(27, 27, 27, 0.5);
@@ -394,6 +394,19 @@
 @media screen and (min-width: 1440px) {
   .exercises-card {
     gap: 28px 20px;
+  }
+
+  .exercises-header {
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .head-small {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    color: rgba(27, 27, 27, 0.5);
   }
 
   .ex-list-no-result {
