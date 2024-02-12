@@ -1,8 +1,10 @@
+const modalExercises = document.querySelector('.button');
+if (modalExercises) {
+  const addToFavoritesBtn = modalExercises.querySelector('.modal-button-favorites');
+  addToFavoritesBtn.addEventListener('click', addToFavorites);
+} else {
+}
 
-  const addToFavoritesBtn = document.querySelector('.modal-button-favorites');
-const modalExercises = document.querySelector('.modal');
-const body = document.querySelector('body');
-modalExercises.addEventListener('click', addToFavorites);
 
 export const LOCAL_STORAGE_KEY = 'favoriteData';
 export let inLocalStorage;
@@ -24,7 +26,6 @@ async function addToFavorites(e) {
       } else {
         return;
       }
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(inLocalStorage));
     
       setTimeout(() => {
         modalExercises.classList.remove('is-open');
