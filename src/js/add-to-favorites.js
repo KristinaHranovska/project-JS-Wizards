@@ -38,7 +38,6 @@ async function addToFavorites(e) {
     
   }
 }
-const LOCAL_STORAGE_KEY = 'JS-Wizards';
 function addToLocalStorage(id) {
   try {
     const localStorageData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
