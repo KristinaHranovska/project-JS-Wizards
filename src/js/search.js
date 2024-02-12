@@ -11,8 +11,6 @@ export { galleryElement, searchInputField, exerciseParams };
 
 const exerciseParams = {
   page: 1,
-  totalPages: 1,
-  totalItems: 0,
   keyword: '',
   filter: '',
   filterGroup: '',

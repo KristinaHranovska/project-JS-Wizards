@@ -10,7 +10,7 @@ export { updateExercisesList, loadExercises, renderExercises, getLoader };
 
 function updateExercisesList(filter) {
   galleryElement.innerHTML = '';
-  loadExercises(filter, 1)
+  loadExercises(filter, exerciseParams.page)
     .then(data => {
       if (data.results.length === 0) {
         document.querySelector('.tui-pagination').style.display = 'none';
