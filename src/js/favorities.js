@@ -1,5 +1,5 @@
 import { iziToastFunctions } from './helper/helpers.js';
-import { LOCAL_STORAGE_KEY } from './add-to-favorites.js';
+// import { LOCAL_STORAGE_KEY } from './add-to-favorites.js';
 
 const refs = {
 favoritesCard: document.getElementById('favorites-container'),
