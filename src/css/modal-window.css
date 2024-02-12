@@ -226,4 +226,8 @@
     .modal-window {
         width: 732px;
     }
+
+    .exer-item {
+        gap: 30px;
+    }
 }

@@ -27,6 +27,8 @@ closeIcon.addEventListener('click', closeModal)
 function closeModal() {
     backdrop.classList.add('is-open');
     document.body.style.overflow = '';
+
+    clearModalContent();
 }
 
 // Завантаження сторінки
@@ -73,4 +75,37 @@ function getExercisesObject(id) {
 
         })
         .catch((err) => console.error(err));
+}
+
+// Очіщюємо вміст модалки після закриття
+
+function clearModalContent() {
+    const refs = {
+        img: document.querySelector(".js-img"),
+        title: document.querySelector('.js-title'),
+        raiting: document.querySelector('.js-raiting'),
+        targetValue: document.querySelector('.js-target'),
+        bodyPartValue: document.querySelector('.js-body-part'),
+        equipmentValue: document.querySelector('.js-equipment'),
+        popularValue: document.querySelector('.js-popular'),
+        caloriesValue: document.querySelector('.js-calories'),
+        descriptionValue: document.querySelector('.js-description'),
+    };
+
+    // Встановлюємо пусті значення для всіх елементів модального вікна
+    refs.img.setAttribute('src', '');
+    refs.title.textContent = '';
+    refs.raiting.textContent = '';
+    refs.targetValue.textContent = '';
+    refs.bodyPartValue.textContent = '';
+    refs.equipmentValue.textContent = '';
+    refs.popularValue.textContent = '';
+    refs.caloriesValue.textContent = '';
+    refs.descriptionValue.textContent = '';
+
+    // Очищаємо класи зірок рейтингу
+    const stars = document.querySelectorAll('.raiting-item .icon-star');
+    stars.forEach(star => {
+        star.classList.add('non-activ');
+    });
 }
