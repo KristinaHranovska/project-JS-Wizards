@@ -1,6 +1,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
-import { createPagination } from './pagination';
+import { createPaginationExercisesInner } from './pagination';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -8,7 +8,6 @@ const refs = {
   musclesBtn: document.querySelector('[data-filter="muscles"]'),
   bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
-  screenWidth: window.innerWidth,
 };
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
@@ -76,7 +75,7 @@ function handleSearch() {
       const totalItems = results.totalItems;
       const totalPages = Math.ceil(totalItems / refs.screenWidth);
 
-      createPagination(refs.screenWidth, totalPages);
+      // createPagination(refs.screenWidth, totalPages);
       createMarkup(results);
     })
     .catch(error => {
