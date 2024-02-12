@@ -6,10 +6,10 @@
     border-radius: 30px;
     padding-top: 40px;
     padding-bottom: 20px;
-    
+
     @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
         background-image: url('../img/footer/footer_mobile@2x.webp');
-    }  
+    }
 
     @media screen and (min-width: 768px) {
         width: 736px;
@@ -30,6 +30,7 @@
         height: 454px;
         background-image: url('../img/footer/footer_1440.webp');
     }
+
     @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
         background-image: url('../img/footer/footer_1440@2x.webp');
     }
@@ -39,10 +40,11 @@
     @media screen and (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
-        gap: 32px 139px; 
+        gap: 32px 139px;
         padding-right: 41px;
         padding-left: 48px;
     }
+
     @media screen and (min-width: 1440px) {
         flex-wrap: nowrap;
         gap: 160px;
@@ -77,8 +79,8 @@
 .footer-social-list {
     display: flex;
     gap: 12px;
-    @media screen and (min-width: 768px) {
-    }
+
+    @media screen and (min-width: 768px) {}
 }
 
 /* .footer-social-item {
@@ -89,14 +91,15 @@
     display: flex;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid rgba(246,246,246,.2);
-    
+    border: 1px solid rgba(246, 246, 246, .2);
+
     padding: 8px;
 
 }
 
 .footer-social-icon {
     fill: var(--text-light);
+
     @media screen and (min-width: 768px) {
         width: 28px;
         height: 28px;
@@ -107,17 +110,18 @@
 .footer-title {
     font-weight: 400;
     color: var(--text-light);
-    font-size: 32px; 
+    font-size: 32px;
     line-height: 1;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
-    
+
     @media screen and (min-width: 768px) {
         width: 345px;
         font-size: 54px;
         line-height: .93;
         margin-bottom: 0;
     }
+
     @media screen and (min-width: 1440px) {
         width: 488px;
         line-height: 0.97;
@@ -139,7 +143,7 @@
 
 
     @media screen and (min-width: 768px) {
-        margin-left: auto; 
+        margin-left: auto;
         width: 352px;
     }
 
@@ -179,6 +183,7 @@
     background-color: transparent;
     border-radius: 30px;
     margin-bottom: 12px;
+    outline: none;
 
     @media screen and (min-width: 768px) {
         width: 100%;
@@ -194,11 +199,8 @@
     background-color: var(--dark-grey-background);
     border-radius: 30px;
     border: none;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; */
     padding: 12px 130px;
+
     @media screen and (min-width: 768px) {
         width: 100%;
         padding: 12px 157px;
@@ -212,6 +214,7 @@
     display: inline-flex;
     flex-direction: column;
     gap: 10px;
+
     @media screen and (min-width: 768px) {
         position: absolute;
         align-items: center;
