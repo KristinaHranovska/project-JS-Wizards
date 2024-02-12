@@ -32,7 +32,7 @@ function renderExerciseCard(savedCards) {
     if (savedCards && savedCards.length > 0) {
         markup = savedCards.map(({ id, name, burnedCalories, bodyPart, target }) => {
             return `
-            <li class="list-favorites-item">
+            <li class="list-favorites-item js-id" data-id="${id}">
                 <div class="container-card">
                     <div class="container-worcaut">
                         <div class="workout">Workout</div>
