@@ -34,7 +34,8 @@
 }
 
 .list-favorites-item {
-transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s;
+    flex-basis: 100%;
+    transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s;
 }
 
 .list-favorites-item:hover,

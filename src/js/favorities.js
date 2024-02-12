@@ -10,7 +10,107 @@ deleteButtons: document.querySelectorAll('.delete-favorites'),
 
 function savedCardsStorage() { 
     try {
-        const savedCards = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+        // const savedCards = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+        const savedCards = [
+            {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+              {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                  {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                    {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                      {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                        {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                          {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                                {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                  {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                    {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                      {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                        {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+                          {
+                  id: 1,
+                  name: "Name",
+                  burnedCalories: 100,
+                  bodyPart: "SWERT",
+                  target: "wreter",
+            },
+        ]
         displayFavoriteCards(savedCards);
     } catch(error) {
         iziToastFunctions.getErrorInfo('Wrong operation!!!');
@@ -23,7 +123,8 @@ function displayFavoriteCards(savedCards) {
     } else {
         const markup = renderExerciseCard(savedCards);
         refs.favoritesCard.innerHTML = markup;
-            hideRemoveCards();
+        hideRemoveCards();
+         smoothScrollToNextGroup();
     }
 }
 
@@ -80,7 +181,7 @@ function setupDeleteButtonListeners() {
             if(event.target.tagName === "svg") {
             const id = event.target.dataset.id;
             removeFavoriteCard(id);
-            savedCardsStorage();
+                savedCardsStorage();
             }
         });
     });
@@ -99,5 +200,22 @@ function hideRemoveCards() {
     }
 }
 
-savedCardsStorage();
+function smoothScrollToNextGroup() {
+    const itemsPerGroup = 9;
+    const listItemHeight = 80; // Замініть це значення на висоту вашого елемента list-favorites-item
+    const container = document.querySelector('.list-favorites');
+    const items = document.querySelectorAll('.list-favorites-item');
 
+    if (items.length > itemsPerGroup) {
+        const currentGroupIndex = Math.floor(items.length / itemsPerGroup);
+        const scrollTop = currentGroupIndex * itemsPerGroup * listItemHeight;
+        container.scrollTo({
+            top: scrollTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+ 
+
+savedCardsStorage();
