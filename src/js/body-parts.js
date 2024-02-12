@@ -51,7 +51,7 @@ function renderExercises(data) {
     .map(
       i =>
         `<li class="exercise-item" data-id="${i._id}">
-      <p class="ex-item-head">
+      <div class="ex-item-head">
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
           <span class="ex-rating-group">
@@ -61,16 +61,16 @@ function renderExercises(data) {
         </span>
         <a class="ex-item-start" href="#" data-id="${i._id}">
           <span>Start</span>
-          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#icon-arrow-top"></use></svg>
+          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#icon-arrow-body-parts"></use></svg>
         </a>
-      </p>
+      </div>
       <span class="ex-title">
         <span class="ex-run-men"><svg class="ex-icon-run" width="14" height="14"><use href="${icons}#icon-body-parts-fitness"></use></svg></span>
         <h3 class="ex-item-name">${
           i.name.charAt(0).toUpperCase() + i.name.slice(1)
         }</h3>
       </span>
-      <p class="ex-item-info">
+      <div class="ex-item-info">
         <span class="ex-info-group">
           <span class="ex-item-desc">Burned calories:</span>
           <span class="ex-item-value">${i.burnedCalories} / ${i.time} min</span>
@@ -87,7 +87,7 @@ function renderExercises(data) {
             i.target.charAt(0).toUpperCase() + i.target.slice(1)
           }</span>
         </span>
-      </p>
+      </div>
     </li>`
     )
     .join('');
