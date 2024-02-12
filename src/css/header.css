@@ -55,6 +55,10 @@
 }
 
 @media screen and (min-width: 768px) {
+    .backdrop-button:hover {
+        background-color: var(--text-ligh);
+        color: var(--text-dark);
+    }
 
 
     .header-logo {
@@ -91,7 +95,7 @@
     }
 
     .header-icon {
-        border: 2px solid rgba(126, 132, 127, 0.2);
+        border: 2px solid rgba(126, 132, 127, 0.5);
         border-radius: 10px;
         padding-top: 5px;
         width: 44px;
@@ -182,10 +186,9 @@
     text-align: center;
     padding: 6px 14px;
     line-height: normal;
-
 }
 
-.backdrop-button.is-active.is-active {
+.backdrop-button.is-active {
     background-color: var(--text-light);
     color: var(--text-dark);
     width: 96px;
