@@ -5,6 +5,7 @@ import './js/muscles'
 import './js/body-parts'
 import './js/search'
 import './js/equipment'
+import './js/add-to-favorites'
 import './js/pagination'
 import './js/modal-window'
 
