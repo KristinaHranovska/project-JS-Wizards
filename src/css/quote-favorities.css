@@ -1,3 +1,7 @@
+.thumb {
+    margin-top: 90px;
+}
+
 .quote-favorites-thumb {
     min-height: 272px;
     width: 100%;
@@ -43,6 +47,10 @@
 }
 
 @media screen and (min-width: 768px) {
+    .thumb {
+        margin-top: 130px;
+    }
+
     .quote-favorites {
         margin-bottom: 16px;
     }
@@ -78,6 +86,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+    .thumb {
+        margin-top: 150px;
+    }
+
     .quote-favorites {
         margin-bottom: 0;
     }
