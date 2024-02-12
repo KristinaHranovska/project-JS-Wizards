@@ -3,7 +3,10 @@
 import axios from 'axios';
 import icons from '../img/icons/sprite.svg';
 import { galleryElement, searchInputField, exerciseParams } from './search.js';
+import { createPaginationExercisesInner } from './pagination';
 export { updateExercisesList, loadExercises, renderExercises, getLoader };
+
+let currentPage = 0;
 
 // Ця функція оновлює список вправ на основі наданого фільтра.Він очищає вміст galleryElement.
 
@@ -15,7 +18,19 @@ function updateExercisesList(filter) {
         galleryElement.innerHTML =
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
+        currentPage = 1;
         renderExercises(data.results);
+        createPaginationExercisesInner(data.totalPages).on(
+          'afterMove',
+          ({ page }, filter) => {
+            console.log(page);
+            currentPage = page;
+            loadExercisesMore(filter, currentPage).then(data => {
+              galleryElement.innerHTML = '';
+              renderExercises(data.results);
+            });
+          }
+        );
       }
       getLoader('hide');
     })
@@ -23,6 +38,24 @@ function updateExercisesList(filter) {
       getLoader('hide');
       handleError(error.message);
     });
+}
+
+async function loadExercisesMore(filter, currentPage) {
+  getLoader();
+  if (searchInputField.value.length > 0) {
+    exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
+  } else {
+    exerciseParams.keyword = '';
+  }
+  const data = await axios.get('/exercises', {
+    params: {
+      [filter]: exerciseParams.filterGroup,
+      keyword: exerciseParams.keyword,
+      page: currentPage,
+      // limit: exerciseParams.limit,
+    },
+  });
+  return data.data;
 }
 
 // Ця функція завантажує дані вправ із сервера на основі наданого фільтра.
@@ -39,7 +72,7 @@ async function loadExercises(filter) {
       [filter]: exerciseParams.filterGroup,
       keyword: exerciseParams.keyword,
       page: exerciseParams.page,
-      limit: exerciseParams.limit,
+      // limit: exerciseParams.limit,
     },
   });
   return data.data;
@@ -55,7 +88,9 @@ function renderExercises(data) {
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
           <span class="ex-rating-group">
-            <span class="ex-item-rating">${Math.round(i.rating).toFixed(1)}</span>
+            <span class="ex-item-rating">${Math.round(i.rating).toFixed(
+              1
+            )}</span>
             <svg class="ex-star-icon" width="18" height="18"><use href="${icons}#icon-rating-star"></use></svg>
           </span>
         </span>
@@ -66,7 +101,8 @@ function renderExercises(data) {
       </div>
       <span class="ex-title">
         <span class="ex-run-men"><svg class="ex-icon-run" width="14" height="14"><use href="${icons}#icon-body-parts-fitness"></use></svg></span>
-        <h3 class="ex-item-name">${i.name.charAt(0).toUpperCase() + i.name.slice(1)
+        <h3 class="ex-item-name">${
+          i.name.charAt(0).toUpperCase() + i.name.slice(1)
         }</h3>
       </span>
       <div class="ex-item-info">
@@ -76,13 +112,15 @@ function renderExercises(data) {
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Body part:</span>
-          <span class="ex-item-value">${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
-        }</span>
+          <span class="ex-item-value">${
+            i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
+          }</span>
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Target:</span>
-          <span class="ex-item-value">${i.target.charAt(0).toUpperCase() + i.target.slice(1)
-        }</span>
+          <span class="ex-item-value">${
+            i.target.charAt(0).toUpperCase() + i.target.slice(1)
+          }</span>
         </span>
       </div>
     </li>`
