@@ -1,6 +1,5 @@
 import { getAccess } from "./helper/get-access";
 
-
 const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
 const galleryWindow = document.querySelector('.exercises-card');
@@ -22,7 +21,6 @@ function openModal(e) {
     }
 }
 
-
 // Закриття модального вікна
 closeIcon.addEventListener('click', closeModal)
 
@@ -31,6 +29,7 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+// Завантаження сторінки
 function getExercisesObject(id) {
     getAccess({ typeFilter: 'exercises', id: id })
         .then(({ data }) => {
@@ -48,6 +47,20 @@ function getExercisesObject(id) {
                 descriptionValue: document.querySelector('.js-description'),
             }
 
+            const ratingPage = parseFloat(rating);
+
+            const stars = document.querySelectorAll('.raiting-item .icon-star');
+
+            stars.forEach((star, index) => {
+                if (index < Math.floor(ratingPage)) {
+                    star.classList.remove('non-activ');
+                } else if (index === Math.floor(ratingPage) && ratingPage % 1 !== 0) {
+                    star.classList.remove('non-activ');
+                } else {
+                    star.classList.add('non-activ');
+                }
+            });
+
             refs.img.setAttribute('src', gifUrl);
             refs.title.textContent = name;
             refs.raiting.textContent = rating;
@@ -57,6 +70,11 @@ function getExercisesObject(id) {
             refs.popularValue.textContent = popularity;
             refs.caloriesValue.textContent = burnedCalories;
             refs.descriptionValue.textContent = description;
+
+
+
         })
         .catch((err) => console.error(err));
 }
+
+// Рейтенг

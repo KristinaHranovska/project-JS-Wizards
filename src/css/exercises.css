@@ -84,8 +84,7 @@
   }
 
   .gallery {
-    column-gap: 14px;
-    row-gap: 14px;
+    gap: 28px 20px;
   }
 }
 
@@ -114,8 +113,7 @@
   }
 
   .gallery {
-    column-gap: 20px;
-    row-gap: 20px;
+    gap: 20px 14px;
   }
 
   .gallery-item {
