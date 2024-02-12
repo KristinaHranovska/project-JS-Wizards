@@ -11,9 +11,9 @@
     />
     
     <script type="module" crossorigin src="/project-JS-Wizards/assets/vendor-a0f761d2.js"></script>
-    <script type="module" crossorigin src="/project-JS-Wizards/assets/quote-41405e94.js"></script>
+    <script type="module" crossorigin src="/project-JS-Wizards/assets/quote-d470d68c.js"></script>
     <link rel="stylesheet" href="/project-JS-Wizards/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/project-JS-Wizards/assets/quote-25cb453b.css">
+    <link rel="stylesheet" href="/project-JS-Wizards/assets/quote-65e8cd8e.css">
   </head>
   <body>
     <section class="header-page on-home">
@@ -25,19 +25,22 @@
           <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-burger-menu"></use>
         </svg>
       </div>
-      <div class="h-peages">
-        <a
-          class="backdrop-button is-active"
-          id="header-button1"
-          href="./index.html"
-        >
-          Home
-        </a>
-
-        <a class="backdrop-button" id="header-button2" href="./favorites.html">
-          Favorites
-        </a>
-      </div>
+      <ul class="header-nav-list">
+        <li class="favorites d">
+          <a
+            class="link-favorites"
+            href="./favorites.html"
+            aria-label="Favorites page"
+            >Favorites</a
+          >
+        </li>
+        <li class="home d">
+          <a class="link-home" href="./index.html" aria-label="Home page"
+            >Home</a
+          >
+        </li>
+        <div class="ghost d"></div>
+      </ul>
       <ul class="icons-list">
         <li class="header-icon">
           <a href="https://www.facebook.com/goITclub/" target="_blank">
