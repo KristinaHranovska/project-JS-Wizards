@@ -1,5 +1,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
+import { createPagination } from './pagination';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -36,6 +37,14 @@ async function getData() {
       limit: params.perPage,
     },
   });
+
+  const totalItems = data.data.totalItems;
+  const totalPages = Math.ceil(totalItems / 9);
+
+  if (!refs.gallery.firstChild) {
+    createPagination(9, totalPages);
+  }
+
   return data.data;
 }
 
