@@ -6,26 +6,21 @@ import { galleryElement, searchInputField, exerciseParams } from './search.js';
 import { createPaginationExercisesInner } from './pagination';
 export { updateExercisesList, loadExercises, renderExercises, getLoader };
 
-let currentPage = 0;
-
 // Ця функція оновлює список вправ на основі наданого фільтра.Він очищає вміст galleryElement.
 
 function updateExercisesList(filter) {
   galleryElement.innerHTML = '';
-  loadExercises(filter)
+  loadExercises(filter, 1)
     .then(data => {
       if (data.results.length === 0) {
         galleryElement.innerHTML =
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
-        currentPage = 1;
         renderExercises(data.results);
         createPaginationExercisesInner(data.totalPages).on(
           'afterMove',
-          ({ page }, filter) => {
-            console.log(page);
-            currentPage = page;
-            loadExercisesMore(filter, currentPage).then(data => {
+          ({ page }) => {
+            loadExercises(filter, page).then(data => {
               galleryElement.innerHTML = '';
               renderExercises(data.results);
             });
@@ -40,27 +35,9 @@ function updateExercisesList(filter) {
     });
 }
 
-async function loadExercisesMore(filter, currentPage) {
-  getLoader();
-  if (searchInputField.value.length > 0) {
-    exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
-  } else {
-    exerciseParams.keyword = '';
-  }
-  const data = await axios.get('/exercises', {
-    params: {
-      [filter]: exerciseParams.filterGroup,
-      keyword: exerciseParams.keyword,
-      page: currentPage,
-      // limit: exerciseParams.limit,
-    },
-  });
-  return data.data;
-}
-
 // Ця функція завантажує дані вправ із сервера на основі наданого фільтра.
 
-async function loadExercises(filter) {
+async function loadExercises(filter, page) {
   getLoader();
   if (searchInputField.value.length > 0) {
     exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
@@ -71,8 +48,7 @@ async function loadExercises(filter) {
     params: {
       [filter]: exerciseParams.filterGroup,
       keyword: exerciseParams.keyword,
-      page: exerciseParams.page,
-      // limit: exerciseParams.limit,
+      page,
     },
   });
   return data.data;
