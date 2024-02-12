@@ -22,14 +22,28 @@ function openModal(e) {
 }
 
 // Закриття модального вікна
-closeIcon.addEventListener('click', closeModal)
+closeIcon.addEventListener('click', closeModal);
+document.addEventListener('keydown', closeModalByEsc);
 
-function closeModal() {
+function closeModal(e) {
     backdrop.classList.add('is-open');
     document.body.style.overflow = '';
 
+
     clearModalContent();
 }
+
+function closeModalByEsc(e) {
+    if (e.code === 'Escape') {
+        backdrop.classList.add('is-open');
+    }
+}
+backdrop.addEventListener('click', function (event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
+
 
 // Завантаження сторінки
 function getExercisesObject(id) {

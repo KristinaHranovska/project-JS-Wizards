@@ -91,7 +91,7 @@
     }
 
     .header-icon {
-        border: 2px rgba(200, 200, 200, 0.3) solid;
+        border: 2px solid rgba(126, 132, 127, 0.2);
         border-radius: 10px;
         padding-top: 5px;
         width: 44px;
