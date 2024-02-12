@@ -35,8 +35,28 @@ function getExercisesObject(id) {
     getAccess({ typeFilter: 'exercises', id: id })
         .then(({ data }) => {
             const { name, rating, target, bodyPart, equipment, popularity, burnedCalories, description, gifUrl, _id } = data
-            const img = document.querySelector(".js-img");
-            img.setAttribute('src', gifUrl);
+
+            const refs = {
+                img: document.querySelector(".js-img"),
+                title: document.querySelector('.js-title'),
+                raiting: document.querySelector('.js-raiting'),
+                targetValue: document.querySelector('.js-target'),
+                bodyPartValue: document.querySelector('.js-body-part'),
+                equipmentValue: document.querySelector('.js-equipment'),
+                popularValue: document.querySelector('.js-popular'),
+                caloriesValue: document.querySelector('.js-calories'),
+                descriptionValue: document.querySelector('.js-description'),
+            }
+
+            refs.img.setAttribute('src', gifUrl);
+            refs.title.textContent = name;
+            refs.raiting.textContent = rating;
+            refs.targetValue.textContent = target;
+            refs.bodyPartValue.textContent = bodyPart;
+            refs.equipmentValue.textContent = equipment;
+            refs.popularValue.textContent = popularity;
+            refs.caloriesValue.textContent = burnedCalories;
+            refs.descriptionValue.textContent = description;
         })
         .catch((err) => console.error(err));
 }
