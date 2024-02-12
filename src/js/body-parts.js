@@ -61,13 +61,12 @@ function renderExercises(data) {
         </span>
         <a class="ex-item-start" href="#" data-id="${i._id}">
           <span>Start</span>
-          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#icon-arrow-body-parts"></use></svg>
+          <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#arrow"></use></svg>
         </a>
       </div>
       <span class="ex-title">
         <span class="ex-run-men"><svg class="ex-icon-run" width="14" height="14"><use href="${icons}#icon-body-parts-fitness"></use></svg></span>
-        <h3 class="ex-item-name">${
-          i.name.charAt(0).toUpperCase() + i.name.slice(1)
+        <h3 class="ex-item-name">${i.name.charAt(0).toUpperCase() + i.name.slice(1)
         }</h3>
       </span>
       <div class="ex-item-info">
@@ -77,15 +76,13 @@ function renderExercises(data) {
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Body part:</span>
-          <span class="ex-item-value">${
-            i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
-          }</span>
+          <span class="ex-item-value">${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
+        }</span>
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Target:</span>
-          <span class="ex-item-value">${
-            i.target.charAt(0).toUpperCase() + i.target.slice(1)
-          }</span>
+          <span class="ex-item-value">${i.target.charAt(0).toUpperCase() + i.target.slice(1)
+        }</span>
         </span>
       </div>
     </li>`
