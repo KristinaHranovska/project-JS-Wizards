@@ -47,23 +47,25 @@ function getExercisesObject(id) {
                 descriptionValue: document.querySelector('.js-description'),
             }
 
-            const ratingPage = parseFloat(rating);
+            let fixedRating = Math.round(rating).toFixed(1)
 
             const stars = document.querySelectorAll('.raiting-item .icon-star');
 
             stars.forEach((star, index) => {
-                if (index < Math.floor(ratingPage)) {
+                if (index < Math.floor(fixedRating)) {
                     star.classList.remove('non-activ');
-                } else if (index === Math.floor(ratingPage) && ratingPage % 1 !== 0) {
+                } else if (index === Math.floor(fixedRating) && fixedRating % 1 !== 0) {
                     star.classList.remove('non-activ');
                 } else {
                     star.classList.add('non-activ');
                 }
             });
 
+
+
             refs.img.setAttribute('src', gifUrl);
             refs.title.textContent = name;
-            refs.raiting.textContent = rating;
+            refs.raiting.textContent = fixedRating;
             refs.targetValue.textContent = target;
             refs.bodyPartValue.textContent = bodyPart;
             refs.equipmentValue.textContent = equipment;

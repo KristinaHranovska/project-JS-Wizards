@@ -55,7 +55,7 @@ function renderExercises(data) {
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
           <span class="ex-rating-group">
-            <span class="ex-item-rating">${Number(i.rating).toFixed(1)}</span>
+            <span class="ex-item-rating">${Math.round(i.rating).toFixed(1)}</span>
             <svg class="ex-star-icon" width="18" height="18"><use href="${icons}#icon-rating-star"></use></svg>
           </span>
         </span>
