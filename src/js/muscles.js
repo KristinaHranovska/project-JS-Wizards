@@ -8,6 +8,7 @@ const refs = {
   musclesBtn: document.querySelector('[data-filter="muscles"]'),
   bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
+  screenWidth: window.innerWidth,
 };
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
@@ -37,13 +38,6 @@ async function getData() {
       limit: params.perPage,
     },
   });
-
-  const totalItems = data.data.totalItems;
-  const totalPages = Math.ceil(totalItems / 9);
-
-  if (!refs.gallery.firstChild) {
-    createPagination(9, totalPages);
-  }
 
   return data.data;
 }
@@ -79,6 +73,10 @@ function handleSearch() {
   getData()
     .then(data => {
       const { results } = data;
+      const totalItems = results.totalItems;
+      const totalPages = Math.ceil(totalItems / refs.screenWidth);
+
+      createPagination(refs.screenWidth, totalPages);
       createMarkup(results);
     })
     .catch(error => {
