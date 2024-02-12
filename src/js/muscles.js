@@ -21,20 +21,16 @@ function getLoader(act = 'show') {
 }
 
 const params = {
-  perPage: 12,
   page: 1,
   filter: 'Muscles',
-  totalPages: 1,
-  totalItems: 0,
 };
 
-async function getData() {
+async function getData(page) {
   getLoader();
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
-      page: params.page,
-      limit: params.perPage,
+      page,
     },
   });
 
@@ -68,16 +64,21 @@ function createMarkup(results) {
 }
 
 async function handleSearch() {
-  params.page = 1;
   // Отримати дані з оновленим фільтром
-  getData()
+  getData(params.page)
     .then(data => {
       const { results } = data;
-      const totalItems = results.totalItems;
-      const totalPages = Math.ceil(totalItems / refs.screenWidth);
-
-      // createPagination(refs.screenWidth, totalPages);
       createMarkup(results);
+      createPaginationExercisesInner(data.totalPages).on(
+        'afterMove',
+        ({ page }) => {
+          getData(page).then(data => {
+            const { results } = data;
+            refs.gallery.innerHTML = '';
+            createMarkup(results);
+          });
+        }
+      );
     })
     .catch(error => {
       handleError(error.message);

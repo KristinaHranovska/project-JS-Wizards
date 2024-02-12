@@ -4,6 +4,7 @@ import {
   renderExercises,
   getLoader,
 } from './body-parts.js';
+import { createPaginationExercisesInner } from './pagination';
 export { galleryElement, searchInputField, exerciseParams };
 // import axios from 'axios';
 // import icons from '../img/icons/sprite.svg';
@@ -32,7 +33,7 @@ const filterButtonsContainer = document.querySelector('.exercises-btns-div');
 const searchFormContainer = document.querySelector('.ex-search');
 const sectionHeaderElement = document.querySelector('.exercises-header');
 
-//  * обробляємо клік по карточці для групи вправ
+// обробляємо клік по карточці для групи вправ
 
 function handleClickOnCard(event) {
   event.preventDefault();
@@ -55,7 +56,7 @@ function handleClickOnCard(event) {
   }
   return;
 }
-//  * обробляємо клік по кнопці пошуку
+// обробляємо клік по кнопці пошуку
 
 function handleSearchButtonClick(event) {
   event.preventDefault();
@@ -67,9 +68,7 @@ function handleSearchButtonClick(event) {
   return;
 }
 
-/**
- * Обробка пошукового тексту в полі пошуку
- */
+// Обробка пошукового тексту в полі пошуку
 
 function handleSearchInput() {
   if (searchInputField.value.length > 0) {
@@ -79,7 +78,7 @@ function handleSearchInput() {
   }
 }
 
-//  * Очищаємо поле пошуку при натисканні на кнопку
+// Очищаємо поле пошуку при натисканні на кнопку
 
 function handleClearSearchInput() {
   searchInputField.value = '';
@@ -88,7 +87,7 @@ function handleClearSearchInput() {
   updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
 }
 
-//  * Обробляємо клік по одній з трьох кнопок. Видаляємо слухачі подій. Очищаємо поле пошуку.
+// Обробляємо клік по одній з трьох кнопок. Видаляємо слухачі подій. Очищаємо поле пошуку.
 
 function handleClickOnFilterButton(event) {
   if (event.target.tagName === 'BUTTON') {
