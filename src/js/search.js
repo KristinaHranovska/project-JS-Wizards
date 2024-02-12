@@ -16,7 +16,6 @@ const exerciseParams = {
   keyword: '',
   filter: '',
   filterGroup: '',
-  limit: 12,
 };
 
 const galleryElement = document.querySelector('.gallery');

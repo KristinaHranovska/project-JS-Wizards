@@ -13,10 +13,12 @@ function updateExercisesList(filter) {
   loadExercises(filter, 1)
     .then(data => {
       if (data.results.length === 0) {
+        document.querySelector('.tui-pagination').style.display = 'none';
         galleryElement.innerHTML =
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
         renderExercises(data.results);
+        document.querySelector('.tui-pagination').style.display = 'block';
         createPaginationExercisesInner(data.totalPages).on(
           'afterMove',
           ({ page }) => {

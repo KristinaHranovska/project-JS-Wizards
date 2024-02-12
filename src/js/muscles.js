@@ -69,6 +69,7 @@ async function handleSearch() {
     .then(data => {
       const { results } = data;
       createMarkup(results);
+      document.querySelector('.tui-pagination').style.display = 'block';
       createPaginationExercisesInner(data.totalPages).on(
         'afterMove',
         ({ page }) => {
