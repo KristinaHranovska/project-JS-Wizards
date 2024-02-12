@@ -16,7 +16,11 @@ async function addToFavorites(e) {
       const findCopy = inLocalStorage.some(item => item._id === data._id);
 
       if (!findCopy) {
-        inLocalStorage.push(data);
+
+        const itemName = e.target.getAttribute('data-name');
+        const newData = { _id: itemId, name: itemName };
+        inLocalStorage.push(newData);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(inLocalStorage)); 
       } else {
         return;
       }
@@ -32,5 +36,19 @@ async function addToFavorites(e) {
     console.log(error.message);
   } finally {
     
+  }
+}
+const LOCAL_STORAGE_KEY = 'JS-Wizards';
+function addToLocalStorage(id) {
+  try {
+    const localStorageData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    const isIdInStorage = localStorageData.some(item => item._id === id);
+    if (!isIdInStorage) {
+      const newData = { _id: id };
+      localStorageData.push(newData);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localStorageData));
+    }
+  } catch (error) {
+    console.error('Помилка під час додавання ідентифікатора до локального сховища:', error);
   }
 }
