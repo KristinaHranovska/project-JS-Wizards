@@ -60,7 +60,7 @@ function renderExercises(data) {
           </span>
         </span>
         <a class="ex-item-start" href="#" data-id="${i._id}">
-          <span>Start</span>
+          <span class="js-start">Start</span>
           <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#arrow"></use></svg>
         </a>
       </div>
