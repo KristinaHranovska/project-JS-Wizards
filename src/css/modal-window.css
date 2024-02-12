@@ -22,6 +22,7 @@
     top: 50%;
     left: 50%;
     width: 335px;
+    overflow-y: auto;
 
     transform: translate(-50%, -50%) scale(1);
 
@@ -183,4 +184,40 @@
 .heart-btn-icon.active-favorites {
     fill: var(--star);
     stroke: var(--star);
+}
+
+@media screen and (min-width: 768px) {
+    .modal-window {
+        width: 716px;
+    }
+
+    .exer-thumb {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .img-modal {
+        margin-bottom: 0;
+    }
+
+    .modal-title {
+        font-size: 24px;
+        line-height: 1.33;
+    }
+
+    .add-to-favorities {
+        font-size: 16px;
+    }
+
+    .heart-btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .modal-window {
+        width: 732px;
+    }
 }
