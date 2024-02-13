@@ -12,7 +12,6 @@ const homeButton = document.querySelector('.link-home');
     backdrop.classList.add("is-hidden");
 
     refs.openModalBtn.addEventListener("click", function () {
-        console.log("Open modal button clicked");
         toggleModal();
     });
     refs.closeModalBtn.addEventListener("click", toggleModal);
