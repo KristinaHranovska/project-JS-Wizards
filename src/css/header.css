@@ -168,6 +168,8 @@
     visibility: visible;
     pointer-events: auto;
     position: fixed;
+    top: 0;
+    left: 20px;
     width: 335px;
     height: 100%;
     border-radius: 30px;

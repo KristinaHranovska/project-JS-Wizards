@@ -13,11 +13,25 @@ const homeButton = document.querySelector('.link-home');
 
   refs.openModalBtn.addEventListener('click', function () {
     toggleModal();
+    disableScroll();
   });
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', function () {
+    toggleModal();
+    enableScroll();
+  });
 
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
+  }
+
+  // Функція для заборони прокручування
+  function disableScroll() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Функція для дозволу прокручування
+  function enableScroll() {
+    document.body.style.overflow = '';
   }
 })();
 
