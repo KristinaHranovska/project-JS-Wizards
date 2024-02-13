@@ -98,9 +98,9 @@ function createMarkup(arr) {
             </svg>
             </button>
             </div>
-            <button type="button" class="button-start">
+            <button type="button" class="button-start js-start">
                 Start
-                <svg class="icon-arrow-body" width="14" height="14">
+                <svg class="icon-arrow-body js-start" width="14" height="14">
                     <use href="${icons}#icon-arrow-body-parts"></use>
                 </svg>
             </button>

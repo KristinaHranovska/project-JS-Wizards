@@ -3,6 +3,15 @@ import { getAccess } from "./helper/get-access";
 const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
 const galleryWindow = document.querySelector('.js-gallery');
+const currentPage = window.location.pathname;
+
+// Якщо поточна сторінка - index.html, то показуємо блок з кнопкою
+if (currentPage.includes('index.html')) {
+    const removeCards = document.querySelector(".buttons-modal");
+    if (removeCards) {
+        removeCards.classList.remove('visually-hidden');
+    }
+}
 
 galleryWindow.addEventListener('click', openModal);
 
@@ -29,13 +38,13 @@ function closeModal(e) {
     backdrop.classList.add('is-open');
     document.body.style.overflow = '';
 
-
     clearModalContent();
 }
 
 function closeModalByEsc(e) {
     if (e.code === 'Escape') {
         backdrop.classList.add('is-open');
+        document.body.style.overflow = '';
     }
 }
 backdrop.addEventListener('click', function (event) {
