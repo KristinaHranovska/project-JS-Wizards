@@ -91,7 +91,7 @@ function getExercisesObject(id) {
             });
 
             refs.img.setAttribute('src', gifUrl);
-            refs.title.textContent = name;
+            refs.title.textContent = name.charAt(0).toUpperCase() + name.slice(1);
             refs.raiting.textContent = fixedRating;
             refs.targetValue.textContent = target;
             refs.bodyPartValue.textContent = bodyPart;

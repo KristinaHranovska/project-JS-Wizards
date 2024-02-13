@@ -109,7 +109,8 @@ function createMarkup(arr) {
                     <svg class="icon-parts-fitness" width="24" height="24">
                         <use href="${icons}#icon-body-parts-fitness"></use>
                     </svg>
-                    <h3 class="subtitle-favorites">${name}</h3>
+                    <h3 class="subtitle-favorites">${name.charAt(0).toUpperCase() + name.slice(1)
+        }</h3>
                 </div>
                 <div class="container-subtext-info">                           
                    <div class="favorites-card-text-wrapper"> 
