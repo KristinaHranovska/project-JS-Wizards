@@ -66,6 +66,7 @@
 }
 
 .favorites-card-text-wrapper {
+    flex-basis: calc((100% - 16px) / 2);
     display: flex;
     gap: 4px;
 }
@@ -322,7 +323,7 @@
 
 @media only screen and (min-width: 1440px) {
     .scroll {
-        padding: 10px;
+        padding: 10px 0;
     }
 
     .list-favorites {
