@@ -91,7 +91,7 @@
 .container-section-favorites {
     position: relative;
     border-radius: 30px;
-    padding: 40px 20px 92px;
+    padding: 40px 14px 92px;
     max-width: 336px;
     min-height: 450px;
     width: 100%;
@@ -107,6 +107,7 @@
     width: 100%;
     height: auto;
     background-color: var(--white-color);
+    text-wrap: nowrap;
 }
 
 .favorites-title {
@@ -281,10 +282,24 @@
         max-height: 720px;
     }
 
+
+    .subtext-info {
+        /* width: 50px; */
+        letter-spacing: -0.04em;
+    }
+
+    .mini-info {
+        letter-spacing: -0.04em;
+    }
+
+    .container-subtext-info {
+        gap: 6px 10px;
+    }
+
     .container-section-favorites {
         max-width: 736px;
         max-height: 928px;
-        padding: 64px 40px;
+        padding: 64px 35px;
     }
 
     .favorites-title {
@@ -300,7 +315,7 @@
     }
 
     .container-card {
-        max-width: 314px;
+        max-width: 314px
     }
 
     .container-remove-favorites {

@@ -37,6 +37,9 @@ const subscribeValidity = async (event) => {
             });
         }
 
+
+
+
         localStorage.removeItem(feedbackForm);
         footerForm.reset();
     }
