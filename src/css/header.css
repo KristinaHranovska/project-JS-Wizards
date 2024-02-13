@@ -55,7 +55,9 @@
 }
 
 @media screen and (min-width: 768px) {
-
+.hide-thumb{
+    display: none;
+}
     .header-logo {
         font-size: 28px;
     }
