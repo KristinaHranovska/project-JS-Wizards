@@ -78,7 +78,7 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .exercises-btns-div {
     gap: 8px;
   }
@@ -282,15 +282,14 @@
 }
 
 .ex-item-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
 
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.ex-info-group:not(:first-child) {
-  padding-left: 16px;
 }
 
 .ex-item-desc {
