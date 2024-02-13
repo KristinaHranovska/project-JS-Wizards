@@ -26,6 +26,12 @@
     color: var(--black-background);
 }
 
+.scroll {
+    overflow-y: scroll;
+    height: 479px;
+    padding: 0 18px;
+}
+
 .list-favorites {
     display: flex;
     flex-wrap: wrap;

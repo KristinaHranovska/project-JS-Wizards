@@ -96,20 +96,20 @@ function savedCardsStorage() {
                   bodyPart: "SWERT",
                   target: "wreter",
             },
-                        {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                          {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
+            //             {
+            //       id: 1,
+            //       name: "Name",
+            //       burnedCalories: 100,
+            //       bodyPart: "SWERT",
+            //       target: "wreter",
+            // },
+            //               {
+            //       id: 1,
+            //       name: "Name",
+            //       burnedCalories: 100,
+            //       bodyPart: "SWERT",
+            //       target: "wreter",
+            // },
         ]
         displayFavoriteCards(savedCards);
     } catch(error) {
@@ -124,8 +124,10 @@ function displayFavoriteCards(savedCards) {
         const markup = renderExerciseCard(savedCards);
         refs.favoritesCard.innerHTML = markup;
         hideRemoveCards();
-         smoothScrollToNextGroup();
+        smoothScrollToNextGroup()
+        
     }
+  
 }
 
 function renderExerciseCard(savedCards) {
@@ -173,6 +175,7 @@ function removeFavoriteCard(id) {
     let savedCards = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
     savedCards = savedCards.filter(card => card.id !== id);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedCards));
+   
 }
 
 function setupDeleteButtonListeners() {
@@ -201,20 +204,15 @@ function hideRemoveCards() {
 }
 
 function smoothScrollToNextGroup() {
-    const itemsPerGroup = 9;
-    const listItemHeight = 80; // Замініть це значення на висоту вашого елемента list-favorites-item
-    const container = document.querySelector('.list-favorites');
-    const items = document.querySelectorAll('.list-favorites-item');
-
-    if (items.length > itemsPerGroup) {
-        const currentGroupIndex = Math.floor(items.length / itemsPerGroup);
-        const scrollTop = currentGroupIndex * itemsPerGroup * listItemHeight;
-        container.scrollTo({
-            top: scrollTop,
-            behavior: 'smooth'
-        });
+    const favoritesItem = document.querySelector(".list-favorites-item ");
+    if (favoritesItem) {
+      const galleryItemHeight = favoritesItem.getBoundingClientRect().height;
+      window.scrollBy({
+        top: galleryItemHeight * 2, 
+        behavior: "smooth",
+      });
     }
-}
+  }
 
  
 
