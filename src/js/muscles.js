@@ -1,5 +1,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
+import { createPaginationExercisesOuter } from './pagination';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -20,22 +21,21 @@ function getLoader(act = 'show') {
 }
 
 const params = {
-  perPage: 12,
   page: 1,
+  limit: 1,
   filter: 'Muscles',
-  totalPages: 1,
-  totalItems: 0,
 };
 
-async function getData() {
+async function getData(page) {
   getLoader();
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
-      page: params.page,
-      limit: params.perPage,
+      limit: params.limit,
+      page,
     },
   });
+
   return data.data;
 }
 
@@ -66,12 +66,27 @@ function createMarkup(results) {
 }
 
 async function handleSearch() {
-  params.page = 1;
   // Отримати дані з оновленим фільтром
-  getData()
+  if (window.innerWidth >= 768) {
+    params.limit = 12;
+  } else {
+    params.limit = 8;
+  }
+  getData(params.page)
     .then(data => {
       const { results } = data;
       createMarkup(results);
+      document.querySelector('.tui-pagination').style.display = 'flex';
+      createPaginationExercisesOuter(data.totalPages).on(
+        'afterMove',
+        ({ page }) => {
+          getData(page).then(data => {
+            const { results } = data;
+            refs.gallery.innerHTML = '';
+            createMarkup(results);
+          });
+        }
+      );
     })
     .catch(error => {
       handleError(error.message);

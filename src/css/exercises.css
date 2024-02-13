@@ -431,3 +431,36 @@
 .accent-text {
   color: var(--dark-grey-background);
 }
+
+.tui-pagination {
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tui-page-btn {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  padding: 0;
+  border-radius: 50%;
+  color: var(--border-color);
+}
+
+.tui-is-selected {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--text-dark);
+  color: var(--text-dark);
+}
+
+.tui-first,
+.tui-prev,
+.tui-next,
+.tui-last {
+  display: none;
+}
