@@ -4,7 +4,6 @@ import {
   renderExercises,
   getLoader,
 } from './body-parts.js';
-import { createPaginationExercisesInner } from './pagination';
 export { galleryElement, searchInputField, exerciseParams };
 // import axios from 'axios';
 // import icons from '../img/icons/sprite.svg';
