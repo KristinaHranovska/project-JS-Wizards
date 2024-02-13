@@ -18,7 +18,7 @@ function updateExercisesList(filter) {
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
         renderExercises(data.results);
-        document.querySelector('.tui-pagination').style.display = 'block';
+        document.querySelector('.tui-pagination').style.display = 'flex';
         createPaginationExercisesInner(data.totalPages).on(
           'afterMove',
           ({ page }) => {
@@ -51,6 +51,7 @@ async function loadExercises(filter, page) {
       [filter]: exerciseParams.filterGroup,
       keyword: exerciseParams.keyword,
       page,
+      limit: exerciseParams.limit,
     },
   });
   return data.data;

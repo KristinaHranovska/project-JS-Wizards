@@ -1,6 +1,7 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
-import { createPaginationExercisesInner } from './pagination';
+import { createPaginationExercisesOuter } from './pagination';
+import { exerciseParams } from './search.js';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -31,6 +32,7 @@ async function getData(page) {
     params: {
       filter: params.filter,
       page,
+      limit: exerciseParams.limit,
     },
   });
 
@@ -69,8 +71,8 @@ async function handleSearch() {
     .then(data => {
       const { results } = data;
       createMarkup(results);
-      document.querySelector('.tui-pagination').style.display = 'block';
-      createPaginationExercisesInner(data.totalPages).on(
+      document.querySelector('.tui-pagination').style.display = 'flex';
+      createPaginationExercisesOuter(data.totalPages).on(
         'afterMove',
         ({ page }) => {
           getData(page).then(data => {
