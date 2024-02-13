@@ -1,5 +1,4 @@
 import { iziToastFunctions } from './helper/helpers.js';
-// import { LOCAL_STORAGE_KEY } from './add-to-favorites.js';
 
 const refs = {
 favoritesCard: document.getElementById('favorites-container'),
@@ -10,107 +9,10 @@ deleteButtons: document.querySelectorAll('.delete-favorites'),
 
 function savedCardsStorage() { 
     try {
-        // const savedCards = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
-        const savedCards = [
-            {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-              {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                  {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                    {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                      {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                        {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                          {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                                {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                  {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                    {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-                      {
-                  id: 1,
-                  name: "Name",
-                  burnedCalories: 100,
-                  bodyPart: "SWERT",
-                  target: "wreter",
-            },
-            //             {
-            //       id: 1,
-            //       name: "Name",
-            //       burnedCalories: 100,
-            //       bodyPart: "SWERT",
-            //       target: "wreter",
-            // },
-            //               {
-            //       id: 1,
-            //       name: "Name",
-            //       burnedCalories: 100,
-            //       bodyPart: "SWERT",
-            //       target: "wreter",
-            // },
-        ]
+        const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || []; 
+        // const quote = JSON.parse(localStorage.getItem('quoteDay')) || [];
+        // console.log(quote);
+       
         displayFavoriteCards(savedCards);
     } catch(error) {
         iziToastFunctions.getErrorInfo('Wrong operation!!!');
@@ -123,9 +25,9 @@ function displayFavoriteCards(savedCards) {
     } else {
         const markup = renderExerciseCard(savedCards);
         refs.favoritesCard.innerHTML = markup;
+        setupDeleteButtonListeners();
         hideRemoveCards();
-        smoothScrollToNextGroup()
-        
+        smoothScrollToNextGroup();
     }
   
 }
@@ -172,20 +74,27 @@ function renderExerciseCard(savedCards) {
 }
 
 function removeFavoriteCard(id) {
-    let savedCards = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
-    savedCards = savedCards.filter(card => card.id !== id);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedCards));
+    let savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
+    savedCards = savedCards.filter(card => card !== id);
+    localStorage.setItem('addKeyID', JSON.stringify(savedCards));
+
+    // const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
+    // const index = storedArrayAdd.indexOf(id);
+    // if (index !== -1) {
+    //     storedArrayAdd.splice(index, 1);
+    //     localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
+    // }
    
 }
 
 function setupDeleteButtonListeners() {
     refs.deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            if(event.target.tagName === "svg") {
-            const id = event.target.dataset.id;
-            removeFavoriteCard(id);
+            const id = event.currentTarget.closest('.list-favorites-item').dataset.id;
+            // const id = event.target.dataset.id;
+                removeFavoriteCard(id);
                 savedCardsStorage();
-            }
+            
         });
     });
 }
@@ -204,16 +113,14 @@ function hideRemoveCards() {
 }
 
 function smoothScrollToNextGroup() {
-    const favoritesItem = document.querySelector(".list-favorites-item ");
+    const favoritesItem = document.querySelector(".scroll");
     if (favoritesItem) {
       const galleryItemHeight = favoritesItem.getBoundingClientRect().height;
       window.scrollBy({
-        top: galleryItemHeight * 2, 
+        top: galleryItemHeight * 1, 
         behavior: "smooth",
       });
     }
   }
-
  
-
 savedCardsStorage();
