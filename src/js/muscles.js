@@ -1,7 +1,6 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import { createPaginationExercisesOuter } from './pagination';
-import { exerciseParams } from './search.js';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -23,6 +22,7 @@ function getLoader(act = 'show') {
 
 const params = {
   page: 1,
+  limit: 1,
   filter: 'Muscles',
 };
 
@@ -31,8 +31,8 @@ async function getData(page) {
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
+      limit: params.limit,
       page,
-      limit: exerciseParams.limit,
     },
   });
 
@@ -67,6 +67,11 @@ function createMarkup(results) {
 
 async function handleSearch() {
   // Отримати дані з оновленим фільтром
+  if (window.innerWidth >= 768) {
+    params.limit = 12;
+  } else {
+    params.limit = 8;
+  }
   getData(params.page)
     .then(data => {
       const { results } = data;

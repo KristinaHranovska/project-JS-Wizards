@@ -1,10 +1,4 @@
-import {
-  updateExercisesList,
-  loadExercises,
-  renderExercises,
-  getLoader,
-} from './body-parts.js';
-export { galleryElement, searchInputField, exerciseParams };
+import { updateExercisesList } from './body-parts.js';
 // import axios from 'axios';
 // import icons from '../img/icons/sprite.svg';
 
@@ -103,3 +97,5 @@ function handleClickOnFilterButton(event) {
     sectionHeaderElement.innerHTML = 'Exercises';
   }
 }
+
+export { galleryElement, searchInputField, exerciseParams };

@@ -6,11 +6,22 @@ import { galleryElement, searchInputField, exerciseParams } from './search.js';
 import { createPaginationExercisesInner } from './pagination';
 export { updateExercisesList, loadExercises, renderExercises, getLoader };
 
+const params = {
+  page: 1,
+  limit: 1,
+  filter: 'Muscles',
+};
+
 // Ця функція оновлює список вправ на основі наданого фільтра.Він очищає вміст galleryElement.
 
 function updateExercisesList(filter) {
+  if (window.innerWidth >= 1440) {
+    params.limit = 9;
+  } else {
+    params.limit = 8;
+  }
   galleryElement.innerHTML = '';
-  loadExercises(filter, exerciseParams.page)
+  loadExercises(filter, params.page)
     .then(data => {
       if (data.results.length === 0) {
         document.querySelector('.tui-pagination').style.display = 'none';
@@ -51,7 +62,7 @@ async function loadExercises(filter, page) {
       [filter]: exerciseParams.filterGroup,
       keyword: exerciseParams.keyword,
       page,
-      limit: exerciseParams.limit,
+      limit: params.limit,
     },
   });
   return data.data;
