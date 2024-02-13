@@ -293,7 +293,8 @@
     }
 
     .container-subtext-info {
-        gap: 6px 10px;
+        flex-direction: column;
+        gap: 1px;
     }
 
     .container-section-favorites {
@@ -339,6 +340,10 @@
 @media only screen and (min-width: 1440px) {
     .scroll {
         padding: 10px 0;
+    }
+    .container-subtext-info{
+        flex-direction: row;
+            gap: 5px;
     }
 
     .list-favorites {
