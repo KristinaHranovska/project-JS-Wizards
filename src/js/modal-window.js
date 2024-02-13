@@ -51,6 +51,10 @@ function getExercisesObject(id) {
         .then(({ data }) => {
             const { name, rating, target, bodyPart, equipment, popularity, burnedCalories, description, gifUrl, _id } = data
 
+            const modalWindow = document.querySelector('.modal-window');
+            modalWindow.setAttribute('data-modal-id', _id);
+
+
             const refs = {
                 img: document.querySelector(".js-img"),
                 title: document.querySelector('.js-title'),
@@ -92,7 +96,6 @@ function getExercisesObject(id) {
 }
 
 // Очіщюємо вміст модалки після закриття
-
 function clearModalContent() {
     const refs = {
         img: document.querySelector(".js-img"),

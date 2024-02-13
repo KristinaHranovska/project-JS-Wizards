@@ -1,4 +1,54 @@
-.container-section-favorites {
+  .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 295px;
+      height: 42px;
+      border-radius: 30;
+  }
+
+  .modal-button-favorites {
+      padding: 12px 8px 12px 83px; 
+      background-color: #7E847F;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .modal-button-favorites:hover {
+      background-color: #5F6560;
+  }
+  .modal-button-favorites:focus {
+      background-color: #5F6560;
+  }
+
+  .modal-button-favorites-icon {
+      width: 18px;
+      height: 18px;
+      fill: #fff;
+      position: absolute;
+      top: 50%;
+      padding-right: 83px;
+
+  }
+  @media screen and (min-width: 768px){
+    .modal-buttons{
+        width: 194px;
+        height: 48px;
+    }
+    .modal-button-favorites{
+    padding: 12px 8px 12px 24px;
+    }
+   .modal-button-favorites-icon{
+    width: 20px;
+    height: 20px;
+    padding-right: 24px;
+    }
+  }.container-section-favorites {
     border-radius: 30px;
     padding: 40px 20px 92px;
     max-width: 336px;

@@ -7,19 +7,21 @@
           <use href="./img/icons/sprite.svg#icon-burger-menu"></use>
         </svg>
       </div>
-      <div class="h-peages">
-        <a
-          class="backdrop-button is-active"
-          id="header-button1"
-          href="./index.html"
-        >
-          Home
-        </a>
-
-        <a class="backdrop-button" id="header-button2" href="./favorites.html">
-          Favorites
-        </a>
-      </div>
+      <ul class="header-nav-list">
+        <li class="home d">
+          <a class="link-home" href="./index.html" aria-label="Favorites page"
+            >Home</a
+          >
+        </li>
+        <li class="favorites d">
+          <a
+            class="link-favorites"
+            href="./favorites.html"
+            aria-label="Home page"
+            >Favorites</a
+          >
+        </li>
+      </ul>
       <ul class="icons-list">
         <li class="header-icon">
           <a href="https://www.facebook.com/goITclub/" target="_blank">
@@ -59,7 +61,7 @@
     </div>
     <div class="burger-peages">
       <a
-        class="backdrop-button is-active"
+        class="backdrop-button"
         id="header-button1"
         type="button"
         href="./index.html"

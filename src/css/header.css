@@ -13,7 +13,7 @@
     color: var(--text-dark)
 }
 
-.h-peages {
+.header-nav-list {
     display: none;
 }
 
@@ -56,7 +56,6 @@
 
 @media screen and (min-width: 768px) {
 
-
     .header-logo {
         font-size: 28px;
     }
@@ -71,17 +70,17 @@
         gap: 75px;
     }
 
-    .h-peages {
+    .on-home .header-nav-list {
         display: flex;
-        flex-direction: row;
         justify-content: center;
-        align-items: center;
         width: 211px;
         height: 52px;
-        background-color: var(--accent);
-        padding: 8px 0;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        /* padding-left: 42px;
+        padding-right: 16px; */
         border-radius: 60px;
-        border-style: none;
+        background: #7e847f;
     }
 
     .icons-list {
@@ -91,7 +90,7 @@
     }
 
     .header-icon {
-        border: 2px solid rgba(126, 132, 127, 0.2);
+        border: 2px solid rgba(126, 132, 127, 0.5);
         border-radius: 10px;
         padding-top: 5px;
         width: 44px;
@@ -101,17 +100,56 @@
         align-items: center;
     }
 
-    .home-button.is-active,
-    .favourites-button.is-active {
-        background-color: var(--text-light);
-        color: var(--text-dark);
+    .link-home {
+        position: relative;
+        text-decoration: none;
+        transition: color 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+            transform 2s cubic-bezier(0.23, 1, 0.32, 1);
+
+        display: flex;
+        padding: 6px 26px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        font-family: 'DM Sans';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        border: none;
         width: 96px;
     }
+
+    .link-favorites {
+        position: relative;
+        text-decoration: none;
+        transition: color 1.5s cubic-bezier(0.23, 1, 0.32, 1),
+            transform 2s cubic-bezier(0.23, 1, 0.32, 1);
+
+        display: flex;
+        padding: 6px 26px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        color: var(--white);
+        font-family: 'DM Sans';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        border: none;
+        width: 96px;
+    }
+
+    .link-favorites.active-link,
+    .link-home.active-link {
+        background: white;
+        color: black;
+    }
+
 }
 
 @media screen and (min-width: 1440px) {
-
-
     .header-nav {
         padding: 30px 48px;
 
@@ -182,13 +220,6 @@
     text-align: center;
     padding: 6px 14px;
     line-height: normal;
-
-}
-
-.backdrop-button.is-active.is-active {
-    background-color: var(--text-light);
-    color: var(--text-dark);
-    width: 96px;
 }
 
 .burger-peages {
