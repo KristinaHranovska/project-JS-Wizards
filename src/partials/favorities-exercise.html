@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container">
+    <div class="container-section-favorites">
+      <h2 class="favorites-title">Favorites</h2>
+      <div class="scroll is-hidden">
+        <ul id="favorites-container" class="list-favorites js-gallery"></ul>
+      </div>
+      <div class="container-remove-favorites">
+        <picture>
+          <!-- Desctop -->
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              ./img/favorites/favorites_1440.webp    1x,
+              ./img/favorites/favorites_1440@2x.webp 2x
+            "
+          />
+          <!-- Mobile -->
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              ./img/favorites/favorites_mobile.webp    1x,
+              ./img/favorites/favorites_mobile@2x.webp 2x
+            "
+          />
+          <img
+            class="weight-img"
+            src="./img/favorites/favorites_1440.webp"
+            alt="weight"
+            width="115"
+          />
+        </picture>
+        <p class="remove-favorites-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
