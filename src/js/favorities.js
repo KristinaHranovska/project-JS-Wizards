@@ -112,9 +112,18 @@ function createMarkup(arr) {
                     <h3 class="subtitle-favorites">${name}</h3>
                 </div>
                 <div class="container-subtext-info">                           
-                    <p class="subtext-info">Burned calories: <span class="mini-info">${burnedCalories}/ 3 min</span></p>                          
-                    <p class="subtext-info">Body part: <span class="mini-info">${bodyPart}</span></p>    
-                    <p class="subtext-info">Target: <span class="mini-info">${target}</span></p>                           
+                   <div class="favorites-card-text-wrapper"> 
+                   <h4 class="subtext-info">Burned calories:</h4>  
+                    <p class="mini-info">${burnedCalories}/ 3 min</p>  
+                    </div>
+                    <div class="favorites-card-text-wrapper">
+                    <h4 class="subtext-info">Body part:</h4> 
+                    <p class="mini-info">${bodyPart}</p>  
+                    </div>
+                    <div class="favorites-card-text-wrapper">
+                    <h4 class="subtext-info">Target: </h4>
+                    <p class="mini-info">${target}</p>                           
+                    </div>
                </div>
        </div>
 </li>`)

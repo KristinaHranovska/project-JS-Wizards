@@ -11,7 +11,7 @@ export { getAccess, postAccess };
  * @param {string} options.typeFilter - Тип фільтра, який використовується у URL.
  * @returns {Promise} Об'єкт Promise, який розрішується у відповідь від сервера.
  */
-async function getAccess({ filter, page = 1, typeFilter, id = null }) {
+async function getAccess({ filter, limit, page = 1, typeFilter, id = null }) {
   try {
     const url = id
       ? `https://energyflow.b.goit.study/api/${typeFilter}/${id}`
@@ -26,7 +26,7 @@ async function getAccess({ filter, page = 1, typeFilter, id = null }) {
       },
     });
     return response;
-  } catch {
+  } catch (error) {
     console.error(error.message);
   }
 }

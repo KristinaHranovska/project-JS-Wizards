@@ -65,6 +65,11 @@
     z-index: -1;
 }
 
+.favorites-card-text-wrapper {
+    display: flex;
+    gap: 4px;
+}
+
 @media screen and (min-width: 768px) {
     .modal-buttons {
         width: 194px;
@@ -230,10 +235,15 @@
     font-size: 12px;
     line-height: 1.5;
     color: var(--border-color);
+    font-feature-settings: "clig"off, "liga"off;
 }
 
 .mini-info {
     color: var(--text-dark);
+    font-feature-settings: "clig"off, "liga"off;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* -------------- Remove container favorites -------------- */
@@ -332,15 +342,4 @@
         max-width: 424px;
     }
 
-    .container-subtext-info {
-        flex-wrap: nowrap;
-    }
-
-    .container-subtext-info {
-        gap: 0;
-    }
-
-    .subtext-info {
-        flex: 1 1 auto;
-    }
 }
