@@ -1,8 +1,3 @@
-import './js/burger-menu'
-import './js/quote'
-import './js/favorities'
-import './js/modal-window'
-
 import { getAccess } from './helper/get-access.js';
 import { iziToastFunctions } from './helper/helpers.js';
 const refs = {
