@@ -1,5 +1,6 @@
 import { getAccess } from './helper/get-access.js';
 import { iziToastFunctions } from './helper/helpers.js';
+import icons from '../img/icons/sprite.svg';
 
 const refs = {
     favoritesCard: document.getElementById('favorites-container'),
@@ -93,20 +94,20 @@ function createMarkup(arr) {
             <div class="workout">Workout</div>
             <button type="button" class="button-remove js-remove-favorites">
             <svg class="delete-favorites" data-id="${_id}" width="16" height="16">
-                <use href="./img/icons/sprite.svg#icon-favorites-delete"></use>
+                <use href="${icons}#icon-favorites-delete"></use>
             </svg>
             </button>
             </div>
             <button type="button" class="button-start">
                 Start
                 <svg class="icon-arrow-body" width="14" height="14">
-                    <use href="./img/icons/sprite.svg#icon-arrow-body-parts"></use>
+                    <use href="${icons}#icon-arrow-body-parts"></use>
                 </svg>
             </button>
         </div>                  
                 <div class="container-cards-favorites">
                     <svg class="icon-parts-fitness" width="24" height="24">
-                        <use href="./img/icons/sprite.svg#icon-body-parts-fitness"></use>
+                        <use href="${icons}#icon-body-parts-fitness"></use>
                     </svg>
                     <h3 class="subtitle-favorites">${name}</h3>
                 </div>
