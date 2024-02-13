@@ -3,13 +3,15 @@ import { getAccess } from './helper/get-access';
 const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
 const galleryWindow = document.querySelector('.js-gallery');
+
 const link = document.querySelector('.link-home');
-console.log(link);
-const isActiveLink = link.classList.contains('active-link');
+const isActiveLink = link.getAttribute('href');
+console.log(isActiveLink);
 const currentPage = window.location.pathname;
 
 // Якщо поточна сторінка - index.html, то показуємо блок з кнопкою
-if (currentPage.includes('index.html') || isActiveLink) {
+if (currentPage.includes('index.html') || isActiveLink === './index.html') {
+  console.log(isActiveLink);
   const removeCards = document.querySelector('.buttons-modal');
   if (removeCards) {
     removeCards.classList.remove('visually-hidden');
