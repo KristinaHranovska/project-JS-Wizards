@@ -11,7 +11,6 @@ const removeCards = document.querySelector('.buttons-modal');
 
 // Якщо поточна сторінка - index.html, то показуємо блок з кнопкою
 if (currentPage.includes('index.html') || isActiveLink === './index.html') {
-  console.log(isActiveLink);
   removeCards.classList.remove('visually-hidden');
 }
 
@@ -19,7 +18,6 @@ if (
   currentPage.includes('favorites.html') ||
   isActiveLink === './favorites.html'
 ) {
-  console.log(isActiveLink);
   removeCards.classList.add('visually-hidden');
 }
 galleryWindow.addEventListener('click', openModal);
@@ -36,6 +34,15 @@ function openModal(e) {
       const id = liElement.dataset.id;
       getExercisesObject(id);
     }
+
+    // const modalWindow = document.querySelector('.modal-window');
+
+    // modalWindow.addEventListener('scroll', function () {
+    //   requestAnimationFrame(function () {
+    //     const scrollPos = modalWindow.scrollTop;
+    //     modalWindow.style.transform = `translateY(-${scrollPos}px)`;
+    //   });
+    // });
   }
 }
 
