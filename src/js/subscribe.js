@@ -1,4 +1,4 @@
-import { postAccess } from './helper/get-access'; 
+import { postAccess } from './helper/get-access';
 import { iziToastFunctions } from './helper/helpers';
 
 const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -20,6 +20,9 @@ const subscribeValidity = async (event) => {
         } catch (error) {
             iziToastFunctions.getErrorInfo('The user with this address is already subscribed!');
         }
+
+
+
 
         localStorage.removeItem(feedbackForm);
         footerForm.reset();
