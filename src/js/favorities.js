@@ -1,20 +1,24 @@
 import { getAccess } from './helper/get-access.js';
 import { iziToastFunctions } from './helper/helpers.js';
+
 const refs = {
     favoritesCard: document.getElementById('favorites-container'),
     removeCards: document.querySelector(".container-remove-favorites"),
     deleteButtons: document.querySelectorAll('.button-remove'),
     galleryWindow: document.querySelector('.js-gallery'),
 }
+
 function savedCardsStorage() {
     try {
         const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
         console.log(savedCards);
+
         displayFavoriteCards(savedCards);
     } catch (error) {
         iziToastFunctions.getErrorInfo('Wrong operation!!!');
     }
 }
+
 function displayFavoriteCards(savedCards) {
     if (!savedCards || savedCards.length === 0) {
         showRemoveCards();
@@ -24,29 +28,37 @@ function displayFavoriteCards(savedCards) {
         smoothScrollToNextGroup();
     }
 }
+
 refs.galleryWindow.addEventListener('click', deleteFavorites);
+
 function deleteFavorites(e) {
     if (e.target.classList.contains('js-remove-favorites')) {
         const cardId = e.target.closest('.list-favorites-item').dataset.id;
         removeFavoriteCard(cardId);
         e.target.closest('.list-favorites-item').remove();
+
         const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
         if (savedCards.length === 0) {
             showRemoveCards();
         }
     }
 }
+
 function removeFavoriteCard(id) {
     let savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
     savedCards = savedCards.filter(card => card !== id);
     localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 }
+
 function showRemoveCards() {
     refs.removeCards.classList.remove("is-hidden");
 }
+
 function hideRemoveCards() {
     refs.removeCards.classList.add("is-hidden");
+
 }
+
 function smoothScrollToNextGroup() {
     const favoritesItem = document.querySelector(".scroll");
     if (favoritesItem) {
@@ -57,17 +69,21 @@ function smoothScrollToNextGroup() {
         });
     }
 }
+
 savedCardsStorage();
+
 function createCardFavorites(arr) {
     Promise.all(arr.map(value =>
         getAccess({ typeFilter: 'exercises', id: value })
     ))
         .then(results => {
             const dataList = results.map(result => result.data);
+
             refs.favoritesCard.insertAdjacentHTML("beforeend", createMarkup(dataList));
         })
         .catch(err => console.error(err));
 }
+
 function createMarkup(arr) {
     return arr.map(({ name, target, bodyPart, burnedCalories, _id }) =>
         `<li class="list-favorites-item js-id" data-id="${_id}">
