@@ -33,9 +33,8 @@ function getIdFavorites() {
     refs.removeFromFavoritesBtn.classList.remove('hidden-btn');
     refs.addToFavoritesBtn.classList.add('hidden-btn');
 
-    const storedArrayFavorites = JSON.parse(localStorage.getItem('addKeyID'));
-    storedArrayFavorites.push(cardID);
-    localStorage.setItem('addKeyID', JSON.stringify(storedArrayFavorites));
+    storedArrayAdd.push(cardID); // Оновлення масиву storedArrayAdd
+    localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
 }
 
 refs.removeFromFavoritesBtn.addEventListener('click', () => removeIdFavorites(cardID));
@@ -44,6 +43,7 @@ function removeIdFavorites(cardID) {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
     updateGallery(cardID);
+    storedArrayAdd.splice(storedArrayAdd.indexOf(cardID), 1); // Оновлення масиву storedArrayAdd
 }
 
 function updateGallery(cardID) {
@@ -60,4 +60,4 @@ function updateGallery(cardID) {
 
 function updateLicalStorage() {
     return localStorage.getItem('addKeyID');
-} 
+}
