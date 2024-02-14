@@ -28,6 +28,9 @@ function displayFavoriteCards(savedCards) {
         hideRemoveCards();
         smoothScrollToNextGroup();
     }
+    //
+    checkContainerHeight();
+   
 }
 
 refs.galleryWindow.addEventListener('click', deleteFavorites);
@@ -43,6 +46,9 @@ function deleteFavorites(e) {
             showRemoveCards();
         }
     }
+    // //
+    checkContainerHeight();
+
 }
 
 function removeFavoriteCard(id) {
@@ -65,9 +71,29 @@ function smoothScrollToNextGroup() {
     if (favoritesItem) {
         const galleryItemHeight = favoritesItem.getBoundingClientRect().height;
         window.scrollBy({
-            top: galleryItemHeight * 1,
+            // top: galleryItemHeight * 1,
+            top: 0,
             behavior: "smooth",
         });
+    }
+}
+
+function checkContainerHeight() {
+    const container = refs.favoritesCard;
+    const extraSpace = 200; // Додатковий простір
+    const content = container.querySelector(".list-favorites");
+    const cardHeight = 165; // Висота однієї картки
+    const rowsToShow = 4; // Кількість рядків, після яких з'явиться скролбар
+
+    if (content) {
+        const rowsCount = Math.ceil(content.children.length / 3); // Кількість рядків
+
+        // Перевірка, чи кількість рядків перевищує задану кількість
+        if (rowsCount > rowsToShow) {
+            container.style.overflowY = "scroll";
+        } else {
+            container.style.overflowY = "hidden";
+        }
     }
 }
 
@@ -81,6 +107,9 @@ function createCardFavorites(arr) {
             const dataList = results.map(result => result.data);
 
             refs.favoritesCard.insertAdjacentHTML("beforeend", createMarkup(dataList));
+            //
+            checkContainerHeight();
+                
         })
         .catch(err => console.error(err));
 }
