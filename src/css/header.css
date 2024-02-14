@@ -240,15 +240,15 @@
 }
 
 .backdrop-button {
-    height: 36px;
+    width: 96px;
     color: var(--text-light);
     font-size: 16px;
-    background-color: var(--dark-grey-background);
+    background-color: transparent;
     border-radius: 30px;
     border-style: none;
     display: block;
     text-align: center;
-    padding: 6px 14px;
+    padding: 6px;
     line-height: normal;
 }
 
