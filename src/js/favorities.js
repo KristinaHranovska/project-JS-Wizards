@@ -28,6 +28,9 @@ function displayFavoriteCards(savedCards) {
         hideRemoveCards();
         smoothScrollToNextGroup();
     }
+    //
+    checkContainerHeight();
+   
 }
 
 refs.galleryWindow.addEventListener('click', deleteFavorites);
@@ -43,6 +46,9 @@ function deleteFavorites(e) {
             showRemoveCards();
         }
     }
+    // //
+    checkContainerHeight();
+
 }
 
 function removeFavoriteCard(id) {
@@ -65,9 +71,22 @@ function smoothScrollToNextGroup() {
     if (favoritesItem) {
         const galleryItemHeight = favoritesItem.getBoundingClientRect().height;
         window.scrollBy({
-            top: galleryItemHeight * 1,
+            // top: galleryItemHeight * 1,
+            top: 0,
             behavior: "smooth",
         });
+    }
+}
+
+function checkContainerHeight() {
+    const container = refs.favoritesCard;
+    const extraSpace = 200;
+    const content = container.querySelector(".list-favorites");
+    if (container.scrollHeight > container.clientHeight  + extraSpace) {
+        container.style.overflowY = "scroll";
+        console.log(scrollHeight);
+    } else {
+        container.style.overflowY = "hidden";
     }
 }
 
@@ -81,6 +100,9 @@ function createCardFavorites(arr) {
             const dataList = results.map(result => result.data);
 
             refs.favoritesCard.insertAdjacentHTML("beforeend", createMarkup(dataList));
+            //
+            checkContainerHeight();
+                
         })
         .catch(err => console.error(err));
 }
