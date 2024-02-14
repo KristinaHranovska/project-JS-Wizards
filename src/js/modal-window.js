@@ -4,22 +4,6 @@ const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
 const galleryWindow = document.querySelector('.js-gallery');
 
-const link = document.querySelector('.link-home');
-const isActiveLink = link.getAttribute('href');
-const currentPage = window.location.pathname;
-const removeCards = document.querySelector('.buttons-modal');
-
-// Якщо поточна сторінка - index.html, то показуємо блок з кнопкою
-if (currentPage.includes('index.html') || isActiveLink === './index.html') {
-  removeCards.classList.remove('visually-hidden');
-}
-
-if (
-  currentPage.includes('favorites.html') ||
-  isActiveLink === './favorites.html'
-) {
-  removeCards.classList.add('visually-hidden');
-}
 galleryWindow.addEventListener('click', openModal);
 
 // Відкриття модалки

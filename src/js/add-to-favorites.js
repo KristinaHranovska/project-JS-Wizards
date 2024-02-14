@@ -20,6 +20,7 @@ function getIDModul(e) {
         }
     }
 }
+
 if (!localStorage.getItem('addKeyID')) {
     const emptyArrayAdd = [];
     localStorage.setItem('addKeyID', JSON.stringify(emptyArrayAdd));
@@ -28,6 +29,7 @@ if (!localStorage.getItem('removeKeyID')) {
     const emptyArrayRemove = [];
     localStorage.setItem('removeKeyID', JSON.stringify(emptyArrayRemove));
 }
+
 addToFavoritesBtn.addEventListener('click', getIdFavorites);
 function getIdFavorites() {
     removeFromFavoritesBtn.classList.remove('hidden-btn');
@@ -37,6 +39,7 @@ function getIdFavorites() {
     storedArrayFavorites.push(cardID);
     localStorage.setItem('addKeyID', JSON.stringify(storedArrayFavorites));
 }
+
 removeFromFavoritesBtn.addEventListener('click', removeIdFavorites)
 function removeIdFavorites() {
     removeFromFavoritesBtn.classList.add('hidden-btn');
