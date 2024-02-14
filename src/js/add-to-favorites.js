@@ -1,11 +1,9 @@
 const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
-const storedArrayRemove = JSON.parse(localStorage.getItem('addKremoveKeyIDeyID')) || [];
 let cardID;
 
 const refs = {
     addToFavoritesBtn: document.querySelector('.add-to-favorities'),
     removeFromFavoritesBtn: document.querySelector('.js-remove'),
-    modal: document.querySelector('.modal-window'),
     idModul: document.querySelector('.js-gallery'),
 }
 
@@ -28,10 +26,6 @@ if (!localStorage.getItem('addKeyID')) {
     const emptyArrayAdd = [];
     localStorage.setItem('addKeyID', JSON.stringify(emptyArrayAdd));
 }
-if (!localStorage.getItem('removeKeyID')) {
-    const emptyArrayRemove = [];
-    localStorage.setItem('removeKeyID', JSON.stringify(emptyArrayRemove));
-}
 
 refs.addToFavoritesBtn.addEventListener('click', getIdFavorites);
 function getIdFavorites() {
@@ -43,18 +37,22 @@ function getIdFavorites() {
     localStorage.setItem('addKeyID', JSON.stringify(storedArrayFavorites));
 }
 
-refs.removeFromFavoritesBtn.addEventListener('click', removeIdFavorites)
+refs.removeFromFavoritesBtn.addEventListener('click', removeIdFavorites);
+
 function removeIdFavorites() {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
 
-    const storedArrayRemove = JSON.parse(localStorage.getItem('removeKeyID'));
-    storedArrayRemove.push(cardID);
-    localStorage.setItem('removeKeyID', JSON.stringify(storedArrayRemove));
+    updateGallery();
+}
 
-    const index = storedArrayAdd.indexOf(cardID);
-    if (index !== -1) {
-        storedArrayAdd.splice(index, 1);
-        localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
+function updateGallery() {
+    const savedCards = storedArrayAdd.filter(card => card !== cardID);
+    localStorage.setItem('addKeyID', JSON.stringify(savedCards));
+
+    const cardToRemove = document.querySelector(`.js-id[data-id="${cardID}"]`);
+
+    if (cardToRemove) {
+        cardToRemove.remove();
     }
 }
