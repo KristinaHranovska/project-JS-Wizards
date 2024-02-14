@@ -50,7 +50,7 @@ function updateGallery() {
     const savedCards = storedArrayAdd.filter(card => card !== cardID);
     localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 
-    const cardToRemove = document.querySelector(`.js-id[data-id="${cardID}"]`);
+    const cardToRemove = document.querySelector(`.list-favorites-item[data-id="${cardID}"]`);
 
     if (cardToRemove) {
         cardToRemove.remove();
