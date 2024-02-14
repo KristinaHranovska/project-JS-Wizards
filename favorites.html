@@ -12,8 +12,8 @@
     
     <script type="module" crossorigin src="/project-JS-Wizards/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/project-JS-Wizards/assets/vendor-0a7c832e.js">
-    <link rel="modulepreload" crossorigin href="/project-JS-Wizards/assets/add-to-favorites-c5809637.js">
-    <link rel="stylesheet" href="/project-JS-Wizards/assets/add-to-favorites-30feca42.css">
+    <link rel="modulepreload" crossorigin href="/project-JS-Wizards/assets/add-to-favorites-4b43e91f.js">
+    <link rel="stylesheet" href="/project-JS-Wizards/assets/add-to-favorites-09c5ab47.css">
     <link rel="stylesheet" href="/project-JS-Wizards/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -214,36 +214,48 @@
       <div>
         <div class="modal-exer-thumb">
           <h2 class="modal-title js-title js-capital">exercise</h2>
+
           <div class="raiting">
-            <p class="raiting-number js-raiting"></p>
-            <ul class="raiting-item">
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star non-activ" width="24" height="24">
-                  <use href="/project-JS-Wizards/assets/sprite-afa54ed9.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-            </ul>
+            <p class="raiting-value js-raiting"></p>
+            <div class="raiting-body">
+              <div class="raiting-active"></div>
+              <div class="raiting-items">
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="1"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="2"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="3"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="4"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="5"
+                  name="rating"
+                />
+              </div>
+            </div>
+
+            <!-- <div class="raiting-value">2.64</div> -->
           </div>
+
           <ul class="exer-item">
             <li>
               <h3 class="title-exer">Target</h3>
