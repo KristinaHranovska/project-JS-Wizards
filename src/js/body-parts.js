@@ -29,16 +29,20 @@ function updateExercisesList(filter) {
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
         renderExercises(data.results);
-        document.querySelector('.tui-pagination').style.display = 'flex';
-        createPaginationExercisesInner(data.totalPages).on(
-          'afterMove',
-          ({ page }) => {
-            loadExercises(filter, page).then(data => {
-              galleryElement.innerHTML = '';
-              renderExercises(data.results);
-            });
-          }
-        );
+        if (data.totalPages > 1) {
+          document.querySelector('.tui-pagination').style.display = 'flex';
+          createPaginationExercisesInner(data.totalPages).on(
+            'afterMove',
+            ({ page }) => {
+              loadExercises(filter, page).then(data => {
+                galleryElement.innerHTML = '';
+                renderExercises(data.results);
+              });
+            }
+          );
+        } else {
+          document.querySelector('.tui-pagination').style.display = 'none';
+        }
       }
       getLoader('hide');
     })
