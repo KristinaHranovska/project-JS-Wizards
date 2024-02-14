@@ -69,4 +69,3 @@ window.addEventListener('load', () => {
     favoritesButton.classList.remove('active-link');
   }
 });
-
