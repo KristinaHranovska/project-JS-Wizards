@@ -59,6 +59,10 @@
         display: none;
     }
 
+    .background-menu {
+        display: none;
+    }
+
     .header-logo {
         font-size: 28px;
     }
