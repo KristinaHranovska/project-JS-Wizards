@@ -1,6 +1,3 @@
-const favoritesButton = document.querySelector('.link-favorites');
-const homeButton = document.querySelector('.link-home');
-
 (() => {
   const refs = {
     openModalBtn: document.querySelector('.burger-menu-open'),
@@ -14,7 +11,23 @@ const homeButton = document.querySelector('.link-home');
   refs.openModalBtn.addEventListener('click', function () {
     toggleModal();
     disableScroll();
+
+    //Для активної лінки
+    const homeButtons = document.getElementsByClassName('js-main-link-home');
+    const favoritesButtons = document.getElementsByClassName('js-main-link-favorites');
+    const currentPath = window.location.pathname;
+    const targetPage = 'favorites.html';
+
+    if (currentPath === '/' + targetPage) {
+      Array.from(favoritesButtons).forEach(button => button.classList.add('active-link'));
+      Array.from(homeButtons).forEach(button => button.classList.remove('active-link'));
+    } else {
+      Array.from(homeButtons).forEach(button => button.classList.add('active-link'));
+      Array.from(favoritesButtons).forEach(button => button.classList.remove('active-link'));
+    }
+
   });
+
   refs.closeModalBtn.addEventListener('click', function () {
     toggleModal();
     enableScroll();
@@ -42,6 +55,10 @@ const homeButton = document.querySelector('.link-home');
     document.body.style.overflow = '';
   }
 })();
+
+
+const favoritesButton = document.querySelector('.link-favorites');
+const homeButton = document.querySelector('.link-home');
 
 window.addEventListener('load', () => {
   if (window.location.pathname.endsWith('favorites.html')) {

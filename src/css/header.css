@@ -5,6 +5,11 @@
     width: 100%;
 }
 
+.backdrop-button.active-link {
+    background: var(--white-color);
+    color: var(--text-dark);
+}
+
 .header-logo {
     font-weight: 700;
     font-size: 16px;
