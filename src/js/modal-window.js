@@ -34,15 +34,6 @@ function openModal(e) {
       const id = liElement.dataset.id;
       getExercisesObject(id);
     }
-
-    // const modalWindow = document.querySelector('.modal-window');
-
-    // modalWindow.addEventListener('scroll', function () {
-    //   requestAnimationFrame(function () {
-    //     const scrollPos = modalWindow.scrollTop;
-    //     modalWindow.style.transform = `translateY(-${scrollPos}px)`;
-    //   });
-    // });
   }
 }
 

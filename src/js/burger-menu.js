@@ -6,6 +6,7 @@ const homeButton = document.querySelector('.link-home');
     openModalBtn: document.querySelector('.burger-menu-open'),
     closeModalBtn: document.querySelector('.burger-closed'),
     modal: document.querySelector('.backdrop'),
+    backdrop: document.querySelector('.background-menu'),
   };
 
   const backdrop = document.querySelector('.backdrop');
@@ -20,8 +21,16 @@ const homeButton = document.querySelector('.link-home');
     enableScroll();
   });
 
+  document.addEventListener('click', function (event) {
+    if (!refs.modal.contains(event.target) && !refs.openModalBtn.contains(event.target)) {
+      toggleModal();
+      enableScroll();
+    }
+  });
+
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
+    refs.backdrop.classList.toggle('hidden');
   }
 
   // Функція для заборони прокручування
@@ -44,3 +53,4 @@ window.addEventListener('load', () => {
     favoritesButton.classList.remove('active-link');
   }
 });
+
