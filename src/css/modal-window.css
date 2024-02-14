@@ -89,40 +89,15 @@
     margin-bottom: 10px;
 }
 
-.raiting {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-
-    margin-bottom: 20px;
-}
-
-/* .raiting-number {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--text-dark);
-} */
-
-/* .raiting-item {
-    display: flex;
-    align-items: center;
-}
-
-.icon-star {
-    fill: var(--star);
-}
-
-.icon-star.non-activ {
-    fill: var(--not-color-star);
-} */
-
 /* Рейтинг зірочки */
 .raiting {
     display: flex;
-    align-items: flex-end;
-    font-size: 40px;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
     line-height: 0.75;
+
+    margin-bottom: 16px;
 }
 
 .raiting-body {
@@ -133,6 +108,7 @@
     content: '★★★★★';
     display: block;
     color: var(--not-color-star);
+
 }
 
 .raiting-active {
@@ -167,6 +143,7 @@
     flex: 0 0 20%;
     height: 100%;
     opacity: 0;
+
 }
 
 .raiting-value {

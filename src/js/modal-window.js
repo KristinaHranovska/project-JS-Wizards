@@ -127,7 +127,6 @@ function clearModalContent() {
   });
 }
 
-
 // Зірочки
 
 function initRatings() {
@@ -147,7 +146,6 @@ function initRatings() {
   function initRatingVars(rating) {
     ratingActive = rating.querySelector('.raiting-active');
     ratingValue = rating.getElementsByClassName('raiting-value')[0];
-    console.log(ratingValue)
   }
 
   function setRatingActiveWidth(index = ratingValue.innerHTML) {

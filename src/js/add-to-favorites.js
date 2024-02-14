@@ -38,23 +38,15 @@ function getIdFavorites() {
     localStorage.setItem('addKeyID', JSON.stringify(storedArrayFavorites));
 }
 
-refs.removeFromFavoritesBtn.addEventListener('click', removeIdFavorites);
+refs.removeFromFavoritesBtn.addEventListener('click', () => removeIdFavorites(cardID));
 
-function removeIdFavorites() {
+function removeIdFavorites(cardID) {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
-
-    // const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
-    // const index = storedArrayAdd.indexOf(cardID);
-    // if (index !== -1) {
-    //     storedArrayAdd.splice(index, 1);
-    //     localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
-    // }
-
-    updateGallery();
+    updateGallery(cardID);
 }
 
-function updateGallery() {
+function updateGallery(cardID) {
     const savedCards = storedArrayAdd.filter(card => card !== cardID);
     localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 
@@ -64,6 +56,7 @@ function updateGallery() {
         cardToRemove.remove();
     }
 }
+
 
 function updateLicalStorage() {
     return localStorage.getItem('addKeyID');
