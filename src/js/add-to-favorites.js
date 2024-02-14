@@ -12,7 +12,8 @@ function getIDModul(e) {
     const liElement = e.target.closest('.js-id');
     if (liElement) {
         cardID = liElement.dataset.id;
-        if (storedArrayAdd.includes(cardID)) {
+
+        if (updateLicalStorage().includes(cardID)) {
             refs.removeFromFavoritesBtn.classList.remove('hidden-btn');
             refs.addToFavoritesBtn.classList.add('hidden-btn');
         } else {
@@ -56,3 +57,7 @@ function updateGallery() {
         cardToRemove.remove();
     }
 }
+
+function updateLicalStorage() {
+    return localStorage.getItem('addKeyID');
+} 
