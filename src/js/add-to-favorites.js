@@ -1,22 +1,25 @@
-const addToFavoritesBtn = document.querySelector('.add-to-favorities');
-const removeFromFavoritesBtn = document.querySelector('.js-remove');
-const modal = document.querySelector('.modal-window');
-const idModul = document.querySelector('.js-gallery');
 const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
 const storedArrayRemove = JSON.parse(localStorage.getItem('addKremoveKeyIDeyID')) || [];
 let cardID;
 
-idModul.addEventListener('click', getIDModul);
+const refs = {
+    addToFavoritesBtn: document.querySelector('.add-to-favorities'),
+    removeFromFavoritesBtn: document.querySelector('.js-remove'),
+    modal: document.querySelector('.modal-window'),
+    idModul: document.querySelector('.js-gallery'),
+}
+
+refs.idModul.addEventListener('click', getIDModul);
 function getIDModul(e) {
     const liElement = e.target.closest('.js-id');
     if (liElement) {
         cardID = liElement.dataset.id;
         if (storedArrayAdd.includes(cardID)) {
-            removeFromFavoritesBtn.classList.remove('hidden-btn');
-            addToFavoritesBtn.classList.add('hidden-btn');
+            refs.removeFromFavoritesBtn.classList.remove('hidden-btn');
+            refs.addToFavoritesBtn.classList.add('hidden-btn');
         } else {
-            removeFromFavoritesBtn.classList.add('hidden-btn');
-            addToFavoritesBtn.classList.remove('hidden-btn');
+            refs.removeFromFavoritesBtn.classList.add('hidden-btn');
+            refs.addToFavoritesBtn.classList.remove('hidden-btn');
         }
     }
 }
@@ -30,20 +33,20 @@ if (!localStorage.getItem('removeKeyID')) {
     localStorage.setItem('removeKeyID', JSON.stringify(emptyArrayRemove));
 }
 
-addToFavoritesBtn.addEventListener('click', getIdFavorites);
+refs.addToFavoritesBtn.addEventListener('click', getIdFavorites);
 function getIdFavorites() {
-    removeFromFavoritesBtn.classList.remove('hidden-btn');
-    addToFavoritesBtn.classList.add('hidden-btn');
+    refs.removeFromFavoritesBtn.classList.remove('hidden-btn');
+    refs.addToFavoritesBtn.classList.add('hidden-btn');
 
     const storedArrayFavorites = JSON.parse(localStorage.getItem('addKeyID'));
     storedArrayFavorites.push(cardID);
     localStorage.setItem('addKeyID', JSON.stringify(storedArrayFavorites));
 }
 
-removeFromFavoritesBtn.addEventListener('click', removeIdFavorites)
+refs.removeFromFavoritesBtn.addEventListener('click', removeIdFavorites)
 function removeIdFavorites() {
-    removeFromFavoritesBtn.classList.add('hidden-btn');
-    addToFavoritesBtn.classList.remove('hidden-btn');
+    refs.removeFromFavoritesBtn.classList.add('hidden-btn');
+    refs.addToFavoritesBtn.classList.remove('hidden-btn');
 
     const storedArrayRemove = JSON.parse(localStorage.getItem('removeKeyID'));
     storedArrayRemove.push(cardID);
