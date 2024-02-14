@@ -9,8 +9,7 @@ const homeButton = document.querySelector('.link-home');
     backdrop: document.querySelector('.background-menu'),
   };
 
-  const backdrop = document.querySelector('.backdrop');
-  backdrop.classList.add('is-hidden');
+  refs.modal.classList.add('is-hidden');
 
   refs.openModalBtn.addEventListener('click', function () {
     toggleModal();
@@ -21,8 +20,8 @@ const homeButton = document.querySelector('.link-home');
     enableScroll();
   });
 
-  document.addEventListener('click', function (event) {
-    if (!refs.modal.contains(event.target) && !refs.openModalBtn.contains(event.target)) {
+  refs.backdrop.addEventListener('click', function (event) {
+    if (event.target === refs.backdrop) {
       toggleModal();
       enableScroll();
     }
