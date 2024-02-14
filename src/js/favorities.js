@@ -80,13 +80,20 @@ function smoothScrollToNextGroup() {
 
 function checkContainerHeight() {
     const container = refs.favoritesCard;
-    const extraSpace = 200;
+    const extraSpace = 200; // Додатковий простір
     const content = container.querySelector(".list-favorites");
-    if (container.scrollHeight > container.clientHeight  + extraSpace) {
-        container.style.overflowY = "scroll";
-        console.log(scrollHeight);
-    } else {
-        container.style.overflowY = "hidden";
+    const cardHeight = 165; // Висота однієї картки
+    const rowsToShow = 4; // Кількість рядків, після яких з'явиться скролбар
+
+    if (content) {
+        const rowsCount = Math.ceil(content.children.length / 3); // Кількість рядків
+
+        // Перевірка, чи кількість рядків перевищує задану кількість
+        if (rowsCount > rowsToShow) {
+            container.style.overflowY = "scroll";
+        } else {
+            container.style.overflowY = "hidden";
+        }
     }
 }
 
