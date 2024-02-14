@@ -123,6 +123,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: 490px;
+
+    padding: 5px 0;
 }
 
 .scroll::-webkit-scrollbar {
@@ -230,7 +232,8 @@
 .container-subtext-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 16px;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .subtext-info {
