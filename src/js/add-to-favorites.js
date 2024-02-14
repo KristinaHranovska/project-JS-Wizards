@@ -44,6 +44,13 @@ function removeIdFavorites() {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
 
+    const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
+    const index = storedArrayAdd.indexOf(cardID);
+    if (index !== -1) {
+        storedArrayAdd.splice(index, 1);
+        localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
+    }
+
     updateGallery();
 }
 
