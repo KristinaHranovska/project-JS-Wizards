@@ -348,10 +348,7 @@
   }
 
   .ex-list-no-result {
-    padding-top: 222px;
-    padding-bottom: 585px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 230px 50px;
   }
 
   .exercises-card {
@@ -359,8 +356,6 @@
   }
 
   .exercise-item {
-    /* width: 313px;
-    height: 165px; */
     flex-basis: calc((100% - 14px) / 2);
   }
 

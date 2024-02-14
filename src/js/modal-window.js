@@ -1,16 +1,19 @@
 import { getAccess } from './helper/get-access';
 
-const backdrop = document.querySelector('.backdrop-thumb');
-const closeIcon = document.querySelector('.js-modal-window');
-const galleryWindow = document.querySelector('.js-gallery');
+const refs = {
+  backdrop: document.querySelector('.backdrop-thumb'),
+  closeIcon: document.querySelector('.js-modal-window'),
+  galleryWindow: document.querySelector('.js-gallery'),
+}
+
 const raitings = document.querySelectorAll('.raiting')
 
-galleryWindow.addEventListener('click', openModal);
+refs.galleryWindow.addEventListener('click', openModal);
 
 // Відкриття модалки
 function openModal(e) {
   if (e.target.classList.contains('js-start')) {
-    backdrop.classList.remove('is-open');
+    refs.backdrop.classList.remove('is-open');
     document.body.style.overflow = 'hidden';
 
     const liElement = e.target.closest('.js-id');
@@ -23,11 +26,11 @@ function openModal(e) {
 }
 
 // Закриття модального вікна
-closeIcon.addEventListener('click', closeModal);
+refs.closeIcon.addEventListener('click', closeModal);
 document.addEventListener('keydown', closeModalByEsc);
 
 function closeModal(e) {
-  backdrop.classList.add('is-open');
+  refs.backdrop.classList.add('is-open');
   document.body.style.overflow = '';
 
   clearModalContent();
@@ -35,11 +38,11 @@ function closeModal(e) {
 
 function closeModalByEsc(e) {
   if (e.code === 'Escape') {
-    backdrop.classList.add('is-open');
+    refs.backdrop.classList.add('is-open');
     document.body.style.overflow = '';
   }
 }
-backdrop.addEventListener('click', function (event) {
+refs.backdrop.addEventListener('click', function (event) {
   if (event.target === this) {
     closeModal();
   }

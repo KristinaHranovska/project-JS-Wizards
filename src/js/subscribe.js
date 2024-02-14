@@ -2,10 +2,12 @@ import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-const footerForm = document.querySelector('.footer-subscription-form');
-const footerInput = document.querySelector('.footer-subscription-input');
-const feedbackForm = "feedback-subscribe-state";
+const refs = {
+    emailPattern: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+    footerForm: document.querySelector('.footer-subscription-form'),
+    footerInput: document.querySelector('.footer-subscription-input'),
+    feedbackForm: "feedback-subscribe-state",
+}
 
 const subscribeEmail = async (email) => {
     try {
@@ -19,9 +21,9 @@ const subscribeEmail = async (email) => {
 const subscribeValidity = async (event) => {
     event.preventDefault();
 
-    const email = footerInput.value.trim();
+    const email = refs.footerInput.value.trim();
 
-    if (!emailPattern.test(email)) {
+    if (!refs.emailPattern.test(email)) {
         iziToast.error({
             message: 'Enter the correct email!'
         });
@@ -37,18 +39,15 @@ const subscribeValidity = async (event) => {
             });
         }
 
-
-
-
-        localStorage.removeItem(feedbackForm);
-        footerForm.reset();
+        localStorage.removeItem(refs.feedbackForm);
+        refs.footerForm.reset();
     }
 };
 
-footerForm.addEventListener('submit', subscribeValidity);
+refs.footerForm.addEventListener('submit', subscribeValidity);
 
-footerForm.addEventListener('input', (event) => {
-    const footerEmail = footerInput.value.trim();
+refs.footerForm.addEventListener('input', () => {
+    const footerEmail = refs.footerInput.value.trim();
     const formData = JSON.stringify({ footerEmail });
-    localStorage.setItem(feedbackForm, formData);
+    localStorage.setItem(refs.feedbackForm, formData);
 });

@@ -30,7 +30,7 @@ function displayFavoriteCards(savedCards) {
     }
     //
     checkContainerHeight();
-   
+
 }
 
 refs.galleryWindow.addEventListener('click', deleteFavorites);
@@ -71,7 +71,6 @@ function smoothScrollToNextGroup() {
     if (favoritesItem) {
         const galleryItemHeight = favoritesItem.getBoundingClientRect().height;
         window.scrollBy({
-            // top: galleryItemHeight * 1,
             top: 0,
             behavior: "smooth",
         });
@@ -109,7 +108,7 @@ function createCardFavorites(arr) {
             refs.favoritesCard.insertAdjacentHTML("beforeend", createMarkup(dataList));
             //
             checkContainerHeight();
-                
+
         })
         .catch(err => console.error(err));
 }

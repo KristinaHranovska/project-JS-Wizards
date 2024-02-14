@@ -1,6 +1,4 @@
 import { updateExercisesList } from './body-parts.js';
-// import axios from 'axios';
-// import icons from '../img/icons/sprite.svg';
 
 const exerciseParams = {
   page: 1,
@@ -10,38 +8,39 @@ const exerciseParams = {
 };
 
 const galleryElement = document.querySelector('.gallery');
+const searchInputField = document.querySelector('.search-input');
 
 if (galleryElement) {
   galleryElement.addEventListener('click', handleClickOnCard);
   galleryElement.classList.add('exercises-card');
 }
 
-const searchButton = document.querySelector('.search-btn');
-const clearSearchButton = document.querySelector('.search-clear-btn');
-const searchInputField = document.querySelector('.search-input');
-const filterButtonsContainer = document.querySelector('.exercises-btns-div');
-const searchFormContainer = document.querySelector('.ex-search');
-const sectionHeaderElement = document.querySelector('.exercises-header');
+const refs = {
+  searchButton: document.querySelector('.search-btn'),
+  clearSearchButton: document.querySelector('.search-clear-btn'),
+  filterButtonsContainer: document.querySelector('.exercises-btns-div'),
+  searchFormContainer: document.querySelector('.ex-search'),
+  sectionHeaderElement: document.querySelector('.exercises-header'),
+}
 
 // обробляємо клік по карточці для групи вправ
 
 function handleClickOnCard(event) {
   event.preventDefault();
   if (event.target.closest('ul').dataset.exercises) {
-    searchButton.addEventListener('click', handleSearchButtonClick);
-    clearSearchButton.addEventListener('click', handleClearSearchInput);
+    refs.searchButton.addEventListener('click', handleSearchButtonClick);
+    refs.clearSearchButton.addEventListener('click', handleClearSearchInput);
     searchInputField.addEventListener('input', handleSearchInput);
-    filterButtonsContainer.addEventListener('click', handleClickOnFilterButton);
-    searchFormContainer.style.display = 'block';
+    refs.filterButtonsContainer.addEventListener('click', handleClickOnFilterButton);
+    refs.searchFormContainer.style.display = 'block';
 
     const filterButton = document.querySelector('.exercises-button.active');
     exerciseParams.filter = filterButton.dataset.filter;
     exerciseParams.filterGroup = event.target.closest('ul').dataset.exercises;
-    const headerContent = `Exercises / <span class="head-small">${
-      exerciseParams.filterGroup.charAt(0).toUpperCase() +
+    const headerContent = `Exercises / <span class="head-small">${exerciseParams.filterGroup.charAt(0).toUpperCase() +
       exerciseParams.filterGroup.slice(1)
-    }</span>`;
-    sectionHeaderElement.innerHTML = headerContent;
+      }</span>`;
+    refs.sectionHeaderElement.innerHTML = headerContent;
     updateExercisesList(exerciseParams.filter);
   }
   return;
@@ -56,7 +55,7 @@ function handleSearchButtonClick(event) {
     updateExercisesList(exerciseParams.filter, true);
 
     searchInputField.value = '';
-    clearSearchButton.style.visibility = 'hidden';
+    refs.clearSearchButton.style.visibility = 'hidden';
   }
   return;
 }
@@ -65,9 +64,9 @@ function handleSearchButtonClick(event) {
 
 function handleSearchInput() {
   if (searchInputField.value.length > 0) {
-    clearSearchButton.style.visibility = 'visible';
+    refs.clearSearchButton.style.visibility = 'visible';
   } else {
-    clearSearchButton.style.visibility = 'hidden';
+    refs.clearSearchButton.style.visibility = 'hidden';
   }
 }
 
@@ -75,7 +74,7 @@ function handleSearchInput() {
 
 function handleClearSearchInput() {
   searchInputField.value = '';
-  clearSearchButton.style.visibility = 'hidden';
+  refs.clearSearchButton.style.visibility = 'hidden';
   exerciseParams.page = 1;
   updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
 }
@@ -86,7 +85,7 @@ searchInputField.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     const keyword = searchInputField.value.trim().toLowerCase();
     exerciseParams.keyword = keyword;
-    clearSearchButton.style.visibility = 'hidden';
+    refs.clearSearchButton.style.visibility = 'hidden';
     exerciseParams.page = 1;
     updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
     searchInputField.value = '';
@@ -98,19 +97,19 @@ searchInputField.addEventListener('keypress', function (event) {
 function handleClickOnFilterButton(event) {
   if (event.target.tagName === 'BUTTON') {
     searchInputField.value = '';
-    searchFormContainer.style.display = 'none';
+    refs.searchFormContainer.style.display = 'none';
     galleryElement.innerHTML = '';
     galleryElement.classList.remove('exercises-card');
-    searchButton.removeEventListener('click', handleSearchButtonClick);
-    clearSearchButton.removeEventListener('click', handleClearSearchInput);
+    refs.searchButton.removeEventListener('click', handleSearchButtonClick);
+    refs.clearSearchButton.removeEventListener('click', handleClearSearchInput);
     searchInputField.removeEventListener('input', handleSearchInput);
-    filterButtonsContainer.removeEventListener(
+    refs.filterButtonsContainer.removeEventListener(
       'click',
       handleClickOnFilterButton
     );
 
     exerciseParams.page = 1;
-    sectionHeaderElement.innerHTML = 'Exercises';
+    refs.sectionHeaderElement.innerHTML = 'Exercises';
   }
 }
 
