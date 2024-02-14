@@ -46,7 +46,7 @@ function handleClickOnCard(event) {
   }
   return;
 }
-// обробляємо клік по кнопці пошуку
+// обробляємо клік по кнопці пошуку  і також очищаємо поле пошуку
 
 function handleSearchButtonClick(event) {
   event.preventDefault();
@@ -54,6 +54,9 @@ function handleSearchButtonClick(event) {
     exerciseParams.page = 1;
     exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
     updateExercisesList(exerciseParams.filter, true);
+
+    searchInputField.value = '';
+    clearSearchButton.style.visibility = 'hidden';
   }
   return;
 }
@@ -76,6 +79,19 @@ function handleClearSearchInput() {
   exerciseParams.page = 1;
   updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
 }
+
+// Відбувається пошук по пошуковому слову та очищаємо поле пошуку при натисканні на enter
+
+searchInputField.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    const keyword = searchInputField.value.trim().toLowerCase();
+    exerciseParams.keyword = keyword;
+    clearSearchButton.style.visibility = 'hidden';
+    exerciseParams.page = 1;
+    updateExercisesList(exerciseParams.filter, exerciseParams.filterGroup);
+    searchInputField.value = '';
+  }
+});
 
 // Обробляємо клік по одній з трьох кнопок. Видаляємо слухачі подій. Очищаємо поле пошуку.
 
