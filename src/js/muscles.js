@@ -76,17 +76,21 @@ async function handleSearch() {
     .then(data => {
       const { results } = data;
       createMarkup(results);
-      document.querySelector('.tui-pagination').style.display = 'flex';
-      createPaginationExercisesOuter(data.totalPages).on(
-        'afterMove',
-        ({ page }) => {
-          getData(page).then(data => {
-            const { results } = data;
-            refs.gallery.innerHTML = '';
-            createMarkup(results);
-          });
-        }
-      );
+      if (data.totalPages > 1) {
+        document.querySelector('.tui-pagination').style.display = 'flex';
+        createPaginationExercisesOuter(data.totalPages).on(
+          'afterMove',
+          ({ page }) => {
+            getData(page).then(data => {
+              const { results } = data;
+              refs.gallery.innerHTML = '';
+              createMarkup(results);
+            });
+          }
+        );
+      } else {
+        document.querySelector('.tui-pagination').style.display = 'none';
+      }
     })
     .catch(error => {
       handleError(error.message);
