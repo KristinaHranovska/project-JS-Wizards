@@ -10,36 +10,48 @@
       <div>
         <div class="modal-exer-thumb">
           <h2 class="modal-title js-title js-capital">exercise</h2>
+
           <div class="raiting">
-            <p class="raiting-number js-raiting"></p>
-            <ul class="raiting-item">
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="./img/icons/sprite.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="./img/icons/sprite.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="./img/icons/sprite.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star" width="24" height="24">
-                  <use href="./img/icons/sprite.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-              <li>
-                <svg class="icon-star non-activ" width="24" height="24">
-                  <use href="./img/icons/sprite.svg#icon-rating-star"></use>
-                </svg>
-              </li>
-            </ul>
+            <p class="raiting-value js-raiting"></p>
+            <div class="raiting-body">
+              <div class="raiting-active"></div>
+              <div class="raiting-items">
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="1"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="2"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="3"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="4"
+                  name="rating"
+                />
+                <input
+                  type="radio"
+                  class="raiting-item"
+                  value="5"
+                  name="rating"
+                />
+              </div>
+            </div>
+
+            <!-- <div class="raiting-value">2.64</div> -->
           </div>
+
           <ul class="exer-item">
             <li>
               <h3 class="title-exer">Target</h3>

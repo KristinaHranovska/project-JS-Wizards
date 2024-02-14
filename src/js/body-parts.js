@@ -82,9 +82,7 @@ function renderExercises(data) {
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
           <span class="ex-rating-group">
-            <span class="ex-item-rating">${Math.round(i.rating).toFixed(
-              1
-            )}</span>
+            <span class="ex-item-rating">${i.rating}</span>
             <svg class="ex-star-icon" width="18" height="18"><use href="${icons}#icon-rating-star"></use></svg>
           </span>
         </span>
@@ -95,8 +93,7 @@ function renderExercises(data) {
       </div>
       <span class="ex-title">
         <span class="ex-run-men"><svg class="ex-icon-run" width="14" height="14"><use href="${icons}#icon-body-parts-fitness"></use></svg></span>
-        <h3 class="ex-item-name">${
-          i.name.charAt(0).toUpperCase() + i.name.slice(1)
+        <h3 class="ex-item-name">${i.name.charAt(0).toUpperCase() + i.name.slice(1)
         }</h3>
       </span>
       <div class="ex-item-info">
@@ -106,15 +103,13 @@ function renderExercises(data) {
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Body part:</span>
-          <span class="ex-item-value">${
-            i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
-          }</span>
+          <span class="ex-item-value">${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)
+        }</span>
         </span>
         <span class="ex-info-group">
           <span class="ex-item-desc">Target:</span>
-          <span class="ex-item-value">${
-            i.target.charAt(0).toUpperCase() + i.target.slice(1)
-          }</span>
+          <span class="ex-item-value">${i.target.charAt(0).toUpperCase() + i.target.slice(1)
+        }</span>
         </span>
       </div>
     </li>`

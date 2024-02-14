@@ -3,6 +3,7 @@ import { getAccess } from './helper/get-access';
 const backdrop = document.querySelector('.backdrop-thumb');
 const closeIcon = document.querySelector('.js-modal-window');
 const galleryWindow = document.querySelector('.js-gallery');
+const raitings = document.querySelectorAll('.raiting')
 
 galleryWindow.addEventListener('click', openModal);
 
@@ -64,6 +65,7 @@ function getExercisesObject(id) {
       const modalWindow = document.querySelector('.modal-window');
       modalWindow.setAttribute('data-modal-id', _id);
 
+
       const refs = {
         img: document.querySelector('.js-img'),
         title: document.querySelector('.js-title'),
@@ -76,29 +78,19 @@ function getExercisesObject(id) {
         descriptionValue: document.querySelector('.js-description'),
       };
 
-      const fixedRating = Math.round(rating).toFixed(1);
-
-      const stars = document.querySelectorAll('.raiting-item .icon-star');
-
-      stars.forEach((star, index) => {
-        if (index < Math.floor(fixedRating)) {
-          star.classList.remove('non-activ');
-        } else if (index === Math.floor(fixedRating) && fixedRating % 1 !== 0) {
-          star.classList.remove('non-activ');
-        } else {
-          star.classList.add('non-activ');
-        }
-      });
-
       refs.img.setAttribute('src', gifUrl);
       refs.title.textContent = name.charAt(0).toUpperCase() + name.slice(1);
-      refs.raiting.textContent = fixedRating;
+      refs.raiting.textContent = rating;
       refs.targetValue.textContent = target;
       refs.bodyPartValue.textContent = bodyPart;
       refs.equipmentValue.textContent = equipment;
       refs.popularValue.textContent = popularity;
       refs.caloriesValue.textContent = burnedCalories;
       refs.descriptionValue.textContent = description;
+
+      if (raitings.length > 0) {
+        initRatings();
+      }
     })
     .catch(err => console.error(err));
 }
@@ -133,4 +125,34 @@ function clearModalContent() {
   stars.forEach(star => {
     star.classList.add('non-activ');
   });
+}
+
+
+// Зірочки
+
+function initRatings() {
+  let ratingActive, ratingValue;
+
+  for (let i = 0; i < raitings.length; i++) {
+    const rating = raitings[i];
+    initRatings(rating);
+  }
+
+  function initRatings(rating) {
+    initRatingVars(rating);
+
+    setRatingActiveWidth();
+  }
+
+  function initRatingVars(rating) {
+    ratingActive = rating.querySelector('.raiting-active');
+    ratingValue = rating.getElementsByClassName('raiting-value')[0];
+    console.log(ratingValue)
+  }
+
+  function setRatingActiveWidth(index = ratingValue.innerHTML) {
+    const ratingActiveWidth = index / 0.05;
+    ratingActive.style.width = `${ratingActiveWidth}%`
+  }
+
 }
