@@ -18,6 +18,8 @@
     const currentPath = window.location.pathname;
     const targetPage = 'favorites.html';
 
+    console.log(currentPath)
+
     if (currentPath === '/' + targetPage) {
       Array.from(favoritesButtons).forEach(button => button.classList.add('active-link'));
       Array.from(homeButtons).forEach(button => button.classList.remove('active-link'));
