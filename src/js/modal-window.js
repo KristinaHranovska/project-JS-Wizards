@@ -61,7 +61,7 @@ function getExercisesObject(id) {
         popularity,
         burnedCalories,
         description,
-        gifUrl,
+        gifUr,
         _id,
       } = data;
 
@@ -81,7 +81,7 @@ function getExercisesObject(id) {
         descriptionValue: document.querySelector('.js-description'),
       };
 
-      refs.img.setAttribute('src', gifUrl);
+      refs.img.setAttribute('src', gifUr || './img/picture/energyflow.png');
       refs.title.textContent = name.charAt(0).toUpperCase() + name.slice(1);
       refs.raiting.textContent = rating;
       refs.targetValue.textContent = target;
@@ -95,7 +95,11 @@ function getExercisesObject(id) {
         initRatings();
       }
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error(err);
+      const img = document.querySelector('.js-img');
+      img.setAttribute('src', './img/picture/energyflow.png');
+    });
 }
 
 // Очіщюємо вміст модалки після закриття
