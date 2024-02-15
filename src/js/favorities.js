@@ -32,20 +32,43 @@ function displayFavoriteCards(savedCards) {
 
 }
 
+// refs.galleryWindow.addEventListener('click', deleteFavorites);
+
+// function deleteFavorites(e) {
+//     if (e.target.classList.contains('js-remove-favorites')) {
+//         const cardId = e.target.closest('.list-favorites-item').dataset.id;
+//         removeFavoriteCard(cardId);
+//         e.target.closest('.list-favorites-item').remove();
+
+//         const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
+//         if (savedCards.length === 0) {
+//             showRemoveCards();
+//         }
+//     }
+// }
+
 refs.galleryWindow.addEventListener('click', deleteFavorites);
 
 function deleteFavorites(e) {
     if (e.target.classList.contains('js-remove-favorites')) {
-        const cardId = e.target.closest('.list-favorites-item').dataset.id;
-        removeFavoriteCard(cardId);
-        e.target.closest('.list-favorites-item').remove();
+        const card = e.target.closest('.list-favorites-item');
 
-        const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
-        if (savedCards.length === 0) {
-            showRemoveCards();
-        }
+        card.classList.add('animation-items-remove'); // Додаємо клас для анімації видалення
+
+        setTimeout(() => {
+            const cardId = card.dataset.id;
+            removeFavoriteCard(cardId);
+            card.remove();
+
+            const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
+            if (savedCards.length === 0) {
+                showRemoveCards();
+            }
+        }, 500); // Час, необхідний для виконання анімації
     }
 }
+
+
 
 function removeFavoriteCard(id) {
     let savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];

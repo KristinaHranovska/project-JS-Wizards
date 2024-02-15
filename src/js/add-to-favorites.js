@@ -48,7 +48,16 @@ function removeIdFavorites(cardID) {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
     updateGallery(cardID);
+
+    const cardToRemove = document.querySelector(`.list-favorites-item[data-id="${cardID}"]`);
+    if (cardToRemove) {
+        cardToRemove.classList.add('animation-items-remove'); // Додаємо клас для анімації видалення
+        setTimeout(() => {
+            cardToRemove.remove();
+        }, 500); // Час, необхідний для виконання анімації
+    }
     storedArrayAdd.splice(storedArrayAdd.indexOf(cardID), 1); // Оновлення масиву storedArrayAdd
+    localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
 }
 
 function updateGallery(cardID) {
@@ -56,12 +65,11 @@ function updateGallery(cardID) {
     localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 
     const cardToRemove = document.querySelector(`.list-favorites-item[data-id="${cardID}"]`);
-    if (cardToRemove) {
-        cardToRemove.remove();
-    } else {
+    if (!cardToRemove) {
         createCardFavorites([cardID])
     }
 }
+
 
 
 function updateLicalStorage() {
