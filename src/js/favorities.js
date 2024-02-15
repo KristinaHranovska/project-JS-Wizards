@@ -15,7 +15,8 @@ function savedCardsStorage() {
         displayFavoriteCards(savedCards);
     }
     catch (err) {
-        if (window.location.pathname !== "/index.html") {
+        if (window.location.pathname !== "/") {
+            console.log(window.location.pathname)
             iziToastFunctions.getErrorInfo('Wrong operation!!!');
         }
     }
