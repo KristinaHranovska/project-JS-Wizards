@@ -108,6 +108,17 @@ export function createCardFavorites(arr) {
             // Перевіряємо, чи елемент favoritesCard існує
             if (favoritesCard) {
                 favoritesCard.insertAdjacentHTML("beforeend", markup);
+
+                const filterCards = document.querySelectorAll('.js-animation');
+                filterCards.forEach(card => {
+                    card.classList.add('animation-items');
+                });
+                const disappearance = setTimeout(() => {
+                    filterCards.forEach(card => {
+                        card.classList.remove('animation-items');
+                    });
+                }, 500);
+
                 checkContainerHeight();
             }
         })
@@ -116,8 +127,8 @@ export function createCardFavorites(arr) {
 
 function createMarkup(arr) {
     return arr.map(({ name, target, bodyPart, burnedCalories, _id }) =>
-        `<li class="list-favorites-item js-id" data-id="${_id}">
-    <div class="container-card">
+        `<li class="list-favorites-item js-id js-animation" data-id="${_id}">
+
         <div class="container-worcaut">
             <div class="workout-thumb">
             <div class="workout">Workout</div>
@@ -142,20 +153,19 @@ function createMarkup(arr) {
         }</h3>
                 </div>
                 <div class="container-subtext-info">                           
-                   <div class="favorites-card-text-wrapper"> 
-                   <h4 class="subtext-info">Burned calories:</h4>  
-                    <p class="mini-info">${burnedCalories}/ 3 min</p>  
-                    </div>
-                    <div class="favorites-card-text-wrapper">
-                    <h4 class="subtext-info">Body part:</h4> 
-                    <p class="mini-info">${bodyPart}</p>  
-                    </div>
-                    <div class="favorites-card-text-wrapper">
-                    <h4 class="subtext-info">Target: </h4>
-                    <p class="mini-info">${target}</p>                           
-                    </div>
+                   <span class="favorites-card-text-wrapper"> 
+                   <span class="subtext-info">Burned calories:</span>  
+                    <span class="mini-info">${burnedCalories}/ 3 min</span>  
+                    </span>
+                    <span class="favorites-card-text-wrapper">
+                    <span class="subtext-info">Body part:</span> 
+                    <span class="mini-info">${bodyPart}</span>  
+                    </span>
+                    <span class="favorites-card-text-wrapper">
+                    <span class="subtext-info">Target: </span>
+                    <span class="mini-info">${target}</span>                           
+                    </span>
                </div>
-       </div>
 </li>`)
         .join('');
 }

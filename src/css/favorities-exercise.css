@@ -9,6 +9,7 @@
 
 .button-remove {
     position: relative;
+    top: 3px;
     z-index: 0;
     background: transparent;
     display: inline-block;
@@ -19,31 +20,26 @@
     box-sizing: border-box;
     vertical-align: middle;
     margin-left: 8px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 .button-remove>.delete-favorites {
     position: relative;
     z-index: -1;
 }
 
-.favorites-card-text-wrapper {
-    flex-basis: calc((100% - 16px) / 2);
-    display: flex;
-    gap: 4px;
-}
-
-@media screen and (min-width: 768px) {}
-
 /* -------------- Section favorites --------------- */
 
 .container-section-favorites {
     position: relative;
     border-radius: 30px;
-    padding: 40px 14px 92px;
+    padding: 40px 20px;
     max-width: 336px;
     min-height: 450px;
     width: 100%;
-    height: 100%;
+    max-height: 1644px;
     background-color: var(--light-gray-background);
     overflow: hidden;
 }
@@ -53,8 +49,8 @@
     padding: 16px;
     max-width: 296px;
     border-radius: 15px;
-    width: 100%;
-    height: auto;
+    /* width: 100%; */
+    /* height: auto; */
     background-color: var(--white-color);
     text-wrap: nowrap;
 }
@@ -71,8 +67,8 @@
 .scroll {
     /* overflow-y: hidden; */
     overflow-x: hidden;
-    height: 490px;
-    padding: 5px 0;
+    max-height: 1460px;
+    padding: 5px 10px;
 }
 
 .scroll::-webkit-scrollbar {
@@ -94,17 +90,15 @@
 .list-favorites {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    gap: 20px 14px;
+    gap: 20px 0;
 }
 
 .list-favorites-item {
-    transition: cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s;
-}
-
-.list-favorites-item:hover,
-.list-favorites-item:focus {
-    transform: scale(1.05);
+    border-radius: 15px;
+    padding: 16px;
+    background-color: var(--white-color);
+    overflow: hidden;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container-worcaut {
@@ -149,7 +143,11 @@
     font-size: 14px;
     line-height: 1.2;
     cursor: pointer;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 .icon-arrow-body {
     fill: none;
@@ -179,23 +177,19 @@
 .container-subtext-info {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    gap: 5px;
+    gap: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .subtext-info {
-    font-size: 12px;
-    line-height: 1.5;
     color: var(--border-color);
-    font-feature-settings: "clig"off, "liga"off;
 }
 
 .mini-info {
     color: var(--text-dark);
-    font-feature-settings: "clig"off, "liga"off;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.5;
 }
 
 /* -------------- Remove container favorites -------------- */
@@ -229,21 +223,38 @@
 @media only screen and (min-width: 768px) {
     .scroll {
         max-height: 720px;
+        padding: 5px 24px;
     }
 
-
-    .subtext-info {
-        /* width: 50px; */
-        letter-spacing: -0.04em;
+    .list-favorites-item {
+        transition: transform cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s;
     }
 
-    .mini-info {
-        letter-spacing: -0.04em;
+    .list-favorites-item:hover,
+    .list-favorites-item:focus {
+        transform: scale(1.05);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-remove:hover, .button-remove:focus {
+        transform: scale(1.16);
+    }
+
+    .button-start:hover, .button-start:focus {
+        transform: scale(1.15);
+    }
+
+    .button-start {
+        font-size: 16px;
+    }
+
+    .button-remove {
+        top: 2px;
     }
 
     .container-subtext-info {
-        flex-direction: column;
-        gap: 1px;
+        gap: 5px 15px;
+        text-wrap: nowrap;
     }
 
     .container-section-favorites {
@@ -254,10 +265,11 @@
 
     .favorites-title {
         font-size: 44px;
+        margin-left: 24px;
     }
 
     .list-favorites {
-        flex-direction: row;
+        gap: 20px 14px;
     }
 
     .list-favorites-item {
@@ -289,11 +301,7 @@
 @media only screen and (min-width: 1440px) {
     .scroll {
         padding: 15px;
-    }
-
-    .container-subtext-info {
-        flex-direction: row;
-        gap: 5px;
+        height: 480px;
     }
 
     .list-favorites {
@@ -313,4 +321,42 @@
         max-width: 424px;
     }
 
+    .subtitle-favorites {
+        font-size: 24px;
+    }
+
+    .subtext-info,
+    .mini-info {
+        font-size: 15px;
+    }
+
+
+}
+
+.animation-items {
+    animation-name: appear-items;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes appear-items {
+    0% {
+        transform: scale(0.92);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.02);
+        opacity: 0.85;
+    }
+
+    75% {
+        transform: scale(0.95);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

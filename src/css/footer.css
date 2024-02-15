@@ -184,11 +184,17 @@
     border-radius: 30px;
     margin-bottom: 12px;
     outline: none;
+    transition: border 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 768px) {
         width: 100%;
         margin-bottom: 20px;
     }
+}
+
+.footer-subscription-input:focus,
+.footer-subscription-input:hover {
+    border: 1px solid var(--dark-grey-background);
 }
 
 .footer-subscription-button {
@@ -201,12 +207,20 @@
     border: none;
     padding: 12px 130px;
 
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
     @media screen and (min-width: 768px) {
         width: 100%;
         padding: 12px 157px;
         font-size: 16px;
         line-height: 1.33;
     }
+}
+
+.footer-subscription-button:hover,
+.footer-subscription-button:focus {
+    background-color: var(--hover-button-icon);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Права */
