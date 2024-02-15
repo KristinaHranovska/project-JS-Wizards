@@ -50,7 +50,7 @@ function createMarkup(results) {
   refs.gallery.innerHTML = '';
   const markup = results
     .map(
-      ({ name, filter, imgUrl }) => `<li class="gallery-item">
+      ({ name, filter, imgUrl }) => `<li class="gallery-item js-animation">
         <a href="">
         <img class="gallery-image" src="${imgUrl}" alt="Galllery Image">
             <ul class="gallery-item-description" data-exercises="${name}">
@@ -63,6 +63,16 @@ function createMarkup(results) {
     .join('');
 
   refs.gallery.innerHTML = markup;
+
+  const filterCards = document.querySelectorAll('.js-animation');
+  filterCards.forEach(card => {
+    card.classList.add('animation-items');
+  });
+  const disappearance = setTimeout(() => {
+    filterCards.forEach(card => {
+      card.classList.remove('animation-items');
+    });
+  }, 500);
 }
 
 async function handleSearch() {

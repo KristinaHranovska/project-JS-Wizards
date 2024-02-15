@@ -91,7 +91,7 @@ function checkContainerHeight() {
         }
     }
 }
-console.log(window.location.pathname);
+
 if (window.location.pathname.endsWith('/favorites.html')) {
     savedCardsStorage();
 }

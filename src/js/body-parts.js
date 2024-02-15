@@ -4,7 +4,7 @@ import axios from 'axios';
 import icons from '../img/icons/sprite.svg';
 import { galleryElement, searchInputField, exerciseParams } from './search.js';
 import { createPaginationExercisesInner } from './pagination';
-export { updateExercisesList, loadExercises, renderExercises, getLoader };
+export { updateExercisesList, loadExercises, renderExercises };
 
 const params = {
   page: 1,
@@ -29,6 +29,15 @@ function updateExercisesList(filter) {
           '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
       } else {
         renderExercises(data.results);
+        const filterCards = document.querySelectorAll('.js-animation-exercises');
+        filterCards.forEach(card => {
+          card.classList.add('animation-items');
+        });
+        const disappearance = setTimeout(() => {
+          filterCards.forEach(card => {
+            card.classList.remove('animation-items');
+          });
+        }, 500);
         if (data.totalPages > 1) {
           document.querySelector('.tui-pagination').style.display = 'flex';
           createPaginationExercisesInner(data.totalPages).on(
@@ -37,6 +46,15 @@ function updateExercisesList(filter) {
               loadExercises(filter, page).then(data => {
                 galleryElement.innerHTML = '';
                 renderExercises(data.results);
+                const filterCards = document.querySelectorAll('.js-animation-exercises');
+                filterCards.forEach(card => {
+                  card.classList.add('animation-items');
+                });
+                const disappearance = setTimeout(() => {
+                  filterCards.forEach(card => {
+                    card.classList.remove('animation-items');
+                  });
+                }, 500);
               });
             }
           );
@@ -44,10 +62,10 @@ function updateExercisesList(filter) {
           document.querySelector('.tui-pagination').style.display = 'none';
         }
       }
-      getLoader('hide');
+
     })
     .catch(error => {
-      getLoader('hide');
+
       handleError(error.message);
     });
 }
@@ -55,7 +73,7 @@ function updateExercisesList(filter) {
 // Ця функція завантажує дані вправ із сервера на основі наданого фільтра.
 
 async function loadExercises(filter, page) {
-  getLoader();
+
   if (searchInputField.value.length > 0) {
     exerciseParams.keyword = searchInputField.value.trim().toLowerCase();
   } else {
@@ -77,7 +95,7 @@ function renderExercises(data) {
   let markup = data
     .map(
       i =>
-        `<li class="exercise-item js-id" data-id="${i._id}">
+        `<li class="exercise-item js-id js-animation-exercises" data-id="${i._id}">
       <div class="ex-item-head">
         <span class="ex-item-head-group">
           <span class="ex-item-workout">WORKOUT</span>
@@ -121,11 +139,3 @@ function renderExercises(data) {
   galleryElement.innerHTML = markup;
 }
 
-function getLoader(act = 'show') {
-  const loader = document.querySelector('.loader');
-  if (act === 'show') {
-    loader.style.display = 'inline-block';
-  } else {
-    loader.style.display = 'none';
-  }
-}
