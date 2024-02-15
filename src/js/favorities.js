@@ -15,10 +15,8 @@ function savedCardsStorage() {
         displayFavoriteCards(savedCards);
     }
     catch (err) {
-        if (window.location.pathname !== "/") {
-            console.log(window.location.pathname)
-            iziToastFunctions.getErrorInfo('Wrong operation!!!');
-        }
+        console.log(err)
+        iziToastFunctions.getErrorInfo('Wrong operation!!!');
     }
 }
 
@@ -30,7 +28,6 @@ function displayFavoriteCards(savedCards) {
         hideRemoveCards();
         smoothScrollToNextGroup();
     }
-    //
     checkContainerHeight();
 
 }
@@ -95,7 +92,9 @@ function checkContainerHeight() {
     }
 }
 
-savedCardsStorage();
+if (window.location.pathname === '/favorites.html') {
+    savedCardsStorage();
+}
 
 export function createCardFavorites(arr) {
     Promise.all(arr.map(value =>

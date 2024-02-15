@@ -61,7 +61,7 @@ function getExercisesObject(id) {
         popularity,
         burnedCalories,
         description,
-        gifUr,
+        gifUrl,
         _id,
       } = data;
 
@@ -81,7 +81,7 @@ function getExercisesObject(id) {
         descriptionValue: document.querySelector('.js-description'),
       };
 
-      refs.img.setAttribute('src', gifUr || './img/picture/energyflow.png');
+      refs.img.setAttribute('src', gifUrl || './img/picture/energyflow.png');
       refs.title.textContent = name.charAt(0).toUpperCase() + name.slice(1);
       refs.raiting.textContent = rating;
       refs.targetValue.textContent = target;
