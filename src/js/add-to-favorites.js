@@ -1,3 +1,5 @@
+import { createCardFavorites } from "./favorities";
+
 const storedArrayAdd = JSON.parse(localStorage.getItem('addKeyID')) || [];
 let cardID;
 
@@ -28,10 +30,13 @@ if (!localStorage.getItem('addKeyID')) {
     localStorage.setItem('addKeyID', JSON.stringify(emptyArrayAdd));
 }
 
-refs.addToFavoritesBtn.addEventListener('click', getIdFavorites);
-function getIdFavorites() {
+refs.addToFavoritesBtn.addEventListener('click', () => getIdFavorites(cardID));
+
+function getIdFavorites(cardID) {
     refs.removeFromFavoritesBtn.classList.remove('hidden-btn');
     refs.addToFavoritesBtn.classList.add('hidden-btn');
+
+    updateGallery(cardID);
 
     storedArrayAdd.push(cardID); // Оновлення масиву storedArrayAdd
     localStorage.setItem('addKeyID', JSON.stringify(storedArrayAdd));
@@ -51,9 +56,10 @@ function updateGallery(cardID) {
     localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 
     const cardToRemove = document.querySelector(`.list-favorites-item[data-id="${cardID}"]`);
-
     if (cardToRemove) {
         cardToRemove.remove();
+    } else {
+        createCardFavorites([cardID])
     }
 }
 

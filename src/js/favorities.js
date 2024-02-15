@@ -12,11 +12,12 @@ const refs = {
 function savedCardsStorage() {
     try {
         const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
-        console.log(savedCards);
-
         displayFavoriteCards(savedCards);
-    } catch (error) {
-        iziToastFunctions.getErrorInfo('Wrong operation!!!');
+    }
+    catch (err) {
+        if (window.location.pathname !== "/index.html") {
+            iziToastFunctions.getErrorInfo('Wrong operation!!!');
+        }
     }
 }
 
@@ -46,9 +47,6 @@ function deleteFavorites(e) {
             showRemoveCards();
         }
     }
-    // //
-    checkContainerHeight();
-
 }
 
 function removeFavoriteCard(id) {
@@ -98,17 +96,20 @@ function checkContainerHeight() {
 
 savedCardsStorage();
 
-function createCardFavorites(arr) {
+export function createCardFavorites(arr) {
     Promise.all(arr.map(value =>
         getAccess({ typeFilter: 'exercises', id: value })
     ))
         .then(results => {
             const dataList = results.map(result => result.data);
+            const markup = createMarkup(dataList);
+            const favoritesCard = document.getElementById('favorites-container');
 
-            refs.favoritesCard.insertAdjacentHTML("beforeend", createMarkup(dataList));
-            //
-            checkContainerHeight();
-
+            // Перевіряємо, чи елемент favoritesCard існує
+            if (favoritesCard) {
+                favoritesCard.insertAdjacentHTML("beforeend", markup);
+                checkContainerHeight();
+            }
         })
         .catch(err => console.error(err));
 }
