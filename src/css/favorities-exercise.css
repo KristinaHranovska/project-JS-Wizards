@@ -281,6 +281,7 @@
     }
 
     .container-remove-favorites {
+        top: 55%;
         width: 554px;
     }
 
@@ -302,6 +303,10 @@
     .scroll {
         padding: 15px;
         height: 480px;
+    }
+
+    .container-remove-favorites {
+        top: 50%;
     }
 
     .list-favorites {

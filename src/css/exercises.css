@@ -40,6 +40,7 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px 0;
   margin-bottom: 32px;
 }
@@ -51,7 +52,7 @@
   overflow: hidden;
   position: relative;
 
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gallery-image {
@@ -68,9 +69,9 @@
   width: 100%;
   padding: 45px 105px 45px 105px;
   background: linear-gradient(0deg,
-      rgba(16, 16, 16, 0.7),
-      rgba(16, 16, 16, 0.7)),
-    linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3));
+      rgba(16, 16, 16, 0.7) 0%,
+      rgba(16, 16, 16, 0.7) 100%);
+
 
   .name {
     font-size: 24px;
@@ -204,7 +205,7 @@
   padding: 16px;
   background-color: var(--white-color);
   overflow: hidden;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ex-item-head {
@@ -469,11 +470,13 @@
   .gallery-item:hover,
   .gallery-item:focus {
     transform: scale(1.05);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   .exercise-item:hover,
   .exercise-item:focus {
     transform: scale(1.03);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
   }
 }
 
