@@ -1,5 +1,5 @@
 import { getAccess } from './helper/get-access.js';
-import { iziToastFunctions } from './helper/helpers.js';
+import { createMarkup, iziToastFunctions } from './helper/helpers.js';
 import icons from '../img/icons/sprite.svg';
 
 const refs = {
@@ -8,6 +8,8 @@ const refs = {
     deleteButtons: document.querySelectorAll('.button-remove'),
     galleryWindow: document.querySelector('.js-gallery'),
 }
+
+const codeWord = 'remove'
 
 function savedCardsStorage() {
     try {
@@ -36,7 +38,7 @@ refs.galleryWindow.addEventListener('click', deleteFavorites);
 
 function deleteFavorites(e) {
     if (e.target.classList.contains('js-remove-favorites')) {
-        const card = e.target.closest('.list-favorites-item');
+        const card = e.target.closest('.js-list');
 
         card.classList.add('animation-items-remove'); // Додаємо клас для анімації видалення
 
@@ -65,7 +67,6 @@ function showRemoveCards() {
 
 function hideRemoveCards() {
     refs.removeCards.classList.add("is-hidden");
-
 }
 
 function smoothScrollToNextGroup() {
@@ -108,7 +109,7 @@ export function createCardFavorites(arr) {
     ))
         .then(results => {
             const dataList = results.map(result => result.data);
-            const markup = createMarkup(dataList);
+            const markup = createMarkup(dataList, codeWord, icons);
             const favoritesCard = document.getElementById('favorites-container');
 
             // Перевіряємо, чи елемент favoritesCard існує
@@ -131,47 +132,47 @@ export function createCardFavorites(arr) {
         .catch(err => console.error(err));
 }
 
-function createMarkup(arr) {
-    return arr.map(({ name, target, bodyPart, burnedCalories, _id }) =>
-        `<li class="list-favorites-item js-id js-animation" data-id="${_id}">
+// function createMarkup(arr) {
+//     return arr.map(({ name, target, bodyPart, burnedCalories, _id }) =>
+//         `<li class="list-favorites-item js-id js-animation" data-id="${_id}">
 
-        <div class="container-worcaut">
-            <div class="workout-thumb">
-            <div class="workout">Workout</div>
-            <button type="button" class="button-remove js-remove-favorites">
-            <svg class="delete-favorites" data-id="${_id}" width="16" height="16">
-                <use href="${icons}#icon-favorites-delete"></use>
-            </svg>
-            </button>
-            </div>
-            <button type="button" class="button-start js-start">
-                Start
-                <svg class="icon-arrow-body js-start" width="14" height="14">
-                    <use href="${icons}#icon-arrow-body-parts"></use>
-                </svg>
-            </button>
-        </div>                  
-                <div class="container-cards-favorites">
-                    <svg class="icon-parts-fitness" width="24" height="24">
-                        <use href="${icons}#icon-body-parts-fitness"></use>
-                    </svg>
-                    <h3 class="subtitle-favorites">${name.charAt(0).toUpperCase() + name.slice(1)
-        }</h3>
-                </div>
-                <div class="container-subtext-info">                           
-                   <span class="favorites-card-text-wrapper"> 
-                   <span class="subtext-info">Burned calories:</span>  
-                    <span class="mini-info">${burnedCalories}/ 3 min</span>  
-                    </span>
-                    <span class="favorites-card-text-wrapper">
-                    <span class="subtext-info">Body part:</span> 
-                    <span class="mini-info">${bodyPart}</span>  
-                    </span>
-                    <span class="favorites-card-text-wrapper">
-                    <span class="subtext-info">Target: </span>
-                    <span class="mini-info">${target}</span>                           
-                    </span>
-               </div>
-</li>`)
-        .join('');
-}
+//         <div class="container-worcaut">
+//             <div class="workout-thumb">
+//             <div class="workout">Workout</div>
+//             <button type="button" class="button-remove js-remove-favorites">
+//             <svg class="delete-favorites" data-id="${_id}" width="16" height="16">
+//                 <use href="${icons}#icon-favorites-delete"></use>
+//             </svg>
+//             </button>
+//             </div>
+//             <button type="button" class="button-start js-start">
+//                 Start
+//                 <svg class="icon-arrow-body js-start" width="14" height="14">
+//                     <use href="${icons}#icon-arrow-body-parts"></use>
+//                 </svg>
+//             </button>
+//         </div>
+//                 <div class="container-cards-favorites">
+//                     <svg class="icon-parts-fitness" width="24" height="24">
+//                         <use href="${icons}#icon-body-parts-fitness"></use>
+//                     </svg>
+//                     <h3 class="subtitle-favorites">${name.charAt(0).toUpperCase() + name.slice(1)
+//         }</h3>
+//                 </div>
+//                 <div class="container-subtext-info">
+//                    <span class="favorites-card-text-wrapper">
+//                    <span class="subtext-info">Burned calories:</span>
+//                     <span class="mini-info">${burnedCalories}/ 3 min</span>
+//                     </span>
+//                     <span class="favorites-card-text-wrapper">
+//                     <span class="subtext-info">Body part:</span>
+//                     <span class="mini-info">${bodyPart}</span>
+//                     </span>
+//                     <span class="favorites-card-text-wrapper">
+//                     <span class="subtext-info">Target: </span>
+//                     <span class="mini-info">${target}</span>
+//                     </span>
+//                </div>
+// </li>`)
+//         .join('');
+// }

@@ -217,7 +217,6 @@
 
 .ex-item-head-group {
   display: flex;
-  gap: 16px;
 }
 
 .ex-item-workout {
@@ -234,6 +233,8 @@
   position: relative;
   display: flex;
   align-items: center;
+
+  margin-left: 16px;
 }
 
 .ex-item-rating {

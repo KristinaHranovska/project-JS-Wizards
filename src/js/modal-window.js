@@ -40,6 +40,7 @@ function closeModalByEsc(e) {
   if (e.code === 'Escape') {
     refs.backdrop.classList.add('is-open');
     document.body.style.overflow = '';
+    clearModalContent();
   }
 }
 refs.backdrop.addEventListener('click', function (event) {
