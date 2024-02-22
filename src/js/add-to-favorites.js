@@ -44,7 +44,7 @@ function getIdFavorites(cardID) {
 
 refs.removeFromFavoritesBtn.addEventListener('click', () => removeIdFavorites(cardID));
 
-function removeIdFavorites(cardID) {
+export function removeIdFavorites(cardID) {
     refs.removeFromFavoritesBtn.classList.add('hidden-btn');
     refs.addToFavoritesBtn.classList.remove('hidden-btn');
     updateGallery(cardID);

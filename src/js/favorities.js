@@ -1,6 +1,7 @@
 import { getAccess } from './helper/get-access.js';
 import { iziToastFunctions } from './helper/helpers.js';
 import icons from '../img/icons/sprite.svg';
+import { removeIdFavorites } from './add-to-favorites.js';
 
 const refs = {
     favoritesCard: document.getElementById('favorites-container'),
@@ -29,7 +30,6 @@ function displayFavoriteCards(savedCards) {
         smoothScrollToNextGroup();
     }
     checkContainerHeight();
-
 }
 
 refs.galleryWindow.addEventListener('click', deleteFavorites);
@@ -39,10 +39,9 @@ function deleteFavorites(e) {
         const card = e.target.closest('.list-favorites-item');
 
         card.classList.add('animation-items-remove'); // Додаємо клас для анімації видалення
-
         setTimeout(() => {
             const cardId = card.dataset.id;
-            removeFavoriteCard(cardId);
+            removeIdFavorites(cardId)
             card.remove();
 
             const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
@@ -51,12 +50,6 @@ function deleteFavorites(e) {
             }
         }, 500); // Час, необхідний для виконання анімації
     }
-}
-
-function removeFavoriteCard(id) {
-    let savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
-    savedCards = savedCards.filter(card => card !== id);
-    localStorage.setItem('addKeyID', JSON.stringify(savedCards));
 }
 
 function showRemoveCards() {
