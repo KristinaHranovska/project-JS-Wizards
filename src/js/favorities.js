@@ -32,21 +32,6 @@ function displayFavoriteCards(savedCards) {
 
 }
 
-// refs.galleryWindow.addEventListener('click', deleteFavorites);
-
-// function deleteFavorites(e) {
-//     if (e.target.classList.contains('js-remove-favorites')) {
-//         const cardId = e.target.closest('.list-favorites-item').dataset.id;
-//         removeFavoriteCard(cardId);
-//         e.target.closest('.list-favorites-item').remove();
-
-//         const savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
-//         if (savedCards.length === 0) {
-//             showRemoveCards();
-//         }
-//     }
-// }
-
 refs.galleryWindow.addEventListener('click', deleteFavorites);
 
 function deleteFavorites(e) {
@@ -68,8 +53,6 @@ function deleteFavorites(e) {
     }
 }
 
-
-
 function removeFavoriteCard(id) {
     let savedCards = JSON.parse(localStorage.getItem('addKeyID')) || [];
     savedCards = savedCards.filter(card => card !== id);
@@ -82,7 +65,6 @@ function showRemoveCards() {
 
 function hideRemoveCards() {
     refs.removeCards.classList.add("is-hidden");
-
 }
 
 function smoothScrollToNextGroup() {
@@ -125,7 +107,7 @@ export function createCardFavorites(arr) {
     ))
         .then(results => {
             const dataList = results.map(result => result.data);
-            const markup = createMarkup(dataList);
+            const markup = createMarkup(dataList)
             const favoritesCard = document.getElementById('favorites-container');
 
             // Перевіряємо, чи елемент favoritesCard існує
@@ -167,7 +149,7 @@ function createMarkup(arr) {
                     <use href="${icons}#icon-arrow-body-parts"></use>
                 </svg>
             </button>
-        </div>                  
+        </div>
                 <div class="container-cards-favorites">
                     <svg class="icon-parts-fitness" width="24" height="24">
                         <use href="${icons}#icon-body-parts-fitness"></use>
@@ -175,18 +157,18 @@ function createMarkup(arr) {
                     <h3 class="subtitle-favorites">${name.charAt(0).toUpperCase() + name.slice(1)
         }</h3>
                 </div>
-                <div class="container-subtext-info">                           
-                   <span class="favorites-card-text-wrapper"> 
-                   <span class="subtext-info">Burned calories:</span>  
-                    <span class="mini-info">${burnedCalories}/ 3 min</span>  
+                <div class="container-subtext-info">
+                   <span class="favorites-card-text-wrapper">
+                   <span class="subtext-info">Burned calories:</span>
+                    <span class="mini-info">${burnedCalories}/ 3 min</span>
                     </span>
                     <span class="favorites-card-text-wrapper">
-                    <span class="subtext-info">Body part:</span> 
-                    <span class="mini-info">${bodyPart}</span>  
+                    <span class="subtext-info">Body part:</span>
+                    <span class="mini-info">${bodyPart}</span>
                     </span>
                     <span class="favorites-card-text-wrapper">
                     <span class="subtext-info">Target: </span>
-                    <span class="mini-info">${target}</span>                           
+                    <span class="mini-info">${target}</span>
                     </span>
                </div>
 </li>`)

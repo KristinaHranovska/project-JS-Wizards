@@ -70,8 +70,6 @@ function updateGallery(cardID) {
     }
 }
 
-
-
 function updateLicalStorage() {
     return localStorage.getItem('addKeyID');
 }
