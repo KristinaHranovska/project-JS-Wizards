@@ -15,26 +15,26 @@ import{a as V,f as O,i as p}from"./vendor-0a7c832e.js";(function(){const t=docum
                     <use href="${h}#icon-arrow-body-parts"></use>
                 </svg>
             </button>
-        </div>                  
+        </div>
                 <div class="container-cards-favorites">
                     <svg class="icon-parts-fitness" width="24" height="24">
                         <use href="${h}#icon-body-parts-fitness"></use>
                     </svg>
                     <h3 class="subtitle-favorites">${t.charAt(0).toUpperCase()+t.slice(1)}</h3>
                 </div>
-                <div class="container-subtext-info">                           
-                   <span class="favorites-card-text-wrapper"> 
-                   <span class="subtext-info">Burned calories:</span>  
-                    <span class="mini-info">${s}/ 3 min</span>  
+                <div class="container-subtext-info">
+                   <span class="favorites-card-text-wrapper">
+                   <span class="subtext-info">Burned calories:</span>
+                    <span class="mini-info">${s}/ 3 min</span>
                     </span>
                     <span class="favorites-card-text-wrapper">
-                    <span class="subtext-info">Body part:</span> 
-                    <span class="mini-info">${n}</span>  
+                    <span class="subtext-info">Body part:</span>
+                    <span class="mini-info">${n}</span>
                     </span>
                     <span class="favorites-card-text-wrapper">
                     <span class="subtext-info">Target: </span>
-                    <span class="mini-info">${r}</span>                           
+                    <span class="mini-info">${r}</span>
                     </span>
                </div>
 </li>`).join("")}const m={backdrop:document.querySelector(".backdrop-thumb"),closeIcon:document.querySelector(".js-modal-window"),galleryWindow:document.querySelector(".js-gallery")},S=document.querySelectorAll(".raiting");m.galleryWindow.addEventListener("click",K);function K(e){if(e.target.classList.contains("js-start")){m.backdrop.classList.remove("is-open"),document.body.style.overflow="hidden";const t=e.target.closest(".js-id");if(t){const r=t.dataset.id;H(r)}}}m.closeIcon.addEventListener("click",I);document.addEventListener("keydown",R);function I(e){m.backdrop.classList.add("is-open"),document.body.style.overflow="",k()}function R(e){e.code==="Escape"&&(m.backdrop.classList.add("is-open"),document.body.style.overflow="",k())}m.backdrop.addEventListener("click",function(e){e.target===this&&I()});function H(e){q({typeFilter:"exercises",id:e}).then(({data:t})=>{const{name:r,rating:n,target:s,bodyPart:o,equipment:a,popularity:y,burnedCalories:l,description:E,gifUrl:B,_id:F}=t;document.querySelector(".modal-window").setAttribute("data-modal-id",F);const d={img:document.querySelector(".js-img"),title:document.querySelector(".js-title"),raiting:document.querySelector(".js-raiting"),targetValue:document.querySelector(".js-target"),bodyPartValue:document.querySelector(".js-body-part"),equipmentValue:document.querySelector(".js-equipment"),popularValue:document.querySelector(".js-popular"),caloriesValue:document.querySelector(".js-calories"),descriptionValue:document.querySelector(".js-description")};d.img.setAttribute("src",B||"./img/picture/energyflow.png"),d.title.textContent=r.charAt(0).toUpperCase()+r.slice(1),d.raiting.textContent=n,d.targetValue.textContent=s,d.bodyPartValue.textContent=o,d.equipmentValue.textContent=a,d.popularValue.textContent=y,d.caloriesValue.textContent=l,d.descriptionValue.textContent=E,S.length>0&&z()}).catch(t=>{console.error(t),document.querySelector(".js-img").setAttribute("src","./img/picture/energyflow.png")})}function k(){const e={img:document.querySelector(".js-img"),title:document.querySelector(".js-title"),raiting:document.querySelector(".js-raiting"),targetValue:document.querySelector(".js-target"),bodyPartValue:document.querySelector(".js-body-part"),equipmentValue:document.querySelector(".js-equipment"),popularValue:document.querySelector(".js-popular"),caloriesValue:document.querySelector(".js-calories"),descriptionValue:document.querySelector(".js-description")};e.img.setAttribute("src",""),e.title.textContent="",e.raiting.textContent="",e.targetValue.textContent="",e.bodyPartValue.textContent="",e.equipmentValue.textContent="",e.popularValue.textContent="",e.caloriesValue.textContent="",e.descriptionValue.textContent="",document.querySelectorAll(".raiting-item .icon-star").forEach(r=>{r.classList.add("non-activ")})}function z(){let e,t;for(let o=0;o<S.length;o++){const a=S[o];r(a)}function r(o){n(o),s()}function n(o){e=o.querySelector(".raiting-active"),t=o.getElementsByClassName("raiting-value")[0]}function s(o=t.innerHTML){const a=o/.05;e.style.width=`${a}%`}}const u=JSON.parse(localStorage.getItem("addKeyID"))||[];let f;const i={addToFavoritesBtn:document.querySelector(".add-to-favorities"),removeFromFavoritesBtn:document.querySelector(".js-remove"),idModul:document.querySelector(".js-gallery")};i.idModul.addEventListener("click",Q);function Q(e){const t=e.target.closest(".js-id");t&&(f=t.dataset.id,Y().includes(f)?(i.removeFromFavoritesBtn.classList.remove("hidden-btn"),i.addToFavoritesBtn.classList.add("hidden-btn")):(i.removeFromFavoritesBtn.classList.add("hidden-btn"),i.addToFavoritesBtn.classList.remove("hidden-btn")))}if(!localStorage.getItem("addKeyID")){const e=[];localStorage.setItem("addKeyID",JSON.stringify(e))}i.addToFavoritesBtn.addEventListener("click",()=>U(f));function U(e){i.removeFromFavoritesBtn.classList.remove("hidden-btn"),i.addToFavoritesBtn.classList.add("hidden-btn"),x(e),u.push(e),localStorage.setItem("addKeyID",JSON.stringify(u))}i.removeFromFavoritesBtn.addEventListener("click",()=>G(f));function G(e){i.removeFromFavoritesBtn.classList.add("hidden-btn"),i.addToFavoritesBtn.classList.remove("hidden-btn"),x(e);const t=document.querySelector(`.list-favorites-item[data-id="${e}"]`);t&&(t.classList.add("animation-items-remove"),setTimeout(()=>{t.remove()},500)),u.splice(u.indexOf(e),1),localStorage.setItem("addKeyID",JSON.stringify(u))}function x(e){const t=u.filter(n=>n!==e);localStorage.setItem("addKeyID",JSON.stringify(t)),document.querySelector(`.list-favorites-item[data-id="${e}"]`)||j([e])}function Y(){return localStorage.getItem("addKeyID")}export{h as i};
-//# sourceMappingURL=add-to-favorites-b754a035.js.map
+//# sourceMappingURL=add-to-favorites-5dd64793.js.map
