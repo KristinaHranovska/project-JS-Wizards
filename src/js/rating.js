@@ -1,6 +1,6 @@
 import { patchAccess } from "./helper/get-access";
 import { idExercises, refs } from "./modal-window";
-import iziToast from 'izitoast';
+import { iziToastFunctions } from './helper/helpers.js';
 
 const refsRating = {
     numberRating: document.querySelector('.js-rating'),
@@ -73,9 +73,7 @@ function sendRating(event) {
 
     const email = refsRating.inputEmail.value.trim();
     if (!pattern.test(email)) {
-        iziToast.error({
-            message: 'Enter the correct email!'
-        });
+        iziToastFunctions.getErrorInfo('Enter the correct email!')
     } else {
         patchAccess({
             id: idExercises,

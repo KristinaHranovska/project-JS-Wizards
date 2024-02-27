@@ -4,7 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css'
 const iziToastFunctions = {
   getInfo(messageInfo) {
     iziToast.info({
-      title: 'Hello',
+      title: 'Info',
       message: messageInfo,
     });
   },
@@ -42,5 +42,4 @@ function createMarkupFilter(filter, galleryContainer) {
   return markup;
 }
 
-export { iziToastFunctions };
-export { createMarkupFilter };
+export { iziToastFunctions, createMarkupFilter };

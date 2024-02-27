@@ -1,6 +1,5 @@
 import axios from 'axios';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { iziToastFunctions } from './helper/helpers.js';
 
 const refs = {
     emailPattern: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
@@ -24,25 +23,20 @@ const subscribeValidity = async (event) => {
     const email = refs.footerInput.value.trim();
 
     if (!refs.emailPattern.test(email)) {
-        iziToast.error({
-            message: 'Enter the correct email!'
-        });
+        iziToastFunctions.getErrorInfo('Enter the correct email!')
     } else {
         try {
             await subscribeEmail(email);
-            iziToast.success({
-                message: 'Successful subscription!'
-            });
+            iziToastFunctions.getSuccessInfo('Successful subscription!')
         } catch (error) {
-            iziToast.error({
-                message: 'The user with this address is already subscribed!'
-            });
-        }
+            iziToastFunctions.getErrorInfo('The user with this address is already subscribed!')
 
-        localStorage.removeItem(refs.feedbackForm);
-        refs.footerForm.reset();
+        }
     }
-};
+
+    localStorage.removeItem(refs.feedbackForm);
+    refs.footerForm.reset();
+}
 
 refs.footerForm.addEventListener('submit', subscribeValidity);
 

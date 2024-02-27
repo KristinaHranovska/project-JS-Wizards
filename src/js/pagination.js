@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 import { exerciseParams } from './search.js';
 
+
 function createPaginationExercisesInner(totalPages) {
   if (window.innerWidth >= 1440) {
     exerciseParams.limit = 9;

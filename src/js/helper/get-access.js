@@ -1,5 +1,5 @@
 import axios from 'axios';
-import iziToast from 'izitoast';
+import { iziToastFunctions } from './helpers';
 
 export { getAccess, patchAccess };
 
@@ -36,38 +36,31 @@ async function patchAccess({ id, formData }) {
   try {
     const response = await axios.patch(
       `https://energyflow.b.goit.study/api/exercises/${id}/rating`, formData);
-    iziToast.info({
-      message: 'Rating has been updated'
-    })
+    iziToastFunctions.getSuccessInfo('Rating has been updated');
+
     return response;
-  } catch (error) {
+  }
+  catch (error) {
     if (error.response) {
       const statusCode = error.response.status;
       if (statusCode === 400) {
-        iziToast.error({
-          message: 'Bad request! Please check your data.'
-        });
+        iziToastFunctions.getErrorInfo('Bad request! Please check your data.')
+
       } else if (statusCode === 404) {
-        iziToast.error({
-          message: 'Exercises not found!'
-        });
+        iziToastFunctions.getErrorInfo('Exercises not found!')
+
       } else if (statusCode === 409) {
-        iziToast.error({
-          message: 'Sorry! But you have already appreciated this exercise'
-        });
+        iziToastFunctions.getInfo('Sorry! But you have already appreciated this exercise')
+
       } else if (statusCode === 500) {
-        iziToast.error({
-          message: 'Internal server error! Please try again later.'
-        });
+        iziToastFunctions.getErrorInfo('Internal server error! Please try again later.')
+
       } else {
-        iziToast.error({
-          message: 'An error occurred! Please try again later.'
-        });
+        iziToastFunctions.getErrorInfo('An error occurred! Please try again later.')
+
       }
     } else {
-      iziToast.error({
-        message: 'An error occurred! Please try again later.'
-      });
+      iziToastFunctions.getInfo('An error occurred! Please try again later.')
     }
     return statusCode;
   }
