@@ -7,7 +7,7 @@ By looking at our catalog, the user will learn which exercises will help him
 pump the muscles he wants. Do you like certain exercises? Save them to your
 favorites list so you can easily return to them later.
 
-## Команда
+## Team
 
 1. [@KristinaHranovska](https://github.com/KristinaHranovska) **(Team Lead,
    Quote of the day section, Rating section, Animation on the page)**
