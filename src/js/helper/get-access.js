@@ -1,6 +1,7 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
 
-export { getAccess, postAccess };
+export { getAccess, patchAccess };
 
 /**
  * Виконує GET-запит до сервера за вказаною URL з вказаними параметрами.
@@ -31,21 +32,43 @@ async function getAccess({ filter, limit, page = 1, typeFilter, id = null }) {
   }
 }
 
-/**
- * Виконує POST-запит до сервера за вказаною URL з вказаними даними.
- * @param {Object} options - Об'єкт з параметрами
- * @param {Object} options.userEmail - Дані, які відправляються у POST-запиті (відправляються у форматі JSON)
- * @param {string} options.typeFilter - Тип фільтра, який використовується у URL (в данному випадку потрібно вказувати subscription)
- * @returns {Promise} Об'єкт Promise, який розрішується у відповідь від сервера.
- */
-async function postAccess({ userEmail, typeFilter }) {
+async function patchAccess({ id, formData }) {
   try {
-    const response = await axios.post(
-      `https://energyflow.b.goit.study/api/${typeFilter}`,
-      userEmail
-    );
+    const response = await axios.patch(
+      `https://energyflow.b.goit.study/api/exercises/${id}/rating`, formData);
+    iziToast.info({
+      message: 'Rating has been updated'
+    })
     return response;
   } catch (error) {
-    console.error(error.message);
+    if (error.response) {
+      const statusCode = error.response.status;
+      if (statusCode === 400) {
+        iziToast.error({
+          message: 'Bad request! Please check your data.'
+        });
+      } else if (statusCode === 404) {
+        iziToast.error({
+          message: 'Exercises not found!'
+        });
+      } else if (statusCode === 409) {
+        iziToast.error({
+          message: 'Sorry! But you have already appreciated this exercise'
+        });
+      } else if (statusCode === 500) {
+        iziToast.error({
+          message: 'Internal server error! Please try again later.'
+        });
+      } else {
+        iziToast.error({
+          message: 'An error occurred! Please try again later.'
+        });
+      }
+    } else {
+      iziToast.error({
+        message: 'An error occurred! Please try again later.'
+      });
+    }
+    return statusCode;
   }
 }

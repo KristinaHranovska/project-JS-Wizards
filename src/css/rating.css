@@ -1,0 +1,146 @@
+.backdrop-rating-thumb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(46, 47, 66, 0.40);
+
+    opacity: 1;
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), visibility 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop-rating-thumb.is-close {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: auto;
+}
+
+.rating-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 20;
+    transition: transform 0.3s ease;
+    width: 335px;
+    overflow-y: auto;
+    border-radius: 20px;
+    background-color: var(--text-light);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px;
+
+    @media screen and (max-width: 320px) {
+        width: 280px;
+    }
+}
+
+.rating-title {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--border-color);
+    margin-bottom: 8px;
+}
+
+.rating-thumb {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 20px;
+}
+
+.raiting-number {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-dark);
+}
+
+.input-email {
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 12px 14px;
+    width: 100%;
+    outline: transparent;
+
+    margin-bottom: 10px;
+}
+
+.comment-area {
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 12px 14px;
+    width: 100%;
+    height: 93px;
+
+    resize: none;
+    outline: transparent;
+
+    margin-bottom: 20px;
+}
+
+.input-email:focus,
+.comment-area:focus {
+    border: 1px solid var(--hover-button-icon);
+}
+
+.rating-btn {
+    border-radius: 30px;
+    background-color: var(--accent);
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    border: none;
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    padding: 12px 131px;
+}
+
+.rating-btn:hover,
+.rating-btn:focus {
+    background-color: var(--hover-button-icon);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+    .rating-window {
+        width: 450px;
+        padding: 50px;
+    }
+
+    .modal-button-close {
+        top: 16px;
+        right: 16px;
+    }
+
+    .rating-title {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .rating-thumb {
+        margin-bottom: 32px;
+    }
+
+    .raiting-number {
+        font-style: 15px;
+    }
+
+    .input-email {
+        margin-bottom: 16px;
+    }
+
+    .comment-area {
+        width: 100%;
+        height: 106px;
+        margin-bottom: 32px;
+    }
+
+    .rating-btn {
+        width: 100%;
+        font-size: 16px;
+    }
+}
