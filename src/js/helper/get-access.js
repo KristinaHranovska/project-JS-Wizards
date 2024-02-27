@@ -36,7 +36,7 @@ async function patchAccess({ id, formData }) {
   try {
     const response = await axios.patch(
       `https://energyflow.b.goit.study/api/exercises/${id}/rating`, formData);
-    iziToastFunctions.getSuccessInfo('Rating has been updated');
+    iziToastFunctions.getSuccessInfo('Thank you! Your opinion really important for us!');
 
     return response;
   }

@@ -3,7 +3,6 @@ $starHue: 38;
 
 :root {
 	--yellow: #{hsl($starHue,90%,55%)};
-	--yellow-t: #{hsla($starHue,90%,55%,0)};
 	--bezier: cubic-bezier(0.42,0,0.58,1);
 	--trans-dur: 0.3s;
 }
@@ -112,13 +111,6 @@ $starHue: 38;
 	&__input-4:checked ~ &__label:nth-of-type(-n + 4) &__star-fill,
 	&__input-5:checked ~ &__label:nth-of-type(-n + 5) &__star-fill {
 		animation-name: starFill;
-	}
-	&__input-1:not(:checked):hover ~ &__label:first-of-type &__star-fill,
-	&__input-2:not(:checked):hover ~ &__label:nth-of-type(2) &__star-fill,
-	&__input-3:not(:checked):hover ~ &__label:nth-of-type(3) &__star-fill,
-	&__input-4:not(:checked):hover ~ &__label:nth-of-type(4) &__star-fill,
-	&__input-5:not(:checked):hover ~ &__label:nth-of-type(5) &__star-fill {
-		fill: var(--yellow-t);
 	}
 	// screen reader text
 	&__sr {

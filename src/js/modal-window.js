@@ -5,6 +5,8 @@ export const refs = {
   closeIcon: document.querySelector('.js-modal-window'),
   galleryWindow: document.querySelector('.js-gallery'),
   ratingBtn: document.querySelector('.js-open-rating'),
+  formRating: document.querySelector('.js-form'),
+  numberRating: document.querySelector('.js-rating'),
 }
 export let idExercises;
 
@@ -34,6 +36,9 @@ document.addEventListener('keydown', closeModalByEsc);
 function closeModal() {
   refs.backdrop.classList.add('is-open');
   document.body.style.overflow = '';
+
+  refs.formRating.reset();
+  refs.numberRating.textContent = '0.0';
 
   clearModalContent();
 }

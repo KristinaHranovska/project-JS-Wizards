@@ -58,7 +58,7 @@ refsRating.backdrop.addEventListener('click', function (event) {
     }
 });
 
-export const timeToClose = () => setTimeout(() => closeModal(), 1500)
+export const timeToClose = () => setTimeout(() => closeModal(), 1000)
 
 // Функція відправки рейтенгу
 refsRating.formRating.addEventListener('submit', sendRating)
@@ -80,8 +80,9 @@ function sendRating(event) {
             formData: objectDate,
         })
             .then(() => {
-                timeToClose();
                 refsRating.formRating.reset();
+                refsRating.numberRating.textContent = '0.0';
+                timeToClose();
             })
             .catch((error) => {
                 console.log(error);
