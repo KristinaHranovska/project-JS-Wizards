@@ -19,11 +19,11 @@
     const targetPage = 'favorites.html';
 
     if (currentPath.endsWith(targetPage)) {
-      console.log('FAVORITES')
+
       Array.from(favoritesButtons).forEach(button => button.classList.add('active-link'));
       Array.from(homeButtons).forEach(button => button.classList.remove('active-link'));
     } else {
-      console.log('HOME')
+
       Array.from(homeButtons).forEach(button => button.classList.add('active-link'));
       Array.from(favoritesButtons).forEach(button => button.classList.remove('active-link'));
     }
