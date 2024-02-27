@@ -1,4 +1,4 @@
-<div class="backdrop-rating-thumb">
+<div class="backdrop-rating-thumb is-close">
   <div class="rating-window">
     <button class="modal-button-close js-rating-window" type="button">
       <svg class="close-btn-icon" width="24" height="24">
@@ -404,13 +404,19 @@
         </div>
       </div>
 
-      <form>
-        <input class="input-email" type="text" placeholder="Email" />
+      <form class="js-form">
+        <input
+          class="input-email js-input"
+          type="text"
+          placeholder="Email"
+          required
+        />
         <textarea
-          class="comment-area"
+          class="comment-area js-textarea"
           name="user-comment"
           id="user-comment"
           placeholder="Your comment"
+          required
         ></textarea>
         <button class="rating-btn" type="submit">Send</button>
       </form>

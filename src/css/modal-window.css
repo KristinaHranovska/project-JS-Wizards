@@ -246,6 +246,26 @@
     stroke: var(--star);
 }
 
+.give-rating {
+    border-radius: 30px;
+    border: 1px solid var(--text-dark);
+    background-color: transparent;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.28;
+    transition: border-color 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1), color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    padding: 12px 80px;
+}
+
+.give-rating:hover,
+.give-rating:focus {
+    border-color: var(--dark-grey-background);
+    color: var(--dark-grey-background);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (min-width: 768px) {
     .modal-window {
         width: 716px;

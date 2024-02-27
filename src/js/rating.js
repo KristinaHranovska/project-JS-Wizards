@@ -1,10 +1,18 @@
+import { refs } from "./modal-window";
+import iziToast from 'izitoast';
+
 const numberRating = document.querySelector('.js-rating');
 const labelgInputs = document.querySelectorAll('.rating__label');
 const backdrop = document.querySelector('.backdrop-rating-thumb')
 const closeRatingModal = document.querySelector('.js-rating-window');
+const ratingBtn = document.querySelector('.js-open-rating');
+const pattern = /^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const inputEmail = document.querySelector('.js-input');
+const textareaComment = document.querySelector('.js-textarea')
+const formRating = document.querySelector('.js-form')
 
-let lastClickedRating = 0;
 // налаштування зірочок
+let lastClickedRating = 0;
 labelgInputs.forEach(input => {
     input.addEventListener('mouseover', function (event) {
         const rating = Number(event.target.getAttribute('data-value'));
@@ -24,41 +32,38 @@ labelgInputs.forEach(input => {
 });
 
 
-// refs.galleryWindow.addEventListener('click', openModal);
+ratingBtn.addEventListener('click', openModal);
 
-// // Відкриття модалки
-// function openModal(e) {
-//   if (e.target.classList.contains('js-start')) {
-//     refs.backdrop.classList.remove('is-open');
-//     document.body.style.overflow = 'hidden';
-
-//     const liElement = e.target.closest('.js-id');
-
-//     if (liElement) {
-//       const id = liElement.dataset.id;
-//       getExercisesObject(id);
-//     }
-//   }
-// }
+// Відкриття модалки
+function openModal() {
+    backdrop.classList.remove('is-close');
+    document.body.style.overflow = 'hidden';
+}
 
 // Закриття модального вікна
 closeRatingModal.addEventListener('click', closeModal);
-document.addEventListener('keydown', closeModalByEsc);
 
 function closeModal() {
-    console.log('hello')
     backdrop.classList.add('is-close');
     document.body.style.overflow = '';
+    refs.backdrop.classList.remove('is-open');
 }
 
-function closeModalByEsc(e) {
-    if (e.code === 'Escape') {
-        backdrop.classList.add('is-close');
-        document.body.style.overflow = '';
-    }
-}
 backdrop.addEventListener('click', function (event) {
     if (event.target === this) {
+        refs.backdrop.classList.remove('is-open');
         closeModal();
     }
 });
+
+formRating.addEventListener('submit', sendRating)
+
+function sendRating(event) {
+    event.preventDefault();
+    const email = inputEmail.value.trim();
+    if (!pattern.test(email)) {
+        iziToast.error({
+            message: 'Enter the correct email!'
+        });
+    }
+}

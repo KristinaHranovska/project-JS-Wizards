@@ -1,9 +1,10 @@
 import { getAccess } from './helper/get-access';
 
-const refs = {
+export const refs = {
   backdrop: document.querySelector('.backdrop-thumb'),
   closeIcon: document.querySelector('.js-modal-window'),
   galleryWindow: document.querySelector('.js-gallery'),
+  ratingBtn: document.querySelector('.js-open-rating'),
 }
 
 const raitings = document.querySelectorAll('.raiting')
@@ -48,6 +49,12 @@ refs.backdrop.addEventListener('click', function (event) {
     closeModal();
   }
 });
+
+refs.ratingBtn.addEventListener('click', hiddenWindow)
+
+function hiddenWindow() {
+  refs.backdrop.classList.add('is-open');
+}
 
 // Завантаження сторінки
 function getExercisesObject(id) {
