@@ -3,6 +3,7 @@
     top: 20px;
     left: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .backdrop-button.active-link {
