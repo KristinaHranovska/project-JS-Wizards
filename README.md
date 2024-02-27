@@ -33,10 +33,10 @@ favorites list so you can easily return to them later.
 
 ## Technologies
 
-- HTML/CSS
-- JavaScript (promise, LocalStorage, axios, await-async, post/get/patch,
-  iziToast, Rest API)
-- Used Vanilla App Template, npm, git, ChatGTP, Figma
+- **HTML/CSS**
+- **JavaScript:** promise, LocalStorage, axios, await-async, post/get/patch,
+  iziToast, Rest API
+- **Used:** Vanilla App Template, npm, git, ChatGTP, Figma
 
 ## Links
 
