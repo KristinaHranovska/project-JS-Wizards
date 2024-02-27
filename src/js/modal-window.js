@@ -6,6 +6,7 @@ export const refs = {
   galleryWindow: document.querySelector('.js-gallery'),
   ratingBtn: document.querySelector('.js-open-rating'),
 }
+export let idExercises;
 
 const raitings = document.querySelectorAll('.raiting')
 
@@ -30,7 +31,7 @@ function openModal(e) {
 refs.closeIcon.addEventListener('click', closeModal);
 document.addEventListener('keydown', closeModalByEsc);
 
-function closeModal(e) {
+function closeModal() {
   refs.backdrop.classList.add('is-open');
   document.body.style.overflow = '';
 
@@ -58,6 +59,7 @@ function hiddenWindow() {
 
 // Завантаження сторінки
 function getExercisesObject(id) {
+  idExercises = id;
   getAccess({ typeFilter: 'exercises', id: id })
     .then(({ data }) => {
       const {
